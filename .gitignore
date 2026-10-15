@@ -225,3 +225,5 @@ config/api_keys.json
 *.sqlite3
 data/keystore*
 _reference/
+-reference/
+docs/

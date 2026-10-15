@@ -1,0 +1,3 @@
+DEMO NOTICE: Registration and college programmes
+
+The sample registration notice says elective registration is open from 15 October through 25 October 2026. Students with unpaid fees may be blocked from completing registration. The college programme orientation is listed for 2 November 2026. This is sample data for the CampSage prototype.

@@ -1,6 +1,6 @@
 # CampSage
 
-**An open-source AI assistant that answers Integral University students' recurring questions, from public notices and their own academic record, with citations.**
+**An open-source AI assistant that helps Integral University students with notices, fees, registration, attendance, timetables and academic questions, using citations.**
 
 Built for Hacktoberfest Hack Day 2026 (Education track) at Integral University, Lucknow.
 
@@ -8,15 +8,16 @@ Built for Hacktoberfest Hack Day 2026 (Education track) at Integral University, 
 
 ## The problem
 
-Students wait days for answers to recurring questions about exams, fees, registration and course material. The answers already exist in university notices and records, but they are scattered and hard to find.
+Students wait days for answers to recurring questions about exams, fees, registration, attendance, timetables, programmes and course material. The answers already exist in university notices and records, but they are scattered and hard to find.
 
 ## What CampSage does
 
 - **Personalised by login.** A student signs in with their college ID, and CampSage loads their semester, class and branch.
 - **Bring your own key.** Each student connects their own Google AI Studio API key. There is no shared quota and no cost to the project.
-- **Grounded answers only.** Answers come from public notices and that student's own record, nothing else.
+- **Grounded answers only.** Answers come from public notices and that student's own permitted record, nothing else.
 - **Always cites its source.** Every answer names the document it came from.
 - **Honest about gaps.** If the knowledge base doesn't support an answer, CampSage says "I don't know".
+- **Useful for common college problems.** CampSage can explain a notice, point out a fee or registration issue, and say what the available record shows.
 - **Stays on topic.** Off-topic questions are politely declined.
 
 ## How it works
@@ -27,12 +28,12 @@ Login (college ID + password)
    → first login: connect Google AI Studio key (validated with a test call)
    → CollegeProvider.get_profile() → semester, class, branch
 Student asks a question
-   → retrieve: public notices + this student's records
-   → Gemma 4 (student's own key) answers from that context only
+   → retrieve: public notices + this student's permitted records
+   → Gemma 4 first (student's own key), then a configured fallback if needed
    → answer + source citation, or "I don't know"
 ```
 
-**Why Gemma 4?** It is an open-weight model reachable through the Gemini API with the student's own AI Studio key. It can also be swapped for a locally hosted open model via Ollama.
+**Why Gemma 4?** It is the primary open-weight model for this project, reached through the Gemini API with the student's own AI Studio key. The model ID is configured in `.env`; the backend can use a configured fallback when the primary model is unavailable.
 
 ## Privacy and security
 
@@ -40,7 +41,7 @@ Student asks a question
 |---|---|
 | Student API keys | Encrypted at rest; decrypted in memory per request; never logged or sent to the browser |
 | College passwords | Verified by the `CollegeProvider`; stored only as salted hashes in the demo provider |
-| Data sent to the model | Semester and class only, not name or ID |
+| Data sent to the model | The question, relevant profile fields, and retrieved notice/record context, not the student's name, ID or password |
 | Prompt injection | Notices are treated as untrusted text, and instructions inside them are ignored |
 | Secrets in the repo | `.env` and key files are git-ignored |
 
@@ -57,30 +58,30 @@ get_profile(student_id) -> {"semester": ..., "class": ..., "branch": ...}
 
 A real deployment would implement these against the college's own login or API (SSO/OAuth), and CampSage would never need to handle raw college passwords.
 
-**Demo accounts:** `<id>` / `<password>` (see `data/demo_students.json`)
+**Demo accounts:** `demo-a` / `camp-a-2026`, `demo-b` / `camp-b-2026`, and `demo-c` / `camp-c-2026`.
 
 ## Tech stack
 
 - Python 3.11+
 - FastAPI (backend) and a simple web UI
 - Gemma 4 via the Gemini API (open-weight model)
-- `<retrieval library, e.g. FAISS / ChromaDB>`
+- lexical retrieval over page-aware notice chunks
 - `cryptography` (Fernet) for key encryption
 - SQLite for demo student data
 
-## Getting started
+## Getting started locally
 
 ```bash
 git clone https://github.com/<your-username>/CampSage.git
 cd CampSage
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env     # set ENCRYPTION_SECRET
-python -m campsage.ingest   # index the notices in data/notices/
+cp .env.example .env     # set MODEL_ID to the exact working Gemma model
+python -m campsage.ingest
 uvicorn campsage.app:app --reload
 ```
 
-Open `http://localhost:8000`, log in with a demo account, and connect your free key from [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey).
+Open `http://localhost:8000`, log in with a demo account, and connect your free key from [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey). The browser UI is being built against the API contract in `docs/DEV_B_WORK.md`.
 
 ## Project structure
 
@@ -88,15 +89,18 @@ Open `http://localhost:8000`, log in with a demo account, and connect your free 
 CampSage/
 ├── campsage/
 │   ├── app.py            # FastAPI app and routes
-│   ├── college.py        # CollegeProvider interface + mock implementation
-│   ├── keystore.py       # Encrypted per-student API key storage
-│   ├── ingest.py         # Chunk and index notices / records
-│   ├── retrieve.py       # Retrieval for a given student
-│   └── answer.py         # Gemma 4 call, citations, "I don't know" fallback
+│   ├── college.py        # Demo CollegeProvider boundary
+│   ├── keystore.py       # Password-derived encrypted API-key storage
+│   ├── session.py        # Expiring server-side sessions
+│   ├── gemma.py          # Gemma-first model client and fallbacks
+│   ├── ingest.py         # Page-aware notice chunks
+│   ├── retrieve.py       # Local lexical retrieval
+│   └── answer.py         # Grounded response and citation validation
 ├── data/
-│   ├── notices/          # Public university notices
+│   ├── notices/          # Clearly marked sample notices for the demo
 │   └── demo_students.json
 ├── .env.example
+├── docs/                 # Private ignored plan and handoff notes
 └── LICENSE
 ```
 *(Adjust to match the actual repo.)*
@@ -108,7 +112,7 @@ CampSage/
 | Problem scope | Recurring student queries at Integral University |
 | Solution | Personalised, cited, grounded Q&A |
 | Technical implementation | Retrieval, per-student encrypted keys, `CollegeProvider` abstraction |
-| Open-source AI | Gemma 4 (open-weight); optional local Ollama |
+| Open-source AI | Gemma 4 is the configured primary model; fallbacks are configurable |
 | Completeness | Login → connect key → ask → cited answer |
 
 ## Roadmap

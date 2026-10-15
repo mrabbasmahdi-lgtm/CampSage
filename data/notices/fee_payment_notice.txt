@@ -1,0 +1,3 @@
+DEMO NOTICE: Fee payment deadline
+
+The sample fee notice says students must clear the semester fee by 30 October 2026. Students with an outstanding balance should use the student fee portal and keep the receipt. This is sample data for the CampSage prototype.

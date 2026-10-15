@@ -1,0 +1,95 @@
+[
+  {
+    "student_id": "demo-a",
+    "password_hash": "scrypt$UDgKaHfYDg2dxk5bZmbQFg==$V8rtq51-_E1RZQneN1VlQpCbr4KNvhmci_qmKuICp3Y=",
+    "semester": "B.Tech 5th semester",
+    "class": "CSE-A",
+    "branch": "Computer Science",
+    "attendance": {
+      "overall": "82%",
+      "database systems": "78%"
+    },
+    "timetable": {
+      "Monday": [
+        "09:00 Data Mining",
+        "11:00 DBMS"
+      ]
+    },
+    "upcoming_exams": [
+      {
+        "subject": "DBMS",
+        "date": "2026-10-22"
+      }
+    ],
+    "fees": {
+      "status": "partial",
+      "outstanding": "\u20b918,500"
+    },
+    "registration": {
+      "status": "open",
+      "note": "Elective registration is pending"
+    }
+  },
+  {
+    "student_id": "demo-b",
+    "password_hash": "scrypt$cIBoVcGnVQ19FOh5OtjoAw==$zUAFLzw_P0Nk6QoETsHb5WOxoexDIamtu7kfUW76dKw=",
+    "semester": "BCA 3rd semester",
+    "class": "BCA-B",
+    "branch": "Computer Applications",
+    "attendance": {
+      "overall": "91%",
+      "web technology": "94%"
+    },
+    "timetable": {
+      "Tuesday": [
+        "10:00 Web Technology",
+        "14:00 Python Lab"
+      ]
+    },
+    "upcoming_exams": [
+      {
+        "subject": "Web Technology",
+        "date": "2026-10-24"
+      }
+    ],
+    "fees": {
+      "status": "paid",
+      "outstanding": "\u20b90"
+    },
+    "registration": {
+      "status": "complete",
+      "note": "No pending registration"
+    }
+  },
+  {
+    "student_id": "demo-c",
+    "password_hash": "scrypt$-MicLHUWdbe8WcrSXYW6Ig==$t8g8OXG1plSu6oj8BhPVWzQ1dK_gucevtMT6ST853sg=",
+    "semester": "B.Tech 7th semester",
+    "class": "ECE-A",
+    "branch": "Electronics and Communication",
+    "attendance": {
+      "overall": "74%",
+      "embedded systems": "69%"
+    },
+    "timetable": {
+      "Wednesday": [
+        "09:00 Embedded Systems",
+        "13:00 Project Lab"
+      ]
+    },
+    "upcoming_exams": [
+      {
+        "subject": "Embedded Systems",
+        "date": "2026-10-28"
+      }
+    ],
+    "fees": {
+      "status": "overdue",
+      "outstanding": "\u20b97,200"
+    },
+    "registration": {
+      "status": "blocked",
+      "note": "Clear the outstanding fee before registration"
+    }
+  }
+]

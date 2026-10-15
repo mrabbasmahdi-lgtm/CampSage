@@ -1,0 +1,34 @@
+[
+  {
+    "chunk_id": "attendance_and_course_material.txt-c0",
+    "source": "attendance_and_course_material.txt",
+    "page": null,
+    "title": "attendance and course material",
+    "text": "DEMO NOTICE: Attendance and course material The sample academic notice says attendance below the required threshold may affect examination eligibility. Course material is shared by the relevant department through the college learning portal. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "examination_datesheet.txt-c0",
+    "source": "examination_datesheet.txt",
+    "page": null,
+    "title": "examination datesheet",
+    "text": "DEMO NOTICE: Examination datesheet The sample datesheet lists DBMS on 22 October 2026, Web Technology on 24 October 2026, and Embedded Systems on 28 October 2026. Students should check the official notice board for later corrections. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "fee_payment_notice.txt-c0",
+    "source": "fee_payment_notice.txt",
+    "page": null,
+    "title": "fee payment notice",
+    "text": "DEMO NOTICE: Fee payment deadline The sample fee notice says students must clear the semester fee by 30 October 2026. Students with an outstanding balance should use the student fee portal and keep the receipt. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "registration_and_programmes_notice.txt-c0",
+    "source": "registration_and_programmes_notice.txt",
+    "page": null,
+    "title": "registration and programmes notice",
+    "text": "DEMO NOTICE: Registration and college programmes The sample registration notice says elective registration is open from 15 October through 25 October 2026. Students with unpaid fees may be blocked from completing registration. The college programme orientation is listed for 2 November 2026. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  }
+]
