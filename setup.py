@@ -15,6 +15,7 @@ from pathlib import Path
 
 
 HERE = Path(__file__).resolve().parent
+OPERATING_SYSTEM = platform.system()  # Windows, Darwin, Linux, or another platform
 MIN_PYTHON = (3, 11)
 TESTED_MAX_PYTHON = (3, 13)
 
@@ -41,14 +42,27 @@ def _check_python() -> None:
 
 def main() -> None:
     print(
-        f"CampSage setup on {platform.system() or 'unknown'} "
+        f"CampSage setup on {OPERATING_SYSTEM or 'unknown'} "
         f"with Python {sys.version_info[0]}.{sys.version_info[1]}"
     )
     _check_python()
+    print(
+        "Dependencies with PEP 508 platform markers are filtered by pip for "
+        "this operating system. CampSage currently needs the same small set "
+        "on Windows, macOS, and Linux."
+    )
     _run(
-        "Installing Python dependencies",
+        "Installing Python dependencies for the current operating system",
         [sys.executable, "-m", "pip", "install", "-r", str(HERE / "requirements.txt")],
     )
+    if OPERATING_SYSTEM == "Windows":
+        print("Windows note: no extra OS package is required for the CampSage web prototype.")
+    elif OPERATING_SYSTEM == "Darwin":
+        print("macOS note: no extra OS package is required for the CampSage web prototype.")
+    elif OPERATING_SYSTEM == "Linux":
+        print("Linux note: no extra OS package is required for the CampSage web prototype.")
+    else:
+        print("Platform note: pip will install only dependencies compatible with this interpreter.")
     print(
         "\nSetup complete. Next steps:\n"
         "  1) Copy .env.example to .env.\n"

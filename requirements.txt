@@ -1,3 +1,5 @@
+# pip evaluates PEP 508 environment markers against the user's OS and Python
+# interpreter. Keep platform-specific packages here if the prototype gains any.
 google-genai>=2.8.0,<3
 fastapi>=0.110,<1
 uvicorn[standard]>=0.27,<1
