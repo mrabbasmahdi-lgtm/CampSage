@@ -26,7 +26,7 @@ def create_app(settings: Settings | None = None, model_client: GemmaClient | Non
     provider = DemoCollegeProvider(students_path)
     keystore = KeyStore(settings.database_path)
     sessions = SessionStore(settings.session_ttl_seconds, settings.session_idle_seconds)
-    client = model_client or GemmaClient(settings.model_id, settings.fallback_model_ids)
+    client = model_client or GemmaClient()
     chunks = load_index(settings.index_path)
     if not chunks and any(notices_path.iterdir()):
         chunks = build_index(notices_path, settings.index_path)
@@ -50,8 +50,9 @@ def create_app(settings: Settings | None = None, model_client: GemmaClient | Non
         encryption_key = keystore.prepare_encryption_key(student_id, password)
         has_key = keystore.has_key(student_id)
         api_key = keystore.decrypt_key(student_id, encryption_key) if has_key else None
-        if has_key and api_key is None:
-            return JSONResponse({"ok": False, "error": "The connected key could not be unlocked. Connect a new key."}, status_code=409)
+        # A password change or an interrupted demo setup can leave ciphertext
+        # that the verified password cannot unlock. Let the student re-key;
+        # connect_key replaces the old ciphertext only after validation.
         session_id = sessions.create(student_id, encryption_key, api_key)
         response = JSONResponse({"ok": True, "needs_key": api_key is None, "profile": provider.get_profile(student_id)})
         response.set_cookie("campsage_session", session_id, httponly=True, secure=settings.cookie_secure, samesite="lax", max_age=settings.session_ttl_seconds)
@@ -97,7 +98,13 @@ def create_app(settings: Settings | None = None, model_client: GemmaClient | Non
         contexts = retrieve(question, profile, records, app.state.chunks)
         try:
             result: AnswerResult = answer_question(session.api_key, question, profile, contexts, client)
-            return {"status": result.status, "answer": result.answer, "sources": result.sources, "model": result.model_id}
+            return {
+                "status": result.status,
+                "answer": result.answer,
+                "sources": result.sources,
+                "model": result.model_id,
+                "audio_base64": result.audio_base64,
+            }
         except Exception as exc:
             category = classify_error(exc)
             return {"status": "error", "answer": f"The assistant is temporarily unavailable ({category}). Please try again.", "sources": []}

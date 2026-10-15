@@ -29,11 +29,11 @@ Login (college ID + password)
    → CollegeProvider.get_profile() → semester, class, branch
 Student asks a question
    → retrieve: public notices + this student's permitted records
-   → Gemma 4 first (student's own key), then a configured fallback if needed
-   → answer + source citation, or "I don't know"
+   → one Gemini Live API turn with the student's own key
+   → transcript + native Charon audio + source citation, or "I don't know"
 ```
 
-**Why Gemma 4?** It is the primary open-weight model for this project, reached through the Gemini API with the student's own AI Studio key. The model ID is configured in `.env`; the backend can use a configured fallback when the primary model is unavailable.
+**Why Gemini Live?** CampSage follows the Belal55 conversation pattern: it opens a short Gemini Live API turn with the student's own AI Studio key, receives the model's output transcription, and plays the returned native audio using the Charon voice. Student records and retrieved notices are supplied explicitly in the turn prompt.
 
 ## Privacy and security
 
@@ -64,7 +64,7 @@ A real deployment would implement these against the college's own login or API (
 
 - Python 3.11+
 - FastAPI (backend) and a simple web UI
-- Gemma 4 via the Gemini API (open-weight model)
+- Gemini Live API with native audio and output transcription
 - lexical retrieval over page-aware notice chunks
 - `cryptography` (Fernet) for key encryption
 - SQLite for demo student data
@@ -76,7 +76,7 @@ git clone https://github.com/<your-username>/CampSage.git
 cd CampSage
 python -m venv .venv && source .venv/bin/activate
 python setup.py
-cp .env.example .env     # set MODEL_ID to the exact working Gemma model
+cp .env.example .env     # configure local paths; the Live model is fixed in code
 python -m campsage.ingest
 uvicorn campsage.app:app --reload
 ```
@@ -92,7 +92,7 @@ CampSage/
 │   ├── college.py        # Demo CollegeProvider boundary
 │   ├── keystore.py       # Password-derived encrypted API-key storage
 │   ├── session.py        # Expiring server-side sessions
-│   ├── gemma.py          # Gemma-first model client and fallbacks
+│   ├── gemma.py          # Gemini Live adapter with Charon audio
 │   ├── ingest.py         # Page-aware notice chunks
 │   ├── retrieve.py       # Local lexical retrieval
 │   └── answer.py         # Grounded response and citation validation
@@ -112,7 +112,7 @@ CampSage/
 | Problem scope | Recurring student queries at Integral University |
 | Solution | Personalised, cited, grounded Q&A |
 | Technical implementation | Retrieval, per-student encrypted keys, `CollegeProvider` abstraction |
-| Open-source AI | Gemma 4 is the configured primary model; fallbacks are configurable |
+| Voice AI | Gemini Live transcription and native Charon audio |
 | Completeness | Login → connect key → ask → cited answer |
 
 ## Roadmap

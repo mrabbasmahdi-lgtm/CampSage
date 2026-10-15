@@ -8,6 +8,13 @@ from dataclasses import asdict, dataclass
 from .ingest import Chunk
 
 
+_STOP_WORDS = {
+    "a", "an", "and", "are", "about", "do", "does", "for", "how", "i",
+    "in", "is", "it", "me", "my", "of", "on", "or", "the", "to", "what",
+    "when", "where", "which", "who", "with", "you", "your",
+}
+
+
 @dataclass(frozen=True)
 class ContextChunk:
     source_id: str
@@ -21,7 +28,11 @@ class ContextChunk:
 
 
 def _words(text: str) -> set[str]:
-    return {word for word in re.split(r"[^\w]+", text.lower()) if len(word) > 1}
+    return {
+        word
+        for word in re.split(r"[^\w]+", text.lower())
+        if len(word) > 1 and word not in _STOP_WORDS
+    }
 
 
 def _score(query: set[str], chunk: Chunk) -> int:

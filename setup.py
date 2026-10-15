@@ -66,7 +66,7 @@ def main() -> None:
     print(
         "\nSetup complete. Next steps:\n"
         "  1) Copy .env.example to .env.\n"
-        "  2) Set MODEL_ID to the exact working Gemma model ID.\n"
+        "  2) CampSage uses the fixed Gemini Live model with Charon audio.\n"
         "  3) Run: python -m campsage.ingest\n"
         "  4) Start the app: uvicorn campsage.app:app --reload\n"
         "  5) Open http://127.0.0.1:8000 in a browser."
