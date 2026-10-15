@@ -75,7 +75,7 @@ A real deployment would implement these against the college's own login or API (
 git clone https://github.com/<your-username>/CampSage.git
 cd CampSage
 python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+python setup.py
 cp .env.example .env     # set MODEL_ID to the exact working Gemma model
 python -m campsage.ingest
 uvicorn campsage.app:app --reload
