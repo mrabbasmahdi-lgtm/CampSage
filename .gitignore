@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# CampSage secrets and local data
+config/api_keys.json
+*.db
+*.sqlite3
+data/keystore*
+_reference/
