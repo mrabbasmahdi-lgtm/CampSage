@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CampSage</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="login-view" class="card auth-card">
+      <div class="eyebrow">Integral University student support</div>
+      <h1>Camp<span>Sage</span></h1>
+      <p class="muted">Ask about fees, registration, exams, attendance, timetables and college notices.</p>
+      <form id="login-form">
+        <label>Student ID<input id="student-id" required autocomplete="username" placeholder="demo-a"></label>
+        <label>Password<input id="password" required type="password" autocomplete="current-password" placeholder="Your demo password"></label>
+        <button class="primary" type="submit">Sign in</button>
+        <p id="login-error" class="error" role="alert"></p>
+      </form>
+      <p class="hint">Demo: <code>demo-a</code> / <code>camp-a-2026</code></p>
+    </section>
+
+    <section id="key-view" class="card auth-card hidden">
+      <div class="eyebrow">Your own Google AI Studio key</div>
+      <h2>Connect CampSage</h2>
+      <p class="muted">Your key stays on the CampSage server session and is encrypted for your student account. Questions go to Google under your key.</p>
+      <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noreferrer">Get a free AI Studio key</a>
+      <form id="key-form">
+        <label>Google AI Studio API key<input id="api-key" required type="password" autocomplete="off"></label>
+        <button class="primary" type="submit">Validate and connect</button>
+        <p id="key-error" class="error" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="app-view" class="app-view hidden">
+      <header class="topbar">
+        <div><div class="brand">Camp<span>Sage</span></div><div class="eyebrow">Student support desk</div></div>
+        <div class="top-actions"><span id="connection-state" class="status">Ready</span><button id="logout" class="quiet">Log out</button></div>
+      </header>
+      <div class="layout">
+        <aside class="profile card">
+          <div class="eyebrow">Your profile</div>
+          <h2 id="profile-class">Student</h2>
+          <dl id="profile-list"></dl>
+          <div class="voice-setting">
+            <div class="eyebrow">Conversation mode</div>
+            <label class="mode-option"><input type="radio" name="mode" value="chat" checked> Chat only</label>
+            <label class="mode-option"><input type="radio" name="mode" value="talk"> Talk directly</label>
+            <p class="tiny">Talk mode listens in the browser and reads CampSage replies aloud. Replies still appear in chat.</p>
+          </div>
+        </aside>
+        <section class="chat card">
+          <div id="messages" class="messages" aria-live="polite"></div>
+          <form id="ask-form" class="composer">
+            <textarea id="question" rows="2" placeholder="Ask about a fee, registration, exam, attendance or notice..." required></textarea>
+            <div class="composer-row"><span id="voice-status" class="tiny">Chat mode</span><button id="ask-button" class="primary" type="submit">Send</button></div>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
