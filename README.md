@@ -124,4 +124,9 @@ MIT. See [LICENSE](LICENSE).
 
 ## Team
 
-`<team name>`: `<member names>`
+Codemancer: 
+
+Syed Mohammad Abbas Baqri
+Syed Abbas Mahdi Rizvi
+Shayan Khan
+Mohd Sarim
