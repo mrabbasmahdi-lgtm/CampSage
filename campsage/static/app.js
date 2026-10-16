@@ -1,89 +1,268 @@
 (() => {
+  'use strict';
   const $ = (selector) => document.querySelector(selector);
   const views = { login: $('#login-view'), key: $('#key-view'), app: $('#app-view') };
-  const state = { profile: null, busy: false, mode: 'chat', recognition: null, speaking: false, audioContext: null, audioSource: null, audioResolve: null, audioToken: 0 };
+  const els = {
+    messages: $('#messages'), question: $('#question'), askButton: $('#ask-button'), mic: $('#mic-button'),
+    voiceStatus: $('#voice-status'), connection: $('#connection-state'), hud: $('#hud'), hudPanel: $('#hud-panel')
+  };
+  const Voice = window.CampVoice || null;
+  const HUD = window.CampHUD || null;
+  const GENERIC_ERROR = 'CampSage is temporarily unavailable. Please try again.';
+  const NO_ANSWER = 'I do not have an answer from the available sources.';
+
+  // voice: idle | starting | recording | transcribing | thinking | speaking
+  // Counters invalidate stale async work: epoch (sign-out), seq (asks), recSeq (recording starts), playSeq (playback).
+  const state = { profile: null, mode: 'chat', voice: 'idle', busy: false, greeted: false, hudMounted: false, epoch: 0, seq: 0, recSeq: 0, playSeq: 0 };
+
+  const LABELS = { idle: 'Ready', starting: 'Starting mic...', recording: 'Listening...', transcribing: 'Transcribing...', thinking: 'Thinking...', speaking: 'Speaking...' };
+  const HINTS = {
+    starting: 'Starting microphone...', recording: 'Listening... tap the mic to send', transcribing: 'Transcribing...',
+    thinking: 'Thinking...', speaking: 'Speaking... tap the mic to interrupt'
+  };
 
   function show(view) { Object.values(views).forEach((node) => node.classList.add('hidden')); views[view].classList.remove('hidden'); }
+  function scrollToEnd() { els.messages.scrollTop = els.messages.scrollHeight; }
+  function shortText(value, fallback) {
+    if (typeof value !== 'string') return fallback;
+    const text = value.trim();
+    if (!text || text[0] === '{' || text[0] === '[') return fallback;
+    return text.slice(0, 300);
+  }
+  function friendly(error, fallback) { return error && error.friendly ? shortText(error.message, fallback) : fallback; }
+  async function readJson(response) { try { return await response.json(); } catch (_) { return null; } }
+  async function request(url, options = {}) { return fetch(url, { credentials: 'same-origin', ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } }); }
+
   function message(text, who = 'system', sources = []) {
     const node = document.createElement('article'); node.className = `message ${who}`;
-    const label = document.createElement('div'); label.className = 'label'; label.textContent = who === 'user' ? 'You' : who === 'assistant' ? 'CampSage' : 'System';
-    node.append(label); const body = document.createElement('div'); body.textContent = text; node.append(body);
-    if (sources.length) { const list = document.createElement('div'); list.className = 'sources'; sources.forEach((item) => { const chip = document.createElement('span'); chip.className = 'source'; chip.textContent = `${item.source}${item.page ? ` · page ${item.page}` : ''}`; list.append(chip); }); node.append(list); }
-    $('#messages').append(node); node.scrollIntoView({ block: 'end' }); return node;
+    const label = document.createElement('div'); label.className = 'label';
+    label.textContent = who === 'user' ? 'You' : who === 'assistant' ? 'CampSage' : 'System';
+    const body = document.createElement('div'); body.textContent = String(text);
+    node.append(label, body);
+    const items = Array.isArray(sources) ? sources.filter((item) => item && typeof item.source === 'string') : [];
+    if (items.length) {
+      const list = document.createElement('div'); list.className = 'sources';
+      items.forEach((item) => { const chip = document.createElement('span'); chip.className = 'source'; chip.textContent = `${item.source}${item.page ? ` · page ${item.page}` : ''}`; list.append(chip); });
+      node.append(list);
+    }
+    els.messages.append(node); scrollToEnd(); requestAnimationFrame(scrollToEnd);
+    return node;
   }
-  async function request(url, options = {}) { return fetch(url, { credentials: 'same-origin', ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } }); }
+  function greet() {
+    if (state.greeted) return;
+    state.greeted = true;
+    const name = state.profile && typeof state.profile.name === 'string' ? state.profile.name.trim() : '';
+    message(name ? `Hello ${name}! How can I help you?` : 'Hello! How can I help you?', 'assistant');
+  }
   function renderProfile(profile) {
+    profile = profile || {};
     state.profile = profile; $('#profile-class').textContent = profile.class || 'Student';
     const list = $('#profile-list'); list.replaceChildren();
-    [['Semester', profile.semester], ['Branch', profile.branch], ['Attendance', profile.attendance?.overall || 'Available after login'], ['Fees', profile.fees?.status || 'Available after login'], ['Registration', profile.registration?.status || 'Available after login']].forEach(([name, value]) => { const dt = document.createElement('dt'); dt.textContent = name; const dd = document.createElement('dd'); dd.textContent = String(value ?? 'Not available'); list.append(dt, dd); });
-  }
-  function setBusy(value) { state.busy = value; $('#ask-button').disabled = value; $('#connection-state').textContent = value ? 'Thinking...' : 'Ready'; }
-  function selectedMode() { return document.querySelector('input[name="mode"]:checked')?.value || 'chat'; }
-  function updateMode() { state.mode = selectedMode(); if (state.mode !== 'talk') { stopAudio(); window.speechSynthesis?.cancel(); } $('#voice-status').textContent = state.mode === 'talk' ? 'Talk mode: microphone ready' : 'Chat mode: silent'; document.body.classList.toggle('mode-talk', state.mode === 'talk'); if (state.mode === 'talk') startRecognition(); else stopRecognition(); }
-
-  function speak(text) {
-    if (state.mode !== 'talk' || !('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'en-IN'; utterance.rate = .94; utterance.pitch = .95;
-    // Belal55's Gemini voice is Charon. Browser speech has no guaranteed Charon
-    // voice, so prefer it when installed and otherwise use a local English voice.
-    const voices = window.speechSynthesis.getVoices(); const preferred = voices.find((voice) => /charon/i.test(voice.name)) || voices.find((voice) => /^en(-IN|-GB|-US)/i.test(voice.lang)); if (preferred) utterance.voice = preferred;
-    state.speaking = true; $('#voice-status').textContent = 'Speaking CampSage reply...'; utterance.onend = () => { state.speaking = false; }; window.speechSynthesis.speak(utterance);
-  }
-  function stopAudio() {
-    state.audioToken += 1;
-    const source = state.audioSource; state.audioSource = null;
-    const resolve = state.audioResolve; state.audioResolve = null;
-    if (source) { source.onended = null; try { source.stop(); } catch (_) {} try { source.disconnect(); } catch (_) {} }
-    state.speaking = false; if (resolve) resolve(false);
-  }
-  async function playPcm16(base64) {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) throw new Error('Web Audio is unavailable in this browser.');
-    stopAudio(); const token = state.audioToken;
-    const binary = atob(base64); if (!binary.length || binary.length % 2) throw new Error('The audio response was invalid.');
-    const samples = new Int16Array(binary.length / 2);
-    for (let index = 0; index < samples.length; index += 1) samples[index] = binary.charCodeAt(index * 2) | (binary.charCodeAt(index * 2 + 1) << 8);
-    state.audioContext = state.audioContext || new AudioContext(); const context = state.audioContext; await context.resume(); if (state.audioToken !== token) return false;
-    const buffer = context.createBuffer(1, samples.length, 24000); const channel = buffer.getChannelData(0);
-    for (let index = 0; index < samples.length; index += 1) channel[index] = samples[index] / 32768;
-    const source = context.createBufferSource(); source.buffer = buffer; source.connect(context.destination);
-    state.audioSource = source; state.speaking = true; $('#voice-status').textContent = 'Playing CampSage audio...';
-    return new Promise((resolve) => {
-      const finish = () => { if (state.audioToken !== token) return; state.audioSource = null; state.audioResolve = null; state.speaking = false; resolve(true); };
-      state.audioResolve = () => resolve(false); source.onended = finish; try { source.start(); } catch (error) { finish(); throw error; }
+    [['Semester', profile.semester], ['Branch', profile.branch], ['Attendance', profile.attendance?.overall || 'Available after login'], ['Fees', profile.fees?.status || 'Available after login'], ['Registration', profile.registration?.status || 'Available after login']].forEach(([name, value]) => {
+      const dt = document.createElement('dt'); dt.textContent = name;
+      const dd = document.createElement('dd'); dd.textContent = String(value ?? 'Not available');
+      list.append(dt, dd);
     });
   }
-  async function playAssistantResponse(text, audioBase64) {
-    if (state.mode !== 'talk') return;
-    if (audioBase64) {
-      try { await playPcm16(audioBase64); } catch (_) { state.speaking = false; $('#voice-status').textContent = 'Audio playback unavailable'; }
+
+  // ---- HUD -----------------------------------------------------------------
+  function syncHud() {
+    if (!HUD || !state.hudMounted) return;
+    HUD.setState(state.voice === 'recording' ? 'listening' : state.voice === 'speaking' ? 'speaking' : 'idle');
+  }
+  function mountHud() {
+    if (!HUD || state.hudMounted) return;
+    try { HUD.mount(els.hud); state.hudMounted = true; syncHud(); } catch (_) { state.hudMounted = false; }
+  }
+  function unmountHud() {
+    if (!HUD || !state.hudMounted) return;
+    try { HUD.unmount(); } catch (_) {}
+    state.hudMounted = false;
+  }
+  if (Voice) {
+    Voice.onLevel((level, source) => {
+      if (!state.hudMounted) return;
+      if ((source === 'mic' && state.voice === 'recording') || (source === 'speaker' && state.voice === 'speaking')) HUD.setLevel(level);
+    });
+    Voice.onLimit(() => { if (state.voice === 'recording') finishRecording(); });
+  }
+
+  // ---- voice state -----------------------------------------------------------
+  function setVoice(next) {
+    state.voice = next;
+    state.busy = next === 'transcribing' || next === 'thinking';
+    els.askButton.disabled = state.busy;
+    els.mic.disabled = state.busy || next === 'starting';
+    els.mic.dataset.state = next;
+    els.mic.setAttribute('aria-pressed', next === 'recording' ? 'true' : 'false');
+    els.mic.setAttribute('aria-label', next === 'recording' ? 'Stop and send' : next === 'speaking' ? 'Interrupt and talk' : 'Start talking');
+    els.connection.textContent = LABELS[next];
+    els.voiceStatus.textContent = HINTS[next] || (state.mode === 'talk' ? 'Talk mode: tap the mic to speak, or type' : 'Chat mode: replies are silent');
+    syncHud();
+  }
+  function stopSpeaking() {
+    state.playSeq += 1;
+    if (Voice) Voice.stopPlayback();
+    if (state.voice === 'speaking') setVoice('idle');
+  }
+  function abortCapture() {
+    if (state.voice !== 'starting' && state.voice !== 'recording') return;
+    state.recSeq += 1;
+    if (Voice) Voice.cancel();
+    setVoice('idle');
+  }
+  function selectedMode() { return document.querySelector('input[name="mode"]:checked')?.value || 'chat'; }
+  function updateMode() {
+    const next = selectedMode();
+    if (next === state.mode) return;
+    state.mode = next;
+    if (next === 'talk') {
+      if (Voice) Voice.unlock();
+      document.body.classList.add('mode-talk');
+      els.hudPanel.setAttribute('aria-hidden', 'false');
+      mountHud();
+    } else {
+      abortCapture(); stopSpeaking();
+      document.body.classList.remove('mode-talk');
+      els.hudPanel.setAttribute('aria-hidden', 'true');
+      unmountHud();
+    }
+    setVoice(state.voice);
+  }
+  function resetUi() {
+    state.epoch += 1; state.seq += 1; state.recSeq += 1; state.playSeq += 1;
+    if (Voice) { Voice.cancel(); Voice.stopPlayback(); }
+    unmountHud();
+    state.mode = 'chat'; document.body.classList.remove('mode-talk'); els.hudPanel.setAttribute('aria-hidden', 'true');
+    const chat = document.querySelector('input[name="mode"][value="chat"]'); if (chat) chat.checked = true;
+    els.messages.replaceChildren(); els.question.value = '';
+    state.greeted = false; state.profile = null;
+    setVoice('idle');
+  }
+  function sessionExpired() {
+    resetUi(); show('login');
+    $('#login-error').textContent = 'Your session expired. Please sign in again.';
+  }
+
+  // ---- asking and speaking -----------------------------------------------------
+  function playAnswer(base64) {
+    if (!Voice) return;
+    const epoch = state.epoch; const token = ++state.playSeq;
+    const current = () => epoch === state.epoch && token === state.playSeq;
+    setVoice('speaking');
+    Voice.playPcm24k(base64)
+      .catch((error) => { if (current()) message(friendly(error, 'Audio playback is unavailable. The answer is in the chat.'), 'system'); })
+      .then(() => { if (current() && state.voice === 'speaking') setVoice('idle'); });
+  }
+
+  async function ask(question) {
+    const epoch = state.epoch; const seq = ++state.seq; const talk = state.mode === 'talk';
+    const current = () => epoch === state.epoch && seq === state.seq;
+    setVoice('thinking');
+    try {
+      const response = await request('/api/ask', { method: 'POST', body: JSON.stringify({ question, audio: talk }) });
+      const data = await readJson(response);
+      if (!current()) return;
+      if (response.status === 401) { sessionExpired(); return; }
+      if (!data || typeof data !== 'object') { message(GENERIC_ERROR, 'system'); return; }
+      const status = typeof data.status === 'string' ? data.status : (response.ok ? 'answered' : 'error');
+      const answer = typeof data.answer === 'string' ? data.answer.trim() : '';
+      if (!response.ok || status === 'error') { message(shortText(answer || data.error, GENERIC_ERROR), 'system'); return; }
+      message(answer || NO_ANSWER, 'assistant', status === 'answered' ? data.sources : []);
+      if (state.mode === 'talk' && typeof data.audio_base64 === 'string' && data.audio_base64) playAnswer(data.audio_base64);
+    } catch (_) {
+      if (current()) message(GENERIC_ERROR, 'system');
+    } finally {
+      if (current() && state.voice === 'thinking') setVoice('idle');
+    }
+  }
+
+  async function finishRecording() {
+    if (state.voice !== 'recording' || !Voice) return;
+    const epoch = state.epoch;
+    setVoice('transcribing');
+    let text;
+    try { text = await Voice.stopRecording(); }
+    catch (error) {
+      if (epoch !== state.epoch) return;
+      setVoice('idle');
+      message(friendly(error, 'I could not process the audio. Please try again.'), 'system');
       return;
     }
-    speak(text);
+    if (epoch !== state.epoch) return;
+    message(text, 'user');
+    await ask(text);
   }
-  function startRecognition() {
-    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!Recognition) { $('#voice-status').textContent = 'Talk mode needs Chrome or Edge speech recognition'; return; }
-    stopRecognition(); const recognition = new Recognition(); recognition.lang = 'en-IN'; recognition.interimResults = false; recognition.continuous = false;
-    recognition.onstart = () => { $('#voice-status').textContent = 'Listening...'; };
-    recognition.onresult = (event) => { const text = event.results[0][0].transcript.trim(); $('#question').value = text; $('#ask-form').requestSubmit(); };
-    recognition.onerror = () => { $('#voice-status').textContent = 'Microphone unavailable; you can type instead'; };
-    recognition.onend = () => { if (state.mode === 'talk' && !state.busy) $('#voice-status').textContent = 'Talk mode: microphone ready'; };
-    state.recognition = recognition; try { recognition.start(); } catch (_) {}
-  }
-  function stopRecognition() { if (state.recognition) { try { state.recognition.stop(); } catch (_) {} state.recognition = null; } }
 
-  $('#login-form').addEventListener('submit', async (event) => { event.preventDefault(); $('#login-error').textContent = ''; const button = event.target.querySelector('button'); button.disabled = true;
-    try { const response = await request('/api/login', { method: 'POST', body: JSON.stringify({ student_id: $('#student-id').value.trim(), password: $('#password').value }) }); const data = await response.json(); if (!response.ok) throw new Error(data.error || 'Login failed'); renderProfile(data.profile); if (data.needs_key) show('key'); else { show('app'); message('You are signed in. Ask me about your college information or notices.', 'assistant'); } $('#password').value = ''; }
-    catch (error) { $('#login-error').textContent = error.message; } finally { button.disabled = false; }
+  // Called straight from the tap: no await before startRecording() so Safari keeps the user gesture.
+  function onMicClick() {
+    if (state.mode !== 'talk') return;
+    if (!Voice) { message('Voice is not available in this browser. You can still type.', 'system'); return; }
+    if (state.voice === 'recording') { finishRecording(); return; }
+    if (state.voice !== 'idle' && state.voice !== 'speaking') return;
+    stopSpeaking();
+    const epoch = state.epoch; const rs = ++state.recSeq;
+    const current = () => epoch === state.epoch && rs === state.recSeq && state.voice === 'starting';
+    let started;
+    try { started = Voice.startRecording(); } catch (error) { message(friendly(error, 'Could not start the microphone.'), 'system'); return; }
+    setVoice('starting');
+    started.then(
+      () => { if (current()) setVoice('recording'); },
+      (error) => { if (current()) { setVoice('idle'); message(friendly(error, 'Could not start the microphone. Please try again.'), 'system'); } }
+    );
+  }
+
+  // ---- events -------------------------------------------------------------------
+  $('#login-form').addEventListener('submit', async (event) => {
+    event.preventDefault(); $('#login-error').textContent = '';
+    const button = event.target.querySelector('button'); button.disabled = true;
+    try {
+      const response = await request('/api/login', { method: 'POST', body: JSON.stringify({ student_id: $('#student-id').value.trim(), password: $('#password').value }) });
+      const data = await readJson(response);
+      if (!response.ok || !data) throw new Error(shortText(data && data.error, 'Login failed'));
+      resetUi(); renderProfile(data.profile);
+      if (data.needs_key) show('key'); else { show('app'); greet(); }
+      $('#password').value = '';
+    } catch (error) { $('#login-error').textContent = shortText(error.message, 'Login failed'); }
+    finally { button.disabled = false; }
   });
-  $('#key-form').addEventListener('submit', async (event) => { event.preventDefault(); $('#key-error').textContent = ''; const input = $('#api-key'); const key = input.value; input.value = ''; const button = event.target.querySelector('button'); button.disabled = true;
-    try { const response = await request('/api/connect-key', { method: 'POST', body: JSON.stringify({ api_key: key }) }); const data = await response.json(); if (!response.ok) throw new Error(data.error || 'Could not connect key'); show('app'); message('Your key is connected. Ask your first question.', 'assistant'); } catch (error) { $('#key-error').textContent = error.message; } finally { button.disabled = false; }
+  $('#key-form').addEventListener('submit', async (event) => {
+    event.preventDefault(); $('#key-error').textContent = '';
+    const input = $('#api-key'); const key = input.value; input.value = '';
+    const button = event.target.querySelector('button'); button.disabled = true;
+    try {
+      const response = await request('/api/connect-key', { method: 'POST', body: JSON.stringify({ api_key: key }) });
+      const data = await readJson(response);
+      if (!response.ok) throw new Error(shortText(data && data.error, 'Could not connect key'));
+      show('app'); greet();
+    } catch (error) { $('#key-error').textContent = shortText(error.message, 'Could not connect key'); }
+    finally { button.disabled = false; }
   });
-  $('#ask-form').addEventListener('submit', async (event) => { event.preventDefault(); if (state.busy) return; const input = $('#question'); const question = input.value.trim(); if (!question) return; input.value = ''; message(question, 'user'); setBusy(true); stopRecognition();
-     try { const response = await request('/api/ask', { method: 'POST', body: JSON.stringify({ question }) }); const data = await response.json(); if (response.status === 401) { show('login'); throw new Error('Your session expired. Please sign in again.'); } const answer = data.answer || 'I do not have an answer from the available sources.'; message(answer, 'assistant', data.sources || []); await playAssistantResponse(answer, data.audio_base64); } catch (error) { message(error.message || 'The assistant is temporarily unavailable.', 'system'); } finally { setBusy(false); if (state.mode === 'talk') startRecognition(); }
+  $('#ask-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (state.busy) return;
+    const question = els.question.value.trim();
+    if (!question) return;
+    els.question.value = '';
+    if (state.mode === 'talk' && Voice) Voice.unlock();
+    abortCapture(); stopSpeaking();
+    message(question, 'user');
+    ask(question);
   });
-  $('#logout').addEventListener('click', async () => { stopRecognition(); stopAudio(); window.speechSynthesis?.cancel(); state.mode = 'chat'; document.body.classList.remove('mode-talk'); document.querySelector('input[name="mode"][value="chat"]').checked = true; await request('/api/logout', { method: 'POST', body: '{}' }); $('#messages').replaceChildren(); show('login'); });
+  els.mic.addEventListener('click', onMicClick);
   document.querySelectorAll('input[name="mode"]').forEach((input) => input.addEventListener('change', updateMode));
-  (async () => { try { const response = await request('/api/me'); const data = await response.json(); if (!data.logged_in) return show('login'); renderProfile(data.profile); show(data.needs_key ? 'key' : 'app'); if (!data.needs_key) message('Welcome back. Ask me about your timetable, fees, attendance or college notices.', 'assistant'); } catch (_) { show('login'); } })();
+  $('#logout').addEventListener('click', async () => {
+    resetUi(); show('login');
+    try { await request('/api/logout', { method: 'POST', body: '{}' }); } catch (_) {}
+  });
+
+  setVoice('idle');
+  (async () => {
+    try {
+      const response = await request('/api/me'); const data = await readJson(response);
+      if (!data || !data.logged_in) return show('login');
+      renderProfile(data.profile);
+      if (data.needs_key) show('key'); else { show('app'); greet(); }
+    } catch (_) { show('login'); }
+  })();
 })();

@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
   <title>CampSage</title>
+  <link rel="stylesheet" href="/hud.css">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -36,30 +37,40 @@
     <section id="app-view" class="app-view hidden">
       <header class="topbar">
         <div><div class="brand">Camp<span>Sage</span></div><div class="eyebrow">Student support desk</div></div>
-        <div class="top-actions"><span id="connection-state" class="status">Ready</span><button id="logout" class="quiet">Log out</button></div>
+        <div class="top-actions"><span id="connection-state" class="status">Ready</span><button id="logout" class="quiet" type="button">Log out</button></div>
       </header>
       <div class="layout">
         <aside class="profile card">
           <div class="eyebrow">Your profile</div>
           <h2 id="profile-class">Student</h2>
           <dl id="profile-list"></dl>
-          <div class="voice-setting">
-            <div class="eyebrow">Conversation mode</div>
-            <label class="mode-option"><input type="radio" name="mode" value="chat" checked> Chat only</label>
-            <label class="mode-option"><input type="radio" name="mode" value="talk"> Talk directly</label>
-            <p class="tiny">Talk mode listens in the browser and reads CampSage replies aloud. Replies still appear in chat.</p>
-          </div>
         </aside>
         <section class="chat card">
+          <div class="chat-head">
+            <div class="eyebrow">Conversation</div>
+            <div class="mode-switch" role="radiogroup" aria-label="Conversation mode">
+              <label><input type="radio" name="mode" value="chat" checked><span>Chat only</span></label>
+              <label><input type="radio" name="mode" value="talk"><span>Talk directly</span></label>
+            </div>
+          </div>
+          <div id="hud-panel" class="hud-panel" aria-hidden="true"><div id="hud"></div></div>
           <div id="messages" class="messages" aria-live="polite"></div>
           <form id="ask-form" class="composer">
             <textarea id="question" rows="2" placeholder="Ask about a fee, registration, exam, attendance or notice..." required></textarea>
-            <div class="composer-row"><span id="voice-status" class="tiny">Chat mode</span><button id="ask-button" class="primary" type="submit">Send</button></div>
+            <div class="composer-row">
+              <span id="voice-status" class="tiny" role="status">Chat mode: replies are silent</span>
+              <button id="mic-button" class="mic" type="button" aria-label="Start talking" aria-pressed="false" data-state="idle">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>
+              </button>
+              <button id="ask-button" class="primary" type="submit">Send</button>
+            </div>
           </form>
         </section>
       </div>
     </section>
   </main>
+  <script src="/hud.js"></script>
+  <script src="/voice.js"></script>
   <script src="/app.js"></script>
 </body>
 </html>
