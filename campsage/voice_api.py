@@ -96,6 +96,27 @@ def _speaker_rules() -> str:
     return build_live_prompt("", {}, [], [], 0)[1] + VOICE_STYLE
 
 
+def _language_directive(question: str) -> str:
+    """Pin the reply language from the transcript's script, so the model does not guess.
+
+    The answering model only sees the transcript, never the audio. Persian, Urdu and Hindi
+    speech sound alike and are easy to confuse, but their written scripts are not.
+    """
+
+    if any("\u0900" <= ch <= "\u097f" for ch in question):
+        return (
+            "\n\nREPLY LANGUAGE FOR THIS TURN: the student spoke Hindi. Reply in Hinglish, "
+            "which is Hindi written in Roman letters, never in Devanagari."
+        )
+    if any(ch.isalpha() and not ch.isascii() and not ("\u0900" <= ch <= "\u097f") for ch in question):
+        return (
+            "\n\nREPLY LANGUAGE FOR THIS TURN: the student spoke a language that is not Hindi "
+            "or Hinglish (for example Persian, Urdu or Arabic). Do NOT reply in Hindi or Hinglish. "
+            "Reply in clear simple English only."
+        )
+    return ""
+
+
 def _prepare(app, session, question: str) -> tuple[list, str]:
     """Retrieve evidence and build the prompt exactly as /api/ask does (blocking; run in a thread)."""
 
@@ -111,7 +132,7 @@ def _prepare(app, session, question: str) -> tuple[list, str]:
             search_text = f"{previous[-1]} {question}"
     contexts = retrieve(search_text, profile, records, app.state.chunks)
     prompt, _ = build_live_prompt(question, profile, contexts, list(session.history), session.drift)
-    return contexts, prompt
+    return contexts, prompt + _language_directive(question)
 
 
 async def _record(ws: WebSocket, transcriber, audio: bytearray, limit: int) -> str:
