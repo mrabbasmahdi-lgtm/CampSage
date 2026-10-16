@@ -7,27 +7,123 @@
     "branch": "Computer Science",
     "attendance": {
       "overall": "82%",
-      "database systems": "78%"
+      "database systems": "78% (39 of 50 classes)",
+      "data mining": "85% (34 of 40 classes)",
+      "computer networks": "88% (44 of 50 classes)",
+      "software engineering": "80% (32 of 40 classes)",
+      "dbms lab": "90% (18 of 20 sessions)",
+      "note": "Above the 75% requirement in every subject"
     },
     "timetable": {
       "Monday": [
-        "09:00 Data Mining",
-        "11:00 DBMS"
+        "09:00 Data Mining (Room B-204)",
+        "11:00 DBMS (Room B-204)",
+        "14:00 Computer Networks (Room B-110)"
+      ],
+      "Tuesday": [
+        "09:00 Software Engineering (Room B-204)",
+        "11:00 Computer Networks (Room B-110)",
+        "14:00 DBMS Lab (Lab 3)"
+      ],
+      "Wednesday": [
+        "10:00 DBMS (Room B-204)",
+        "12:00 Data Mining (Room B-204)"
+      ],
+      "Thursday": [
+        "09:00 Computer Networks (Room B-110)",
+        "11:00 Software Engineering (Room B-204)",
+        "14:00 Mentor hour"
+      ],
+      "Friday": [
+        "09:00 Data Mining (Room B-204)",
+        "11:00 DBMS Lab (Lab 3)"
       ]
     },
     "upcoming_exams": [
       {
         "subject": "DBMS",
-        "date": "2026-10-22"
+        "date": "2026-10-22",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 2",
+        "seat": "H2-47"
+      },
+      {
+        "subject": "Data Mining",
+        "date": "2026-10-26",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 2",
+        "seat": "H2-47"
+      },
+      {
+        "subject": "Computer Networks",
+        "date": "2026-10-29",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 3",
+        "seat": "H3-12"
       }
     ],
+    "admit_card": {
+      "status": "available",
+      "note": "Download from the examination portal; carry a printed copy and college ID"
+    },
     "fees": {
       "status": "partial",
-      "outstanding": "\u20b918,500"
+      "outstanding": "\u20b918,500",
+      "total_semester_fee": "\u20b942,000",
+      "paid_so_far": "\u20b923,500",
+      "due_date": "2026-10-30",
+      "breakdown": {
+        "tuition": "\u20b934,000",
+        "examination": "\u20b93,500",
+        "library and lab": "\u20b94,500"
+      },
+      "last_payment": "\u20b923,500 paid on 2026-08-12 (receipt FR-88213)",
+      "late_fee_after_due_date": "\u20b9100 per day"
     },
     "registration": {
       "status": "open",
-      "note": "Elective registration is pending"
+      "note": "Elective registration is pending",
+      "pending_item": "Choose one 5th-semester elective: Cloud Computing, Information Retrieval or Mobile App Development",
+      "window": "2026-10-15 to 2026-10-25"
+    },
+    "courses": {
+      "Database Systems": "Dr. R. Verma, 4 credits",
+      "Data Mining": "Prof. S. Fatima, 4 credits",
+      "Computer Networks": "Dr. A. Khan, 4 credits",
+      "Software Engineering": "Prof. N. Srivastava, 3 credits",
+      "DBMS Lab": "Mr. P. Mishra, 2 credits"
+    },
+    "assignments": [
+      {
+        "subject": "Data Mining",
+        "title": "Apriori implementation",
+        "due": "2026-10-19",
+        "status": "not submitted"
+      },
+      {
+        "subject": "Computer Networks",
+        "title": "Subnetting worksheet",
+        "due": "2026-10-21",
+        "status": "submitted"
+      }
+    ],
+    "results": {
+      "last_semester_sgpa": "8.1",
+      "cgpa": "7.9",
+      "backlogs": 0
+    },
+    "library": {
+      "books_issued": 2,
+      "next_due_date": "2026-10-24",
+      "fine": "\u20b90"
+    },
+    "scholarship": {
+      "status": "not applied",
+      "note": "Merit scholarship window closes 2026-11-10"
+    },
+    "mentor": {
+      "name": "Dr. A. Khan",
+      "meeting": "Thursday 14:00, Room B-110"
     }
   },
   {
@@ -38,27 +134,116 @@
     "branch": "Computer Applications",
     "attendance": {
       "overall": "91%",
-      "web technology": "94%"
+      "web technology": "94% (47 of 50 classes)",
+      "python programming": "92% (37 of 40 classes)",
+      "data structures": "89% (36 of 40 classes)",
+      "python lab": "95% (19 of 20 sessions)",
+      "note": "Above the 75% requirement in every subject"
     },
     "timetable": {
+      "Monday": [
+        "10:00 Data Structures (Room C-101)",
+        "12:00 Python Programming (Room C-101)"
+      ],
       "Tuesday": [
-        "10:00 Web Technology",
-        "14:00 Python Lab"
+        "10:00 Web Technology (Room C-101)",
+        "14:00 Python Lab (Lab 5)"
+      ],
+      "Wednesday": [
+        "09:00 Data Structures (Room C-101)",
+        "11:00 Web Technology (Room C-101)"
+      ],
+      "Thursday": [
+        "10:00 Python Programming (Room C-101)",
+        "14:00 Web Technology Lab (Lab 5)"
+      ],
+      "Friday": [
+        "09:00 Communication Skills (Room C-105)",
+        "11:00 Data Structures (Room C-101)"
       ]
     },
     "upcoming_exams": [
       {
         "subject": "Web Technology",
-        "date": "2026-10-24"
+        "date": "2026-10-24",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 1",
+        "seat": "H1-09"
+      },
+      {
+        "subject": "Python Programming",
+        "date": "2026-10-27",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 1",
+        "seat": "H1-09"
+      },
+      {
+        "subject": "Data Structures",
+        "date": "2026-10-30",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 1",
+        "seat": "H1-09"
       }
     ],
+    "admit_card": {
+      "status": "available",
+      "note": "Download from the examination portal; carry a printed copy and college ID"
+    },
     "fees": {
       "status": "paid",
-      "outstanding": "\u20b90"
+      "outstanding": "\u20b90",
+      "total_semester_fee": "\u20b928,000",
+      "paid_so_far": "\u20b928,000",
+      "due_date": "2026-10-30",
+      "breakdown": {
+        "tuition": "\u20b923,000",
+        "examination": "\u20b92,500",
+        "library and lab": "\u20b92,500"
+      },
+      "last_payment": "\u20b928,000 paid on 2026-08-05 (receipt FR-87740)"
     },
     "registration": {
       "status": "complete",
-      "note": "No pending registration"
+      "note": "No pending registration",
+      "completed_on": "2026-08-20"
+    },
+    "courses": {
+      "Web Technology": "Prof. M. Siddiqui, 4 credits",
+      "Python Programming": "Ms. K. Singh, 4 credits",
+      "Data Structures": "Dr. T. Ahmad, 4 credits",
+      "Communication Skills": "Ms. D. Rao, 2 credits"
+    },
+    "assignments": [
+      {
+        "subject": "Web Technology",
+        "title": "Portfolio website",
+        "due": "2026-10-20",
+        "status": "submitted"
+      },
+      {
+        "subject": "Data Structures",
+        "title": "Linked list problems",
+        "due": "2026-10-22",
+        "status": "not submitted"
+      }
+    ],
+    "results": {
+      "last_semester_sgpa": "8.7",
+      "cgpa": "8.5",
+      "backlogs": 0
+    },
+    "library": {
+      "books_issued": 1,
+      "next_due_date": "2026-10-28",
+      "fine": "\u20b90"
+    },
+    "scholarship": {
+      "status": "not applied",
+      "note": "Eligible for the merit scholarship (CGPA above 8.0)"
+    },
+    "mentor": {
+      "name": "Ms. K. Singh",
+      "meeting": "Friday 14:00, Room C-105"
     }
   },
   {
@@ -69,27 +254,522 @@
     "branch": "Electronics and Communication",
     "attendance": {
       "overall": "74%",
-      "embedded systems": "69%"
+      "embedded systems": "69% (28 of 40 classes)",
+      "vlsi design": "75% (30 of 40 classes)",
+      "wireless communication": "76% (38 of 50 classes)",
+      "project lab": "80% (16 of 20 sessions)",
+      "note": "Below the 75% requirement overall and in Embedded Systems; condonation application needed"
     },
     "timetable": {
+      "Monday": [
+        "10:00 VLSI Design (Room D-301)",
+        "12:00 Wireless Communication (Room D-301)"
+      ],
+      "Tuesday": [
+        "09:00 Embedded Systems (Room D-301)",
+        "14:00 Project Lab (Lab 8)"
+      ],
       "Wednesday": [
-        "09:00 Embedded Systems",
-        "13:00 Project Lab"
+        "09:00 Embedded Systems (Room D-301)",
+        "13:00 Project Lab (Lab 8)"
+      ],
+      "Thursday": [
+        "11:00 Wireless Communication (Room D-301)",
+        "14:00 VLSI Design (Room D-301)"
+      ],
+      "Friday": [
+        "09:00 Embedded Systems (Room D-301)",
+        "11:00 VLSI Design Lab (Lab 6)"
       ]
     },
     "upcoming_exams": [
       {
         "subject": "Embedded Systems",
-        "date": "2026-10-28"
+        "date": "2026-10-28",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 4",
+        "seat": "H4-31"
+      },
+      {
+        "subject": "VLSI Design",
+        "date": "2026-10-31",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 4",
+        "seat": "H4-31"
+      },
+      {
+        "subject": "Wireless Communication",
+        "date": "2026-11-03",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 4",
+        "seat": "H4-31"
       }
     ],
+    "admit_card": {
+      "status": "on hold",
+      "note": "Held until the overdue fee is cleared and the attendance condonation is decided"
+    },
     "fees": {
       "status": "overdue",
-      "outstanding": "\u20b97,200"
+      "outstanding": "\u20b97,200",
+      "total_semester_fee": "\u20b942,000",
+      "paid_so_far": "\u20b934,800",
+      "due_date": "2026-09-30",
+      "breakdown": {
+        "tuition": "\u20b934,000",
+        "examination": "\u20b93,500",
+        "library and lab": "\u20b94,500"
+      },
+      "last_payment": "\u20b934,800 paid on 2026-07-28 (receipt FR-86102)",
+      "late_fee_after_due_date": "\u20b9100 per day",
+      "note": "The 2026-09-30 instalment is overdue"
     },
     "registration": {
       "status": "blocked",
-      "note": "Clear the outstanding fee before registration"
+      "note": "Clear the outstanding fee before registration",
+      "pending_item": "Project and elective registration",
+      "window": "2026-10-15 to 2026-10-25"
+    },
+    "courses": {
+      "Embedded Systems": "Dr. F. Zaidi, 4 credits",
+      "VLSI Design": "Prof. B. Tiwari, 4 credits",
+      "Wireless Communication": "Dr. H. Rizvi, 4 credits",
+      "Project Lab": "Mr. V. Pandey, 3 credits"
+    },
+    "assignments": [
+      {
+        "subject": "Embedded Systems",
+        "title": "ARM interfacing report",
+        "due": "2026-10-18",
+        "status": "not submitted"
+      },
+      {
+        "subject": "Project Lab",
+        "title": "Mid-project review",
+        "due": "2026-10-23",
+        "status": "not submitted"
+      }
+    ],
+    "results": {
+      "last_semester_sgpa": "6.8",
+      "cgpa": "7.0",
+      "backlogs": 1,
+      "backlog_subject": "Digital Signal Processing"
+    },
+    "library": {
+      "books_issued": 3,
+      "next_due_date": "2026-10-15",
+      "fine": "\u20b960",
+      "note": "1 book is overdue"
+    },
+    "scholarship": {
+      "status": "not applied",
+      "note": "Not eligible for the merit scholarship (backlog present)"
+    },
+    "mentor": {
+      "name": "Dr. H. Rizvi",
+      "meeting": "Wednesday 15:00, Room D-301"
+    },
+    "attendance_condonation": {
+      "status": "not applied",
+      "note": "Subjects between 65% and 75% can apply with a medical or valid reason and a fee of \u20b9500 per subject"
+    }
+  },
+  {
+    "student_id": "demo-d",
+    "password_hash": "scrypt$9hE8gXevCE6O7DCWE9PrpQ==$qPZr9DVL9kzzSyc_DhDEr1jMRhatPZ2cCNSM8Qab9Ew=",
+    "semester": "B.Tech 3rd semester",
+    "class": "ME-B",
+    "branch": "Mechanical Engineering",
+    "attendance": {
+      "overall": "96%",
+      "thermodynamics": "97% (39 of 40 classes)",
+      "fluid mechanics": "95% (38 of 40 classes)",
+      "strength of materials": "94% (47 of 50 classes)",
+      "workshop practice": "100% (20 of 20 sessions)",
+      "note": "Above the 75% requirement in every subject"
+    },
+    "timetable": {
+      "Monday": [
+        "09:00 Thermodynamics (Room E-210)",
+        "11:00 Fluid Mechanics (Room E-210)"
+      ],
+      "Tuesday": [
+        "09:00 Strength of Materials (Room E-210)",
+        "14:00 Workshop Practice (Workshop 1)"
+      ],
+      "Wednesday": [
+        "10:00 Thermodynamics (Room E-210)",
+        "12:00 Mathematics III (Room E-214)"
+      ],
+      "Thursday": [
+        "09:00 Fluid Mechanics (Room E-210)",
+        "11:00 Strength of Materials (Room E-210)"
+      ],
+      "Friday": [
+        "10:00 Mathematics III (Room E-214)",
+        "14:00 Fluid Mechanics Lab (Lab 2)"
+      ]
+    },
+    "upcoming_exams": [
+      {
+        "subject": "Thermodynamics",
+        "date": "2026-10-23",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 5",
+        "seat": "H5-18"
+      },
+      {
+        "subject": "Fluid Mechanics",
+        "date": "2026-10-27",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 5",
+        "seat": "H5-18"
+      },
+      {
+        "subject": "Strength of Materials",
+        "date": "2026-10-30",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 5",
+        "seat": "H5-18"
+      }
+    ],
+    "admit_card": {
+      "status": "available",
+      "note": "Download from the examination portal; carry a printed copy and college ID"
+    },
+    "fees": {
+      "status": "paid",
+      "outstanding": "\u20b90",
+      "total_semester_fee": "\u20b940,000",
+      "paid_so_far": "\u20b940,000",
+      "due_date": "2026-10-30",
+      "breakdown": {
+        "tuition": "\u20b932,000",
+        "examination": "\u20b93,500",
+        "library and lab": "\u20b94,500"
+      },
+      "last_payment": "\u20b940,000 paid on 2026-08-02 through the merit scholarship adjustment (receipt FR-87301)",
+      "note": "Tuition waiver of 50% applied under the merit scholarship"
+    },
+    "registration": {
+      "status": "complete",
+      "note": "No pending registration",
+      "completed_on": "2026-08-18"
+    },
+    "courses": {
+      "Thermodynamics": "Dr. I. Qureshi, 4 credits",
+      "Fluid Mechanics": "Prof. G. Yadav, 4 credits",
+      "Strength of Materials": "Dr. L. Hasan, 4 credits",
+      "Mathematics III": "Ms. S. Bajpai, 3 credits",
+      "Workshop Practice": "Mr. O. Khan, 2 credits"
+    },
+    "assignments": [
+      {
+        "subject": "Fluid Mechanics",
+        "title": "Bernoulli problem set",
+        "due": "2026-10-19",
+        "status": "submitted"
+      },
+      {
+        "subject": "Mathematics III",
+        "title": "Laplace transform sheet",
+        "due": "2026-10-21",
+        "status": "submitted"
+      }
+    ],
+    "results": {
+      "last_semester_sgpa": "9.2",
+      "cgpa": "9.0",
+      "backlogs": 0
+    },
+    "library": {
+      "books_issued": 4,
+      "next_due_date": "2026-10-26",
+      "fine": "\u20b90"
+    },
+    "scholarship": {
+      "status": "active",
+      "name": "Merit Scholarship",
+      "amount": "50% tuition waiver",
+      "renewal_condition": "Maintain CGPA of 8.5 or above and 85% attendance"
+    },
+    "mentor": {
+      "name": "Prof. G. Yadav",
+      "meeting": "Monday 15:00, Room E-210"
+    }
+  },
+  {
+    "student_id": "demo-e",
+    "password_hash": "scrypt$X9huXTSujS14It4tgmnxgg==$zbw6nyKVXFMA0BmEe1tiaVCo662Q2qa6rrIFx5ZtJdQ=",
+    "semester": "MBA 1st semester",
+    "class": "MBA-A",
+    "branch": "Management Studies",
+    "attendance": {
+      "overall": "88%",
+      "marketing management": "90% (27 of 30 classes)",
+      "financial accounting": "85% (34 of 40 classes)",
+      "organisational behaviour": "89% (27 of 30 classes)",
+      "business communication": "87% (26 of 30 classes)",
+      "note": "Above the 75% requirement in every subject"
+    },
+    "timetable": {
+      "Monday": [
+        "09:00 Financial Accounting (Room M-02)",
+        "11:00 Marketing Management (Room M-02)"
+      ],
+      "Tuesday": [
+        "09:00 Organisational Behaviour (Room M-02)",
+        "11:00 Business Communication (Room M-04)"
+      ],
+      "Wednesday": [
+        "09:00 Marketing Management (Room M-02)",
+        "14:00 Case study session (Seminar Hall)"
+      ],
+      "Thursday": [
+        "10:00 Financial Accounting (Room M-02)",
+        "12:00 Organisational Behaviour (Room M-02)"
+      ],
+      "Friday": [
+        "09:00 Business Communication (Room M-04)",
+        "11:00 Guest lecture (Seminar Hall)"
+      ]
+    },
+    "upcoming_exams": [
+      {
+        "subject": "Marketing Management",
+        "date": "2026-10-26",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 6",
+        "seat": "H6-05"
+      },
+      {
+        "subject": "Financial Accounting",
+        "date": "2026-10-28",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 6",
+        "seat": "H6-05"
+      },
+      {
+        "subject": "Organisational Behaviour",
+        "date": "2026-11-02",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 6",
+        "seat": "H6-05"
+      }
+    ],
+    "admit_card": {
+      "status": "available",
+      "note": "Download from the examination portal; carry a printed copy and college ID"
+    },
+    "fees": {
+      "status": "instalment plan",
+      "outstanding": "\u20b937,500",
+      "total_semester_fee": "\u20b975,000",
+      "paid_so_far": "\u20b937,500",
+      "due_date": "2026-10-30",
+      "breakdown": {
+        "tuition": "\u20b964,000",
+        "examination": "\u20b95,000",
+        "library and hostel deposit": "\u20b96,000"
+      },
+      "last_payment": "\u20b937,500 paid on 2026-08-10 (receipt FR-87988)",
+      "plan": "Two equal instalments; the second is due on the date shown",
+      "late_fee_after_due_date": "\u20b9100 per day"
+    },
+    "registration": {
+      "status": "complete",
+      "note": "No pending registration",
+      "completed_on": "2026-08-14"
+    },
+    "courses": {
+      "Marketing Management": "Dr. U. Naqvi, 3 credits",
+      "Financial Accounting": "Prof. C. Gupta, 4 credits",
+      "Organisational Behaviour": "Dr. J. Fatima, 3 credits",
+      "Business Communication": "Ms. E. Thomas, 2 credits"
+    },
+    "assignments": [
+      {
+        "subject": "Marketing Management",
+        "title": "Brand analysis case",
+        "due": "2026-10-20",
+        "status": "not submitted"
+      },
+      {
+        "subject": "Financial Accounting",
+        "title": "Ledger exercise",
+        "due": "2026-10-22",
+        "status": "submitted"
+      }
+    ],
+    "results": {
+      "last_semester_sgpa": "Not applicable (first semester)",
+      "cgpa": "Not applicable",
+      "backlogs": 0
+    },
+    "library": {
+      "books_issued": 0,
+      "next_due_date": "none",
+      "fine": "\u20b90"
+    },
+    "hostel": {
+      "status": "allotted",
+      "block": "Block C, Room 214",
+      "hostel_fee_status": "\u20b918,000 paid for the semester",
+      "curfew": "22:00 on weekdays, 23:00 on weekends"
+    },
+    "scholarship": {
+      "status": "not applied",
+      "note": "Eligible for the need-based scholarship; window closes 2026-11-10"
+    },
+    "mentor": {
+      "name": "Dr. J. Fatima",
+      "meeting": "Tuesday 15:00, Room M-02"
+    }
+  },
+  {
+    "student_id": "demo-f",
+    "password_hash": "scrypt$0dFija77CRkpVgBBtTW3Cg==$D8fuoikQAJHOSdYWFQKEK1btbUS1PejapgPnDzW4tTA=",
+    "semester": "B.Tech 7th semester",
+    "class": "CSE-B",
+    "branch": "Computer Science",
+    "attendance": {
+      "overall": "79%",
+      "cloud computing": "81% (33 of 40 classes)",
+      "machine learning": "76% (38 of 50 classes)",
+      "information security": "78% (31 of 40 classes)",
+      "major project": "85% (17 of 20 sessions)",
+      "note": "Above 75% in every subject but close to the limit in Machine Learning"
+    },
+    "timetable": {
+      "Monday": [
+        "09:00 Cloud Computing (Room B-305)",
+        "11:00 Machine Learning (Room B-305)"
+      ],
+      "Tuesday": [
+        "10:00 Information Security (Room B-305)",
+        "14:00 Major Project (Lab 4)"
+      ],
+      "Wednesday": [
+        "09:00 Machine Learning (Room B-305)",
+        "11:00 Cloud Computing (Room B-305)"
+      ],
+      "Thursday": [
+        "10:00 Information Security (Room B-305)",
+        "14:00 Placement training (Seminar Hall)"
+      ],
+      "Friday": [
+        "09:00 Machine Learning Lab (Lab 4)",
+        "14:00 Major Project (Lab 4)"
+      ]
+    },
+    "upcoming_exams": [
+      {
+        "subject": "Cloud Computing",
+        "date": "2026-10-23",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 3",
+        "seat": "H3-40"
+      },
+      {
+        "subject": "Machine Learning",
+        "date": "2026-10-27",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 3",
+        "seat": "H3-40"
+      },
+      {
+        "subject": "Information Security",
+        "date": "2026-10-31",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 3",
+        "seat": "H3-40"
+      },
+      {
+        "subject": "Operating Systems (backlog paper)",
+        "date": "2026-11-04",
+        "time": "10:00-13:00",
+        "venue": "Exam Hall 7",
+        "seat": "H7-02"
+      }
+    ],
+    "admit_card": {
+      "status": "available",
+      "note": "Download from the examination portal; carry a printed copy and college ID"
+    },
+    "fees": {
+      "status": "paid",
+      "outstanding": "\u20b90",
+      "total_semester_fee": "\u20b942,000",
+      "paid_so_far": "\u20b942,000",
+      "due_date": "2026-10-30",
+      "breakdown": {
+        "tuition": "\u20b934,000",
+        "examination": "\u20b93,500",
+        "library and lab": "\u20b94,500"
+      },
+      "last_payment": "\u20b942,000 paid on 2026-08-06 (receipt FR-87455)",
+      "backlog_exam_fee": "\u20b91,200 for Operating Systems, paid on 2026-10-05"
+    },
+    "registration": {
+      "status": "complete",
+      "note": "No pending registration",
+      "completed_on": "2026-08-19"
+    },
+    "courses": {
+      "Cloud Computing": "Dr. Z. Ansari, 4 credits",
+      "Machine Learning": "Prof. Y. Hussain, 4 credits",
+      "Information Security": "Dr. W. Akhtar, 4 credits",
+      "Major Project": "Mr. X. Dixit, 6 credits"
+    },
+    "assignments": [
+      {
+        "subject": "Machine Learning",
+        "title": "Classifier comparison report",
+        "due": "2026-10-18",
+        "status": "submitted"
+      },
+      {
+        "subject": "Major Project",
+        "title": "Phase-2 progress report",
+        "due": "2026-10-24",
+        "status": "not submitted"
+      }
+    ],
+    "results": {
+      "last_semester_sgpa": "7.4",
+      "cgpa": "7.6",
+      "backlogs": 1,
+      "backlog_subject": "Operating Systems"
+    },
+    "revaluation": {
+      "subject": "Computer Networks (6th semester)",
+      "status": "under review",
+      "applied_on": "2026-10-08",
+      "expected_result": "2026-10-30",
+      "fee_paid": "\u20b9800"
+    },
+    "library": {
+      "books_issued": 1,
+      "next_due_date": "2026-11-02",
+      "fine": "\u20b90"
+    },
+    "placement": {
+      "eligible": true,
+      "criteria_note": "Eligible: attendance above 75% and at most 1 active backlog for most companies",
+      "registered_drives": [
+        "TechNova Solutions (on-campus test 2026-11-12)",
+        "DataBridge Analytics (resume shortlist open)"
+      ],
+      "resume_status": "Uploaded, awaiting training-cell review"
+    },
+    "scholarship": {
+      "status": "not applied",
+      "note": "Not applicable"
+    },
+    "mentor": {
+      "name": "Dr. W. Akhtar",
+      "meeting": "Wednesday 14:00, Room B-305"
     }
   }
 ]

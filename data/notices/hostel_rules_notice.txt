@@ -1,0 +1,15 @@
+DEMO NOTICE: Hostel rules and fees
+
+Hostel fee. The sample hostel fee is Rs 18,000 per semester, including mess charges. A refundable security deposit of Rs 6,000 is paid once at admission.
+
+Timings. Hostel curfew is 22:00 on weekdays and 23:00 on weekends. Late entry needs prior written permission from the warden.
+
+Visitors. Visitors are allowed in the visitor lounge from 16:00 to 18:00 only.
+
+Leave. For a stay outside the hostel overnight, the student must submit the leave form on the portal and inform the warden at least one day earlier.
+
+Room change. Room change requests can be made in the first two weeks of each semester through the warden's office.
+
+Mess. The mess serves breakfast 07:30-09:00, lunch 12:30-14:30 and dinner 19:30-21:30. Mess feedback can be given to the mess committee every Saturday.
+
+Complaints. Maintenance complaints are raised on the hostel desk and resolved within 3 working days. This is sample data for the CampSage prototype.

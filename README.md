@@ -64,7 +64,10 @@ A real deployment would implement these against the college's own login or API (
 |---|---|---|
 | `demo-a` | `camp-a-2026` | B.Tech CSE, 82% attendance, ₹18,500 outstanding, elective registration pending |
 | `demo-b` | `camp-b-2026` | BCA, 91% attendance, fees paid, registration complete |
-| `demo-c` | `camp-c-2026` | B.Tech ECE, 74% attendance, ₹7,200 overdue, registration blocked |
+| `demo-c` | `camp-c-2026` | B.Tech ECE, 74% attendance, ₹7,200 overdue, registration blocked, admit card on hold |
+| `demo-d` | `camp-d-2026` | B.Tech ME, 96% attendance, CGPA 9.0, active merit scholarship |
+| `demo-e` | `camp-e-2026` | MBA, 88% attendance, second fee instalment due, hostel allotted |
+| `demo-f` | `camp-f-2026` | B.Tech CSE, 79% attendance, 1 backlog, revaluation under review, placement drives |
 
 These are fictional credentials for local testing only. They are not real university accounts.
 
@@ -158,6 +161,15 @@ student-specific answers:
 | `Can I complete registration?` | `demo-a`: elective pending; `demo-b`: complete; `demo-c`: blocked until fees are cleared. |
 | `What is the fee payment deadline?` | 30 October 2026, from the sample fee notice. |
 | `When is elective registration open?` | 15–25 October 2026, from the sample registration notice. |
+| `Can I sit the exam with my attendance?` | `demo-c`: below 75%, so needs condonation (₹500 per subject) and the admit card is on hold. |
+| `Where is my DBMS exam and what is my seat?` | `demo-a`: Exam Hall 2, seat H2-47, 22 Oct, 10:00-13:00. |
+| `What is my timetable on Tuesday?` | Each student gets their own rooms and times. |
+| `Am I eligible for the scholarship?` | `demo-b`: yes (CGPA above 8.0); `demo-c`: no (backlog); `demo-d`: already active. |
+| `What are my hostel details?` | `demo-e`: Block C, Room 214, curfew 22:00 on weekdays. |
+| `What is the status of my revaluation?` | `demo-f`: Computer Networks, under review, result expected 30 Oct. |
+| `Which placement drives can I join?` | `demo-f`: TechNova Solutions and DataBridge Analytics. |
+| `Do I have any library fine?` | `demo-c`: ₹60, one overdue book. |
+| `What is the late fee?` | ₹100 per day after the due date, from the fee notice. |
 | `What is the capital of France?` | CampSage politely marks it off-topic. |
 
 All answers are based on the fictional fixtures in `data/`; they are not official university data.

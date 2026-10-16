@@ -1,3 +1,11 @@
 DEMO NOTICE: Attendance and course material
 
-The sample academic notice says attendance below the required threshold may affect examination eligibility. Course material is shared by the relevant department through the college learning portal. This is sample data for the CampSage prototype.
+Minimum attendance. Students must have at least 75% attendance overall and in each subject to be eligible to sit the end-semester examination. Attendance is counted separately for theory classes and for lab sessions.
+
+Low attendance. Students between 65% and 75% in a subject may apply for attendance condonation through their department office with a valid reason such as a medical certificate. A condonation fee of Rs 500 per subject applies. Students below 65% are not eligible for condonation and will be detained in that subject. Admit cards are held until the condonation decision is announced.
+
+Attendance updates. Attendance is updated on the student portal every Friday. Students who find an error should contact their class coordinator within 7 days with the date and subject.
+
+Course material. Lecture notes, assignments and previous question papers are shared by the relevant department through the college learning portal. Assignments must be submitted on the portal by the due date; late submissions lose 10% of the marks per day.
+
+This is sample data for the CampSage prototype.

@@ -1,0 +1,11 @@
+DEMO NOTICE: Placement and training
+
+Eligibility. Final-year students with at least 75% attendance and at most one active backlog can register for campus drives. Students must upload a resume to the training cell portal and get it reviewed before applying.
+
+Upcoming drives. TechNova Solutions holds its on-campus online test on 12 November 2026; the roles are Software Engineer and Support Engineer. DataBridge Analytics resume shortlisting is open until 5 November 2026 for the Data Analyst role.
+
+Training. Placement training sessions are held every Thursday at 14:00 in the Seminar Hall, covering aptitude, coding practice and mock interviews.
+
+Internships. Pre-final year students can apply for the summer internship programme; applications open on 1 December 2026.
+
+Dress code. Formal dress is required for all drives and interviews. Late arrival can lead to disqualification. This is sample data for the CampSage prototype.

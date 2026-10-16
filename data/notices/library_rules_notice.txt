@@ -1,0 +1,13 @@
+DEMO NOTICE: Library rules
+
+Issue limit. Undergraduate students can issue up to 4 books for 14 days. Postgraduate students can issue up to 5 books for 21 days. Each book can be renewed once online if no one else has reserved it.
+
+Fine. The late fine is Rs 5 per day per book. A student with an overdue book cannot issue new books.
+
+Lost books. A lost or damaged book must be replaced or the student pays its current price plus a Rs 200 processing fee.
+
+Timings. The library is open from 08:30 to 20:00 on working days and 10:00 to 16:00 on Saturdays. During exams it stays open until 22:00.
+
+Digital library. Journals, e-books and previous question papers are available on the learning portal with the college login.
+
+No-dues. A library no-dues certificate is required before the final semester results and degree certificate. This is sample data for the CampSage prototype.

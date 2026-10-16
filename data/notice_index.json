@@ -4,7 +4,23 @@
     "source": "attendance_and_course_material.txt",
     "page": null,
     "title": "attendance and course material",
-    "text": "DEMO NOTICE: Attendance and course material The sample academic notice says attendance below the required threshold may affect examination eligibility. Course material is shared by the relevant department through the college learning portal. This is sample data for the CampSage prototype.",
+    "text": "DEMO NOTICE: Attendance and course material Minimum attendance. Students must have at least 75% attendance overall and in each subject to be eligible to sit the end-semester examination. Attendance is counted separately for theory classes and for lab sessions. Low attendance. Students between 65% and 75% in a subject may apply for attendance condonation through their department office with a valid reason such as a medical certificate. A condonation fee of Rs 500 per subject applies. Students below 65% are not eligible for condonation and will be detained in that subject. Admit cards are held until the condonation decision is announced. Attendance updates. Attendance is updated on the student portal every Friday. Students who find an error should contact their class coordinator within 7 days with the date and subject. Course material. Lecture notes, assignments and previous question papers are shared by the relevant department through the college learning portal. Assignments must be submitted on the portal by the due date; late submissions lose 10% of the marks per day. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "certificates_and_id_card_notice.txt-c0",
+    "source": "certificates_and_id_card_notice.txt",
+    "page": null,
+    "title": "certificates and id card notice",
+    "text": "DEMO NOTICE: Certificates, ID card and no-dues Bonafide and other certificates. A bonafide certificate, character certificate or fee certificate can be requested on the student portal. The fee is Rs 100 per certificate and it is ready in 3 working days. Urgent same-day service costs Rs 300. Mark sheets and transcripts. Duplicate mark sheets cost Rs 500 each; official transcripts cost Rs 1,000 and take 7 working days. ID card. A lost college ID card can be replaced for Rs 200 after submitting an application with a copy of the FIR or a written declaration. ID cards are required for entering the campus and for every exam. No-dues certificate. Final-year students need no-dues clearance from the accounts office, library and hostel before the degree certificate. Clearance is issued only after all fees, fines and dues are cleared. Name or date of birth correction. A correction request needs a copy of the school certificate and takes 15 working days. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "exam_rules_and_admit_card.txt-c0",
+    "source": "exam_rules_and_admit_card.txt",
+    "page": null,
+    "title": "exam rules and admit card",
+    "text": "DEMO NOTICE: Exam rules and admit card Admit card. Admit cards are available on the examination portal from 7 days before the first paper. Students must carry a printed admit card and the college ID card to every paper. Students without an admit card are not allowed into the hall. Admit card on hold. An admit card is held if the student has overdue fees, attendance below 75% without an approved condonation, or pending documents. The student must clear the issue at the examination cell, Block A, room 12. Reporting time. Students must reach the exam hall 30 minutes before the start of the paper. Entry is closed 30 minutes after the paper starts. Allowed items. Pen, pencil, transparent geometry box and a basic non-programmable calculator where the question paper permits. Mobile phones, smart watches and notes are not allowed and their use is treated as unfair means. Seating. The seat number appears on the admit card and the seating plan is displayed outside each hall. Results. Results are declared within 30 days of the last paper on the examination portal. This is sample data for the CampSage prototype.",
     "kind": "notice"
   },
   {
@@ -12,7 +28,7 @@
     "source": "examination_datesheet.txt",
     "page": null,
     "title": "examination datesheet",
-    "text": "DEMO NOTICE: Examination datesheet The sample datesheet lists DBMS on 22 October 2026, Web Technology on 24 October 2026, and Embedded Systems on 28 October 2026. Students should check the official notice board for later corrections. This is sample data for the CampSage prototype.",
+    "text": "DEMO NOTICE: Examination datesheet The sample end-semester datesheet for October-November 2026 is below. All papers run from 10:00 to 13:00 unless stated otherwise. B.Tech Computer Science, 5th semester: DBMS on 22 October 2026, Data Mining on 26 October 2026, Computer Networks on 29 October 2026. B.Tech Computer Science, 7th semester: Cloud Computing on 23 October 2026, Machine Learning on 27 October 2026, Information Security on 31 October 2026. B.Tech Electronics and Communication, 7th semester: Embedded Systems on 28 October 2026, VLSI Design on 31 October 2026, Wireless Communication on 3 November 2026. B.Tech Mechanical Engineering, 3rd semester: Thermodynamics on 23 October 2026, Fluid Mechanics on 27 October 2026, Strength of Materials on 30 October 2026. BCA, 3rd semester: Web Technology on 24 October 2026, Python Programming on 27 October 2026, Data Structures on 30 October 2026. MBA, 1st semester: Marketing Management on 26 October 2026, Financial Accounting on 28 October 2026, Organisational Behaviour on 2 November 2026. Backlog papers: Operating Systems on 4 November 2026 and Digital Signal Processing on 5 November 2026. Practical and lab examinations start on 9 November 2026 and the schedule is announced by each department. Students should check the official notice board for later corrections. This is sample data for the CampSage prototype.",
     "kind": "notice"
   },
   {
@@ -20,7 +36,47 @@
     "source": "fee_payment_notice.txt",
     "page": null,
     "title": "fee payment notice",
-    "text": "DEMO NOTICE: Fee payment deadline The sample fee notice says students must clear the semester fee by 30 October 2026. Students with an outstanding balance should use the student fee portal and keep the receipt. This is sample data for the CampSage prototype.",
+    "text": "DEMO NOTICE: Fee payment deadline Deadline. The sample fee notice says students must clear the semester fee by 30 October 2026. Students whose fee is overdue from an earlier instalment must clear it immediately. Late fee. A late fee of Rs 100 per day is charged after the due date. Students with unpaid fees cannot complete registration, and their admit card may be held. How to pay. Use the student fee portal by UPI, net banking or card. Cash payments are accepted at the accounts office, Block A, from 10:00 to 15:00 on working days. Keep the receipt; the receipt number is needed for any query. Instalments. Postgraduate and professional programmes (such as MBA) may pay in two equal instalments. Undergraduate students may request a one-time instalment plan by applying to the accounts office before the due date. Refunds. Payments made twice by mistake are refunded to the original account in 10 to 15 working days after a written request with both receipts. Fee help. Write to the accounts office with the student ID and receipt number. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "helpdesk_and_grievance_notice.txt-c0",
+    "source": "helpdesk_and_grievance_notice.txt",
+    "page": null,
+    "title": "helpdesk and grievance notice",
+    "text": "DEMO NOTICE: Helpdesk and grievance redressal Student helpdesk. The student helpdesk is in Block A, ground floor, open from 10:00 to 16:00 on working days. It handles fee, registration, certificate, ID card and portal login queries. Examination cell. Admit card, revaluation and result queries go to the examination cell, Block A, room 12. Grievance. Students can submit grievances about classes, faculty, hostel or facilities on the grievance form on the portal. A reply is given within 7 working days. Complaints can be made anonymously. Anti-ragging and safety. The anti-ragging helpline is available 24 hours. Incidents are handled by the anti-ragging committee with strict confidentiality. Counselling. Free confidential counselling is available at the student wellness centre on Monday, Wednesday and Friday from 11:00 to 15:00. Portal login. If the portal password does not work, use the reset option or visit the helpdesk with the college ID card. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "holiday_and_academic_calendar.txt-c0",
+    "source": "holiday_and_academic_calendar.txt",
+    "page": null,
+    "title": "holiday and academic calendar",
+    "text": "DEMO NOTICE: Holiday and academic calendar Holidays. The college is closed on 20 October 2026 for Dussehra, 8 November 2026 for Diwali, and 15 November 2026 for Govardhan Puja. Classes resume the next working day. Examination papers are not scheduled on holidays. Important dates. Elective registration 15-25 October 2026. Fee payment deadline 30 October 2026. End-semester examinations 22 October to 5 November 2026. Practical examinations begin 9 November 2026. Scholarship applications close 10 November 2026. Orientation programme 2 November 2026. Winter break. The winter vacation is from 25 December 2026 to 3 January 2027. The next semester begins on 11 January 2027. Working hours. Academic classes run from 09:00 to 16:00 from Monday to Friday. The administrative offices are open from 10:00 to 16:00. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "hostel_rules_notice.txt-c0",
+    "source": "hostel_rules_notice.txt",
+    "page": null,
+    "title": "hostel rules notice",
+    "text": "DEMO NOTICE: Hostel rules and fees Hostel fee. The sample hostel fee is Rs 18,000 per semester, including mess charges. A refundable security deposit of Rs 6,000 is paid once at admission. Timings. Hostel curfew is 22:00 on weekdays and 23:00 on weekends. Late entry needs prior written permission from the warden. Visitors. Visitors are allowed in the visitor lounge from 16:00 to 18:00 only. Leave. For a stay outside the hostel overnight, the student must submit the leave form on the portal and inform the warden at least one day earlier. Room change. Room change requests can be made in the first two weeks of each semester through the warden's office. Mess. The mess serves breakfast 07:30-09:00, lunch 12:30-14:30 and dinner 19:30-21:30. Mess feedback can be given to the mess committee every Saturday. Complaints. Maintenance complaints are raised on the hostel desk and resolved within 3 working days. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "library_rules_notice.txt-c0",
+    "source": "library_rules_notice.txt",
+    "page": null,
+    "title": "library rules notice",
+    "text": "DEMO NOTICE: Library rules Issue limit. Undergraduate students can issue up to 4 books for 14 days. Postgraduate students can issue up to 5 books for 21 days. Each book can be renewed once online if no one else has reserved it. Fine. The late fine is Rs 5 per day per book. A student with an overdue book cannot issue new books. Lost books. A lost or damaged book must be replaced or the student pays its current price plus a Rs 200 processing fee. Timings. The library is open from 08:30 to 20:00 on working days and 10:00 to 16:00 on Saturdays. During exams it stays open until 22:00. Digital library. Journals, e-books and previous question papers are available on the learning portal with the college login. No-dues. A library no-dues certificate is required before the final semester results and degree certificate. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "placement_and_training_notice.txt-c0",
+    "source": "placement_and_training_notice.txt",
+    "page": null,
+    "title": "placement and training notice",
+    "text": "DEMO NOTICE: Placement and training Eligibility. Final-year students with at least 75% attendance and at most one active backlog can register for campus drives. Students must upload a resume to the training cell portal and get it reviewed before applying. Upcoming drives. TechNova Solutions holds its on-campus online test on 12 November 2026; the roles are Software Engineer and Support Engineer. DataBridge Analytics resume shortlisting is open until 5 November 2026 for the Data Analyst role. Training. Placement training sessions are held every Thursday at 14:00 in the Seminar Hall, covering aptitude, coding practice and mock interviews. Internships. Pre-final year students can apply for the summer internship programme; applications open on 1 December 2026. Dress code. Formal dress is required for all drives and interviews. Late arrival can lead to disqualification. This is sample data for the CampSage prototype.",
     "kind": "notice"
   },
   {
@@ -28,7 +84,23 @@
     "source": "registration_and_programmes_notice.txt",
     "page": null,
     "title": "registration and programmes notice",
-    "text": "DEMO NOTICE: Registration and college programmes The sample registration notice says elective registration is open from 15 October through 25 October 2026. Students with unpaid fees may be blocked from completing registration. The college programme orientation is listed for 2 November 2026. This is sample data for the CampSage prototype.",
+    "text": "DEMO NOTICE: Registration and college programmes Elective and project registration. The sample registration notice says elective registration is open from 15 October through 25 October 2026. Students with unpaid fees may be blocked from completing registration. Register on the student portal and confirm with the department coordinator. 5th semester B.Tech Computer Science electives: Cloud Computing, Information Retrieval, Mobile App Development. Seats are allotted on a first-come basis, so register early. 7th semester project registration: students must register their project title and guide on the portal and upload the synopsis. Students with an overdue fee cannot register until it is cleared. Orientation. The college programme orientation is listed for 2 November 2026 at the main auditorium at 10:00. Workshops and programmes. A Python and AI workshop runs on 14 and 15 November 2026 and a Resume and Interview skills programme on 18 November 2026. Registration for both is free on the student portal. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "revaluation_and_backlog_notice.txt-c0",
+    "source": "revaluation_and_backlog_notice.txt",
+    "page": null,
+    "title": "revaluation and backlog notice",
+    "text": "DEMO NOTICE: Revaluation and backlog examination Revaluation. Students may apply for revaluation within 10 days of the result declaration on the examination portal. The fee is Rs 800 per subject. The revaluation result is declared in about 3 weeks, and the better of the two marks is kept. Photocopy of answer sheet. Students may request a photocopy of an answer sheet before applying for revaluation. The fee is Rs 400 per subject. Backlog papers. A student who failed a subject may appear in the backlog examination. The backlog exam fee is Rs 1,200 per paper and must be paid before the form deadline of 5 October 2026. Backlog papers: Operating Systems on 4 November 2026 and Digital Signal Processing on 5 November 2026. Backlogs and placement. Most companies allow at most one active backlog. Students are advised to clear backlogs in the next attempt. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "scholarship_notice.txt-c0",
+    "source": "scholarship_notice.txt",
+    "page": null,
+    "title": "scholarship notice",
+    "text": "DEMO NOTICE: Scholarship applications Merit scholarship. Students with a CGPA of 8.0 or above in the previous academic year and no active backlog can apply for the merit scholarship. A CGPA of 9.0 or above receives a 50% tuition waiver. Renewal needs a CGPA of at least 8.5 and 85% attendance. Need-based scholarship. Students whose family annual income is below Rs 4,00,000 can apply with an income certificate. The scholarship covers up to 30% of the tuition fee. Deadline. Applications close on 10 November 2026 on the student portal. Upload the mark sheet, income certificate where needed, and a bank passbook copy. Results. The scholarship list is published on 25 November 2026 and the waiver is adjusted in the next fee instalment. Students with an active backlog or with attendance below 75% are not eligible for the merit scholarship. This is sample data for the CampSage prototype.",
     "kind": "notice"
   }
 ]

@@ -1,0 +1,13 @@
+DEMO NOTICE: Helpdesk and grievance redressal
+
+Student helpdesk. The student helpdesk is in Block A, ground floor, open from 10:00 to 16:00 on working days. It handles fee, registration, certificate, ID card and portal login queries.
+
+Examination cell. Admit card, revaluation and result queries go to the examination cell, Block A, room 12.
+
+Grievance. Students can submit grievances about classes, faculty, hostel or facilities on the grievance form on the portal. A reply is given within 7 working days. Complaints can be made anonymously.
+
+Anti-ragging and safety. The anti-ragging helpline is available 24 hours. Incidents are handled by the anti-ragging committee with strict confidentiality.
+
+Counselling. Free confidential counselling is available at the student wellness centre on Monday, Wednesday and Friday from 11:00 to 15:00.
+
+Portal login. If the portal password does not work, use the reset option or visit the helpdesk with the college ID card. This is sample data for the CampSage prototype.

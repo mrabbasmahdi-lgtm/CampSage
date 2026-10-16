@@ -5,12 +5,24 @@ connected to Integral University's real systems.
 
 ## Files
 
-- `demo_students.json` — three student records with different academic, attendance, fee, exam,
-  timetable, and registration states.
-- `notices/attendance_and_course_material.txt` — attendance eligibility and course-material notice.
-- `notices/examination_datesheet.txt` — DBMS, Web Technology, and Embedded Systems dates.
-- `notices/fee_payment_notice.txt` — sample semester-fee deadline and payment guidance.
-- `notices/registration_and_programmes_notice.txt` — elective-registration window and orientation date.
+- `demo_students.json` — six student records across five programmes. Each record has attendance
+  per subject, a weekly timetable, exams (date, time, venue, seat), admit-card status, fee
+  breakdown and due dates, registration, courses and faculty, assignments, results and backlogs,
+  library, scholarship and mentor. Some records also have hostel, placement, revaluation and
+  attendance-condonation details.
+- `notices/` — 13 sample public notices:
+  - `attendance_and_course_material.txt` — 75% rule, condonation, course material
+  - `examination_datesheet.txt` — datesheets for all demo programmes
+  - `exam_rules_and_admit_card.txt` — admit card, reporting time, allowed items
+  - `revaluation_and_backlog_notice.txt` — revaluation and backlog exam fees and dates
+  - `fee_payment_notice.txt` — deadline, late fee, instalments, how to pay
+  - `registration_and_programmes_notice.txt` — elective/project registration, orientation, workshops
+  - `scholarship_notice.txt` — merit and need-based scholarships
+  - `hostel_rules_notice.txt`, `library_rules_notice.txt`
+  - `placement_and_training_notice.txt`
+  - `holiday_and_academic_calendar.txt`
+  - `certificates_and_id_card_notice.txt`
+  - `helpdesk_and_grievance_notice.txt`
 - `notice_index.json` — generated lexical index of the notice files. Rebuild it with:
 
   ```bash
@@ -22,11 +34,14 @@ ignored by Git; it must not be committed.
 
 ## Demo credentials
 
-| Student ID | Password | Main state |
-|---|---|---|
-| `demo-a` | `camp-a-2026` | 82% overall attendance, ₹18,500 outstanding, elective registration pending |
-| `demo-b` | `camp-b-2026` | 91% overall attendance, fees paid, registration complete |
-| `demo-c` | `camp-c-2026` | 74% overall attendance, ₹7,200 overdue, registration blocked |
+| Student ID | Password | Programme | Main state |
+|---|---|---|---|
+| `demo-a` | `camp-a-2026` | B.Tech CSE, 5th sem | 82% attendance, ₹18,500 due, elective registration pending, assignment not submitted |
+| `demo-b` | `camp-b-2026` | BCA, 3rd sem | 91% attendance, fees paid, registration complete, eligible for merit scholarship |
+| `demo-c` | `camp-c-2026` | B.Tech ECE, 7th sem | 74% attendance, ₹7,200 overdue, registration blocked, admit card on hold, 1 backlog, overdue library book |
+| `demo-d` | `camp-d-2026` | B.Tech ME, 3rd sem | 96% attendance, CGPA 9.0, active merit scholarship (50% tuition waiver) |
+| `demo-e` | `camp-e-2026` | MBA, 1st sem | 88% attendance, second fee instalment of ₹37,500 due, hostel allotted |
+| `demo-f` | `camp-f-2026` | B.Tech CSE, 7th sem | 79% attendance, 1 backlog (Operating Systems), revaluation under review, placement drives registered |
 
 Use the questions in the root `README.md` to exercise both public notices and student-specific
 records.

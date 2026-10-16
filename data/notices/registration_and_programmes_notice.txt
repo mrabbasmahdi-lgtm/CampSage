@@ -1,3 +1,13 @@
 DEMO NOTICE: Registration and college programmes
 
-The sample registration notice says elective registration is open from 15 October through 25 October 2026. Students with unpaid fees may be blocked from completing registration. The college programme orientation is listed for 2 November 2026. This is sample data for the CampSage prototype.
+Elective and project registration. The sample registration notice says elective registration is open from 15 October through 25 October 2026. Students with unpaid fees may be blocked from completing registration. Register on the student portal and confirm with the department coordinator.
+
+5th semester B.Tech Computer Science electives: Cloud Computing, Information Retrieval, Mobile App Development. Seats are allotted on a first-come basis, so register early.
+
+7th semester project registration: students must register their project title and guide on the portal and upload the synopsis. Students with an overdue fee cannot register until it is cleared.
+
+Orientation. The college programme orientation is listed for 2 November 2026 at the main auditorium at 10:00.
+
+Workshops and programmes. A Python and AI workshop runs on 14 and 15 November 2026 and a Resume and Interview skills programme on 18 November 2026. Registration for both is free on the student portal.
+
+This is sample data for the CampSage prototype.

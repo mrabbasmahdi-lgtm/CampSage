@@ -1,0 +1,13 @@
+DEMO NOTICE: Exam rules and admit card
+
+Admit card. Admit cards are available on the examination portal from 7 days before the first paper. Students must carry a printed admit card and the college ID card to every paper. Students without an admit card are not allowed into the hall.
+
+Admit card on hold. An admit card is held if the student has overdue fees, attendance below 75% without an approved condonation, or pending documents. The student must clear the issue at the examination cell, Block A, room 12.
+
+Reporting time. Students must reach the exam hall 30 minutes before the start of the paper. Entry is closed 30 minutes after the paper starts.
+
+Allowed items. Pen, pencil, transparent geometry box and a basic non-programmable calculator where the question paper permits. Mobile phones, smart watches and notes are not allowed and their use is treated as unfair means.
+
+Seating. The seat number appears on the admit card and the seating plan is displayed outside each hall.
+
+Results. Results are declared within 30 days of the last paper on the examination portal. This is sample data for the CampSage prototype.

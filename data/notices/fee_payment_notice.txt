@@ -1,3 +1,13 @@
 DEMO NOTICE: Fee payment deadline
 
-The sample fee notice says students must clear the semester fee by 30 October 2026. Students with an outstanding balance should use the student fee portal and keep the receipt. This is sample data for the CampSage prototype.
+Deadline. The sample fee notice says students must clear the semester fee by 30 October 2026. Students whose fee is overdue from an earlier instalment must clear it immediately.
+
+Late fee. A late fee of Rs 100 per day is charged after the due date. Students with unpaid fees cannot complete registration, and their admit card may be held.
+
+How to pay. Use the student fee portal by UPI, net banking or card. Cash payments are accepted at the accounts office, Block A, from 10:00 to 15:00 on working days. Keep the receipt; the receipt number is needed for any query.
+
+Instalments. Postgraduate and professional programmes (such as MBA) may pay in two equal instalments. Undergraduate students may request a one-time instalment plan by applying to the accounts office before the due date.
+
+Refunds. Payments made twice by mistake are refunded to the original account in 10 to 15 working days after a written request with both receipts.
+
+Fee help. Write to the accounts office with the student ID and receipt number. This is sample data for the CampSage prototype.

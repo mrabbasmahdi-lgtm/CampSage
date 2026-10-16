@@ -1,3 +1,13 @@
 DEMO NOTICE: Examination datesheet
 
-The sample datesheet lists DBMS on 22 October 2026, Web Technology on 24 October 2026, and Embedded Systems on 28 October 2026. Students should check the official notice board for later corrections. This is sample data for the CampSage prototype.
+The sample end-semester datesheet for October-November 2026 is below. All papers run from 10:00 to 13:00 unless stated otherwise.
+
+B.Tech Computer Science, 5th semester: DBMS on 22 October 2026, Data Mining on 26 October 2026, Computer Networks on 29 October 2026.
+B.Tech Computer Science, 7th semester: Cloud Computing on 23 October 2026, Machine Learning on 27 October 2026, Information Security on 31 October 2026.
+B.Tech Electronics and Communication, 7th semester: Embedded Systems on 28 October 2026, VLSI Design on 31 October 2026, Wireless Communication on 3 November 2026.
+B.Tech Mechanical Engineering, 3rd semester: Thermodynamics on 23 October 2026, Fluid Mechanics on 27 October 2026, Strength of Materials on 30 October 2026.
+BCA, 3rd semester: Web Technology on 24 October 2026, Python Programming on 27 October 2026, Data Structures on 30 October 2026.
+MBA, 1st semester: Marketing Management on 26 October 2026, Financial Accounting on 28 October 2026, Organisational Behaviour on 2 November 2026.
+Backlog papers: Operating Systems on 4 November 2026 and Digital Signal Processing on 5 November 2026.
+
+Practical and lab examinations start on 9 November 2026 and the schedule is announced by each department. Students should check the official notice board for later corrections. This is sample data for the CampSage prototype.

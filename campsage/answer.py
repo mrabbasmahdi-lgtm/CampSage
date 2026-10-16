@@ -30,6 +30,12 @@ TOPIC_WORDS = {
     "attendance", "timetable", "timetables", "class", "classes", "college",
     "programme", "program", "notice", "notices", "semester", "subject",
     "subjects", "certificate", "certificates",
+    "hostel", "mess", "library", "book", "books", "scholarship", "scholarships",
+    "placement", "placements", "internship", "internships", "backlog", "backlogs",
+    "revaluation", "result", "results", "cgpa", "sgpa", "admit", "assignment",
+    "assignments", "holiday", "holidays", "mentor", "faculty", "teacher", "lab",
+    "schedule", "seat", "venue", "id", "fine", "condonation", "orientation",
+    "workshop", "helpdesk", "grievance", "campus", "university", "credits",
 }
 _WORD_RE = re.compile(r"[a-z]+(?:['-][a-z]+)?")
 _SOURCE_RE = re.compile(r"\[([^\]\n]+)\]")

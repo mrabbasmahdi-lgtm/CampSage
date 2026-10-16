@@ -1,0 +1,11 @@
+DEMO NOTICE: Scholarship applications
+
+Merit scholarship. Students with a CGPA of 8.0 or above in the previous academic year and no active backlog can apply for the merit scholarship. A CGPA of 9.0 or above receives a 50% tuition waiver. Renewal needs a CGPA of at least 8.5 and 85% attendance.
+
+Need-based scholarship. Students whose family annual income is below Rs 4,00,000 can apply with an income certificate. The scholarship covers up to 30% of the tuition fee.
+
+Deadline. Applications close on 10 November 2026 on the student portal. Upload the mark sheet, income certificate where needed, and a bank passbook copy.
+
+Results. The scholarship list is published on 25 November 2026 and the waiver is adjusted in the next fee instalment.
+
+Students with an active backlog or with attendance below 75% are not eligible for the merit scholarship. This is sample data for the CampSage prototype.
