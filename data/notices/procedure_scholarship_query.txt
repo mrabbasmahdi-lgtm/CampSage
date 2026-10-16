@@ -1,0 +1,3 @@
+DEMO NOTICE: Procedure for a scholarship query
+
+This is sample data for the CampSage prototype. For questions about a scholarship, such as a missing amount, a rejected form or a pending verification, go to the scholarship cell, Block-D, 1st floor, room D-204. Meet Mrs. Neelam Chauhan, Scholarship Coordinator (demo contact). Carry your ID card, the scholarship application number, your fee receipt, your income certificate and a bank passbook photocopy. If the form was rejected, bring the rejection message. Write a short application with your name, class, scholarship name and the problem. Ask for the status in writing. Verification usually takes 5 to 7 working days. Office hours are 10:00 to 16:00, Monday to Friday. The real scholarship portal may take longer to update.
