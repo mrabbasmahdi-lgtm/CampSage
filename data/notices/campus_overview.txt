@@ -1,0 +1,3 @@
+DEMO NOTICE: Campus overview and block names
+
+This is sample data for the CampSage prototype. The block names and contents below are fictional. Block-A: main gate side, transport office, seminar hall and library. Block-B: Computer Science and Engineering (CSE) department, computer labs and lecture halls. Block-C: Electronics and Communication (ECE) department, Computer Applications (BCA) department and the embedded systems lab. Block-D: admission office, accounts office and fee counter on the ground floor, scholarship cell on the 1st floor. Block-E: examination office on the 1st floor. The hostel, canteen and medical room are behind Block-E. Offices are open 10:00 to 16:00, Monday to Saturday.

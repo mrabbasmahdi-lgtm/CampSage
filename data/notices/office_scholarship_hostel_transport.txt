@@ -1,0 +1,3 @@
+DEMO NOTICE: Scholarship cell, hostel office and transport office
+
+This is sample data with fictional names for the CampSage prototype. The scholarship cell is in Block-D, 1st floor, room D-204. Mrs. Neelam Chauhan is the Scholarship Coordinator, ext. 471 (demo). The hostel office is at the hostel, room H-01. Mr. Arif Mirza is the hostel warden, ext. 481 (demo). The transport office is in Block-A, ground floor, room A-012. Mr. Dinesh Yadav is the transport in-charge, ext. 491 (demo). All three are open 10:00 to 16:00, Monday to Saturday.

@@ -1,0 +1,3 @@
+DEMO NOTICE: Admission office
+
+This is sample data with fictional names for the CampSage prototype. The admission office is in Block-D, ground floor, room D-101, next to the accounts office. Mr. Harish Pandey is the Admission Officer, ext. 441 (demo). The admission office handles bonafide certificates, duplicate ID cards, corrections to name or personal details, and admission documents. Office hours are 10:00 to 16:00, Monday to Saturday, closed on Sundays and public holidays. Students should carry their ID card for every request.
