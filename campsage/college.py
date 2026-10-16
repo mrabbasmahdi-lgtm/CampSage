@@ -30,6 +30,7 @@ class DemoCollegeProvider:
     def get_profile(self, student_id: str) -> dict:
         row = self.students[student_id]
         return {
+            "name": row.get("name", ""),
             "semester": row["semester"],
             "class": row["class"],
             "branch": row["branch"],
@@ -52,6 +53,7 @@ def make_demo_students(path: Path) -> None:
     rows = [
         {
             "student_id": "demo-a",
+            "name": "Aarav Sharma",
             "password_hash": hash_password("camp-a-2026"),
             "semester": "B.Tech 5th semester",
             "class": "CSE-A",
@@ -64,6 +66,7 @@ def make_demo_students(path: Path) -> None:
         },
         {
             "student_id": "demo-b",
+            "name": "Zoya Khan",
             "password_hash": hash_password("camp-b-2026"),
             "semester": "BCA 3rd semester",
             "class": "BCA-B",
@@ -76,6 +79,7 @@ def make_demo_students(path: Path) -> None:
         },
         {
             "student_id": "demo-c",
+            "name": "Rohan Verma",
             "password_hash": hash_password("camp-c-2026"),
             "semester": "B.Tech 7th semester",
             "class": "ECE-A",

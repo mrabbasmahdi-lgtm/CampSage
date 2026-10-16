@@ -1,6 +1,7 @@
 [
   {
     "student_id": "demo-a",
+    "name": "Aarav Sharma",
     "password_hash": "scrypt$UDgKaHfYDg2dxk5bZmbQFg==$V8rtq51-_E1RZQneN1VlQpCbr4KNvhmci_qmKuICp3Y=",
     "semester": "B.Tech 5th semester",
     "class": "CSE-A",
@@ -32,6 +33,7 @@
   },
   {
     "student_id": "demo-b",
+    "name": "Zoya Khan",
     "password_hash": "scrypt$cIBoVcGnVQ19FOh5OtjoAw==$zUAFLzw_P0Nk6QoETsHb5WOxoexDIamtu7kfUW76dKw=",
     "semester": "BCA 3rd semester",
     "class": "BCA-B",
@@ -63,6 +65,7 @@
   },
   {
     "student_id": "demo-c",
+    "name": "Rohan Verma",
     "password_hash": "scrypt$-MicLHUWdbe8WcrSXYW6Ig==$t8g8OXG1plSu6oj8BhPVWzQ1dK_gucevtMT6ST853sg=",
     "semester": "B.Tech 7th semester",
     "class": "ECE-A",

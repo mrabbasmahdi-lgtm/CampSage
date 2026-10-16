@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import secrets
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
@@ -14,6 +14,16 @@ class Session:
     api_key: str | None
     created_at: float
     last_seen: float
+    # Short server-side memory of this conversation, used for follow-up questions.
+    history: list = field(default_factory=list)
+    # Consecutive turns that were not about college; reset by any campus answer.
+    drift: int = 0
+
+    def remember(self, question: str, answer: str, status: str, keep: int = 12) -> None:
+        self.history.append({"role": "student", "text": question[:600]})
+        self.history.append({"role": "campsage", "text": answer[:600]})
+        del self.history[:-keep]
+        self.drift = self.drift + 1 if status in {"general", "offtopic"} else 0
 
 
 class SessionStore:
@@ -45,4 +55,5 @@ class SessionStore:
         if session_id and session_id in self._sessions:
             session = self._sessions.pop(session_id)
             session.api_key = None
+            session.history.clear()
             session.encryption_key = b""
