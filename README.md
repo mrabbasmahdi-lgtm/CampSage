@@ -161,6 +161,12 @@ student-specific answers:
 | `Can I complete registration?` | `demo-a`: elective pending; `demo-b`: complete; `demo-c`: blocked until fees are cleared. |
 | `What is the fee payment deadline?` | 30 October 2026, from the sample fee notice. |
 | `When is elective registration open?` | 15–25 October 2026, from the sample registration notice. |
+| `I failed a subject. How do I appear in the backlog exam?` | Step-by-step form, fee (₹1,200), office (Block-E, room E-114) and deadlines. `demo-c`: form not filled, late form until 20 Oct with ₹500 extra. |
+| `My result shows absent but I gave the exam. What do I do?` | `demo-a`: Software Testing shows AB; apply at the examination office with admit card; revaluation will not fix it. |
+| `My room change request got no reply.` | `demo-e`: request HR-2026-0412, 15 days old; go to hostel office room H-01 with the request number. |
+| `My bus pass expired.` | `demo-d`: renew at transport office, Block-A, room A-012. |
+| `Which office do I go to for a bonafide certificate?` | Admission office, Block-D, room D-101 (from the quick guide). |
+| `What is the order for getting no-dues?` | Library, hostel, accounts, department, then admission office. |
 | `Can I sit the exam with my attendance?` | `demo-c`: below 75%, so needs condonation (₹500 per subject) and the admit card is on hold. |
 | `Where is my DBMS exam and what is my seat?` | `demo-a`: Exam Hall 2, seat H2-47, 22 Oct, 10:00-13:00. |
 | `What is my timetable on Tuesday?` | Each student gets their own rooms and times. |

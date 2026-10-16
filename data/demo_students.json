@@ -125,6 +125,17 @@
     "mentor": {
       "name": "Dr. A. Khan",
       "meeting": "Thursday 14:00, Room B-110"
+    },
+    "result_issue": {
+      "subject": "Software Testing (4th semester)",
+      "problem": "Result shows AB (absent) although the student appeared in the exam on 2026-05-14",
+      "status": "not yet reported to the examination office",
+      "note": "Report within 30 days of the result; revaluation does not fix an absent entry"
+    },
+    "attendance_correction": {
+      "subject": "Computer Networks",
+      "problem": "Absent on 2026-10-06 although the student attended; reported to the teacher on 2026-10-09",
+      "status": "teacher agreed, waiting for the attendance coordinator to update the portal"
     }
   },
   {
@@ -376,6 +387,13 @@
     "attendance_condonation": {
       "status": "not applied",
       "note": "Subjects between 65% and 75% can apply with a medical or valid reason and a fee of \u20b9500 per subject"
+    },
+    "backlog_exam": {
+      "subject": "Digital Signal Processing",
+      "exam_date": "2026-11-05",
+      "form_status": "not filled",
+      "fee": "\u20b91,200 not paid",
+      "note": "The 2026-10-05 deadline has passed; a late form is accepted until 2026-10-20 with an extra late fee of \u20b9500. The overdue regular fee must be cleared first"
     }
   },
   {
@@ -501,6 +519,11 @@
     "mentor": {
       "name": "Prof. G. Yadav",
       "meeting": "Monday 15:00, Room E-210"
+    },
+    "transport": {
+      "route": "Route 4 (Aminabad to main gate, Block-A)",
+      "bus_pass_status": "expired on 2026-10-10",
+      "note": "Renew at the transport office with the ID card and old pass"
     }
   },
   {
@@ -630,7 +653,16 @@
     "mentor": {
       "name": "Dr. J. Fatima",
       "meeting": "Tuesday 15:00, Room M-02"
-    }
+    },
+    "pending_requests": [
+      {
+        "type": "hostel room change",
+        "submitted_on": "2026-10-01",
+        "status": "no reply for 15 days",
+        "request_number": "HR-2026-0412",
+        "office": "Hostel office, room H-01"
+      }
+    ]
   },
   {
     "student_id": "demo-f",
@@ -776,6 +808,12 @@
     "mentor": {
       "name": "Dr. W. Akhtar",
       "meeting": "Wednesday 14:00, Room B-305"
+    },
+    "backlog_exam": {
+      "subject": "Operating Systems",
+      "exam_date": "2026-11-04",
+      "form_status": "filled and \u20b91,200 fee paid on 2026-10-05",
+      "admit_card": "will be available after the datesheet notice"
     }
   }
 ]

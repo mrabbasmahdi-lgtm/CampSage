@@ -28,7 +28,7 @@
     "source": "exam_rules_and_admit_card.txt",
     "page": null,
     "title": "exam rules and admit card",
-    "text": "DEMO NOTICE: Exam rules and admit card Admit card. Admit cards are available on the examination portal from 7 days before the first paper. Students must carry a printed admit card and the college ID card to every paper. Students without an admit card are not allowed into the hall. Admit card on hold. An admit card is held if the student has overdue fees, attendance below 75% without an approved condonation, or pending documents. The student must clear the issue at the examination cell, Block A, room 12. Reporting time. Students must reach the exam hall 30 minutes before the start of the paper. Entry is closed 30 minutes after the paper starts. Allowed items. Pen, pencil, transparent geometry box and a basic non-programmable calculator where the question paper permits. Mobile phones, smart watches and notes are not allowed and their use is treated as unfair means. Seating. The seat number appears on the admit card and the seating plan is displayed outside each hall. Results. Results are declared within 30 days of the last paper on the examination portal. This is sample data for the CampSage prototype.",
+    "text": "DEMO NOTICE: Exam rules and admit card Admit card. Admit cards are available on the examination portal from 7 days before the first paper. Students must carry a printed admit card and the college ID card to every paper. Students without an admit card are not allowed into the hall. Admit card on hold. An admit card is held if the student has overdue fees, attendance below 75% without an approved condonation, or pending documents. The student must clear the issue at the examination office, Block-E, 1st floor, room E-114. Reporting time. Students must reach the exam hall 30 minutes before the start of the paper. Entry is closed 30 minutes after the paper starts. Allowed items. Pen, pencil, transparent geometry box and a basic non-programmable calculator where the question paper permits. Mobile phones, smart watches and notes are not allowed and their use is treated as unfair means. Seating. The seat number appears on the admit card and the seating plan is displayed outside each hall. Results. Results are declared within 30 days of the last paper on the examination portal. This is sample data for the CampSage prototype.",
     "kind": "notice"
   },
   {
@@ -44,7 +44,7 @@
     "source": "fee_payment_notice.txt",
     "page": null,
     "title": "fee payment notice",
-    "text": "DEMO NOTICE: Fee payment deadline Deadline. The sample fee notice says students must clear the semester fee by 30 October 2026. Students whose fee is overdue from an earlier instalment must clear it immediately. Late fee. A late fee of Rs 100 per day is charged after the due date. Students with unpaid fees cannot complete registration, and their admit card may be held. How to pay. Use the student fee portal by UPI, net banking or card. Cash payments are accepted at the accounts office, Block A, from 10:00 to 15:00 on working days. Keep the receipt; the receipt number is needed for any query. Instalments. Postgraduate and professional programmes (such as MBA) may pay in two equal instalments. Undergraduate students may request a one-time instalment plan by applying to the accounts office before the due date. Refunds. Payments made twice by mistake are refunded to the original account in 10 to 15 working days after a written request with both receipts. Fee help. Write to the accounts office with the student ID and receipt number. This is sample data for the CampSage prototype.",
+    "text": "DEMO NOTICE: Fee payment deadline Deadline. The sample fee notice says students must clear the semester fee by 30 October 2026. Students whose fee is overdue from an earlier instalment must clear it immediately. Late fee. A late fee of Rs 100 per day is charged after the due date. Students with unpaid fees cannot complete registration, and their admit card may be held. How to pay. Use the student fee portal by UPI, net banking or card. Cash payments are accepted at the accounts office, Block-D, ground floor, room D-105, from 10:00 to 15:00 on working days. Keep the receipt; the receipt number is needed for any query. Instalments. Postgraduate and professional programmes (such as MBA) may pay in two equal instalments. Undergraduate students may request a one-time instalment plan by applying to the accounts office before the due date. Refunds. Payments made twice by mistake are refunded to the original account in 10 to 15 working days after a written request with both receipts. Fee help. Write to the accounts office with the student ID and receipt number. This is sample data for the CampSage prototype.",
     "kind": "notice"
   },
   {
@@ -52,7 +52,7 @@
     "source": "helpdesk_and_grievance_notice.txt",
     "page": null,
     "title": "helpdesk and grievance notice",
-    "text": "DEMO NOTICE: Helpdesk and grievance redressal Student helpdesk. The student helpdesk is in Block A, ground floor, open from 10:00 to 16:00 on working days. It handles fee, registration, certificate, ID card and portal login queries. Examination cell. Admit card, revaluation and result queries go to the examination cell, Block A, room 12. Grievance. Students can submit grievances about classes, faculty, hostel or facilities on the grievance form on the portal. A reply is given within 7 working days. Complaints can be made anonymously. Anti-ragging and safety. The anti-ragging helpline is available 24 hours. Incidents are handled by the anti-ragging committee with strict confidentiality. Counselling. Free confidential counselling is available at the student wellness centre on Monday, Wednesday and Friday from 11:00 to 15:00. Portal login. If the portal password does not work, use the reset option or visit the helpdesk with the college ID card. This is sample data for the CampSage prototype.",
+    "text": "DEMO NOTICE: Helpdesk and grievance redressal Student helpdesk. The student helpdesk is in Block-D, ground floor, next to the admission and accounts offices, open from 10:00 to 16:00 on working days. It tells students which office handles their problem and helps with portal login queries. Examination office. Admit card, revaluation and result queries go to the examination office, Block-E, 1st floor, room E-114. Grievance. Students can submit grievances about classes, faculty, hostel or facilities on the grievance form on the portal. A reply is given within 7 working days. Complaints can be made anonymously. Anti-ragging and safety. The anti-ragging helpline is available 24 hours. Incidents are handled by the anti-ragging committee with strict confidentiality. Counselling. Free confidential counselling is available at the student wellness centre on Monday, Wednesday and Friday from 11:00 to 15:00. Portal login. If the portal password does not work, use the reset option or visit the helpdesk with the college ID card. This is sample data for the CampSage prototype.",
     "kind": "notice"
   },
   {
@@ -128,6 +128,14 @@
     "kind": "notice"
   },
   {
+    "chunk_id": "procedure_backlog_exam_form.txt-c0",
+    "source": "procedure_backlog_exam_form.txt",
+    "page": null,
+    "title": "procedure backlog exam form",
+    "text": "DEMO NOTICE: Procedure when you have a backlog (failed a subject) and want to appear again This is sample data for the CampSage prototype. A backlog means you failed or were marked absent in a subject. You do not lose the semester; you appear again in the backlog examination for that subject. Many students miss it because nobody tells them the form is separate from the regular exam form. Step 1: check your result on the examination portal and note the subject code of every failed subject. Step 2: clear any pending fee at the accounts office, Block-D, ground floor, room D-105, because the form is not accepted with dues. Step 3: pay the backlog exam fee of Rs 1,200 per paper on the fee portal and keep the receipt. Step 4: fill the backlog exam form on the examination portal, print it, and submit it with the fee receipt, your ID card and a photocopy of your last marksheet to the examination office, Block-E, 1st floor, room E-114 (Dr. Anil Mathur, Deputy Controller of Examinations, demo contact). Step 5: collect the new admit card after the datesheet is published. The regular form deadline for the October 2026 cycle was 5 October 2026. A late form is accepted until 20 October 2026 with an extra Rs 500 late fee. After that you must wait for the next backlog examination. Backlog papers in this cycle: Operating Systems on 4 November 2026 and Digital Signal Processing on 5 November 2026. Attendance is not required again for a backlog paper. Office hours are 10:00 to 16:00, Monday to Saturday. A backlog also affects placement eligibility and merit scholarship eligibility until it is cleared.",
+    "kind": "notice"
+  },
+  {
     "chunk_id": "procedure_bonafide_certificate.txt-c0",
     "source": "procedure_bonafide_certificate.txt",
     "page": null,
@@ -141,6 +149,14 @@
     "page": null,
     "title": "procedure correct name or details",
     "text": "DEMO NOTICE: Procedure to correct your name or personal details This is sample data for the CampSage prototype. If your name, date of birth, father's name or other details are wrong in the college record, go to the admission office, Block-D, ground floor, room D-101. Meet Mr. Harish Pandey, Admission Officer (demo contact). Carry your ID card, your class 10 certificate, one government photo ID and photocopies of both. Submit an application that states the wrong detail and the correct detail. Name changes also need an affidavit. If your exam records are affected, the examination office, Block-E, room E-114, must be told too. The correction usually takes 5 to 7 working days. Do it before the exam form date so the marksheet is correct. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_double_payment_refund.txt-c0",
+    "source": "procedure_double_payment_refund.txt",
+    "page": null,
+    "title": "procedure double payment refund",
+    "text": "DEMO NOTICE: Procedure when you paid a fee twice or paid the wrong amount This is sample data for the CampSage prototype. If money was deducted twice or you paid more than needed, do not pay again to fix it. Step 1: collect both payment receipts or bank messages and note the transaction numbers. Step 2: go to the accounts office, Block-D, ground floor, room D-105 (Mr. Rakesh Tiwari, Accounts Officer, ext. 451, demo contact), with your ID card. Step 3: submit a written refund request: \"To the Accounts Officer. I paid (amount) twice on (date), receipts (numbers). Please refund the extra amount to my original account. Name, class, student ID.\" Step 4: the accounts office verifies with the bank and the refund reaches the original payment account in 10 to 15 working days. If an amount was deducted from the bank but no receipt was generated, wait 48 hours and then bring the bank message to the same office. Extra money paid is not adjusted into the next semester unless you ask for it in writing. Office hours are 10:00 to 16:00, Monday to Saturday.",
     "kind": "notice"
   },
   {
@@ -160,11 +176,27 @@
     "kind": "notice"
   },
   {
+    "chunk_id": "procedure_fee_instalment_or_late_fee_waiver.txt-c0",
+    "source": "procedure_fee_instalment_or_late_fee_waiver.txt",
+    "page": null,
+    "title": "procedure fee instalment or late fee waiver",
+    "text": "DEMO NOTICE: Procedure when you cannot pay the full fee on time This is sample data for the CampSage prototype. If you cannot pay the full semester fee by the deadline, ask for an instalment plan before the due date; the late fee of Rs 100 per day starts the day after the due date and is hard to remove afterwards. Step 1: write an application to the Accounts Officer giving your name, class, student ID, the outstanding amount and the reason. Step 2: submit it at the accounts office, Block-D, ground floor, room D-105 (Mr. Rakesh Tiwari, ext. 451, demo contact), with your ID card and the last receipt. Step 3: if approved, you receive a signed instalment slip with the dates; the slip must be shown whenever registration or the admit card is questioned. Step 4: for financial hardship, also meet the scholarship coordinator, Block-D, 1st floor, room D-204 (Mrs. Neelam Chauhan, ext. 471, demo contact), who explains need-based support. Registration and admit cards stay blocked while a fee is overdue, so an instalment slip must be approved before the exam form date. Decisions take 2 to 3 working days. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
     "chunk_id": "procedure_fee_paid_but_pending.txt-c0",
     "source": "procedure_fee_paid_but_pending.txt",
     "page": null,
     "title": "procedure fee paid but pending",
     "text": "DEMO NOTICE: Procedure when you paid your fees but the portal still shows a pending amount This is sample data for the CampSage prototype. If you paid all your fees but the portal still shows a pending amount, follow these steps. First check your payment receipt. The portal can take up to 48 hours to update after a payment, so wait that long. Keep your receipt number safe. If the amount is still pending after 48 hours, go to the Block-D admission and accounts office, ground floor. Meet Mr. Rakesh Tiwari, Accounts Officer, room D-105 (demo contact). Carry the payment receipt, your ID card and one photocopy of the receipt. Submit a short written application. Sample application: \"To the Accounts Officer. I paid my semester fee on (date), receipt number (number), amount (amount). The portal still shows a pending amount. Please verify and update my record. Name, class, student ID.\" The expected resolution time is 2 to 3 working days. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_hostel_room_change_or_complaint.txt-c0",
+    "source": "procedure_hostel_room_change_or_complaint.txt",
+    "page": null,
+    "title": "procedure hostel room change or complaint",
+    "text": "DEMO NOTICE: Procedure for hostel room change, leave and complaints This is sample data for the CampSage prototype. The hostel office is at the hostel, room H-01, behind Block-E (Mr. Arif Mirza, hostel warden, ext. 481, demo contact). Room change. Requests are accepted only in the first two weeks of a semester. Submit the request form at room H-01 with your ID card and a reason; the warden replies within 7 working days, and silence after 7 days means the request needs a reminder, so ask for the request number when you submit. Maintenance complaint such as water, power or a broken bed. Raise it at the hostel desk with your room number and it is resolved within 3 working days; if not, take the request number to the warden. Overnight leave. Fill the leave form on the portal and tell the warden one day before. Hostel fee query. The hostel fee is paid at the accounts office, Block-D, room D-105; ask for a receipt that shows the hostel head separately. Security deposit refund. It is returned after the vacating form and a no-dues check from the library and accounts office, usually within 30 days of leaving. Office hours are 10:00 to 16:00, Monday to Saturday.",
     "kind": "notice"
   },
   {
@@ -176,6 +208,22 @@
     "kind": "notice"
   },
   {
+    "chunk_id": "procedure_internship_noc_and_project_guide.txt-c0",
+    "source": "procedure_internship_noc_and_project_guide.txt",
+    "page": null,
+    "title": "procedure internship noc and project guide",
+    "text": "DEMO NOTICE: Procedure for internship letter, NOC and project guide change This is sample data for the CampSage prototype. Internship permission letter or NOC. Ask your department office for the format, get it signed by your Head of Department (CSE: Dr. Kavita Rastogi, room B-301; ECE: Dr. Pankaj Srivastava, room C-202; BCA: Dr. Ritu Agarwal, room C-105), and collect the stamped letter from the department office. It takes 2 to 3 working days, so apply a week before the internship starts. Internship during exams or low attendance is not approved. Internship completion certificate. Submit the company letter to the department office within 15 days after finishing. Project guide or title change. Write an application stating the reason, get the old and new guide to sign it, and submit it to the project coordinator through the department office before the mid-project review. Students with an overdue fee cannot register or change a project until the fee is cleared at the accounts office, Block-D, room D-105. Placement training sessions are held on Thursday at 14:00 in the Seminar Hall; resume review is at the training cell. Office hours are 10:00 to 16:00, Monday to Friday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_lost_admit_card_during_exam.txt-c0",
+    "source": "procedure_lost_admit_card_during_exam.txt",
+    "page": null,
+    "title": "procedure lost admit card during exam",
+    "text": "DEMO NOTICE: Procedure when you lose your admit card or reach the exam hall without it This is sample data for the CampSage prototype. You can reprint your admit card from the examination portal at any time, so first log in and print it again. If the portal shows the admit card as on hold, you cannot print it; go to the examination office, Block-E, 1st floor, room E-114, and ask why it is held. Common reasons are overdue fee (clear it at the accounts office, Block-D, room D-105), attendance below 75% without approved condonation (see the attendance coordinator of your department), or a pending document. If you reach the exam hall without a printed admit card, do not go home. Ask the invigilator for a temporary entry slip, go to room E-114 with your college ID card, and a duplicate admit card or temporary pass is issued, usually within 30 minutes. Entry closes 30 minutes after the paper starts, so go to the examination office immediately. A duplicate admit card for a regular exam is free; you only need your ID card. Office hours are 10:00 to 16:00, Monday to Saturday; during exams the office stays open from 08:30.",
+    "kind": "notice"
+  },
+  {
     "chunk_id": "procedure_lost_id_card.txt-c0",
     "source": "procedure_lost_id_card.txt",
     "page": null,
@@ -184,11 +232,83 @@
     "kind": "notice"
   },
   {
+    "chunk_id": "procedure_marks_missing_or_marked_absent.txt-c0",
+    "source": "procedure_marks_missing_or_marked_absent.txt",
+    "page": null,
+    "title": "procedure marks missing or marked absent",
+    "text": "DEMO NOTICE: Procedure when your result shows absent, marks missing or a wrong subject This is sample data for the CampSage prototype. If your result shows AB (absent) although you appeared, shows zero, has marks missing, or lists a subject you did not take, do not wait for it to fix itself. Step 1: take a screenshot of the result and collect your admit card and, if you have it, the attendance sheet signature copy. Step 2: tell your class coordinator or department office first and ask them to confirm in writing that you appeared; for CSE this is the department office, Block-B, 2nd floor, room B-201. Step 3: write an application to the Controller of Examinations stating your name, student ID, class, subject, exam date and the problem. Step 4: submit it with the admit card, your ID card and a photocopy of the result at the examination office, Block-E, 1st floor, room E-114 (Dr. Anil Mathur, Deputy Controller of Examinations, demo contact). Sample application: \"To the Controller of Examinations. In the (month, year) examination I appeared in (subject) on (date). My result shows (problem). Please verify my answer sheet and attendance record and correct the result. Name, class, student ID.\" Step 5: ask for an acknowledgement slip with a reference number. The usual resolution time is 5 to 7 working days. Report the problem as soon as the result is declared because corrections after 30 days need extra approval. Do not apply for revaluation for this problem; revaluation does not correct a missing or absent entry.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_missed_exam_medical_or_clash.txt-c0",
+    "source": "procedure_missed_exam_medical_or_clash.txt",
+    "page": null,
+    "title": "procedure missed exam medical or clash",
+    "text": "DEMO NOTICE: Procedure when you miss an exam or two exams clash This is sample data for the CampSage prototype. Missed exam because of illness or emergency. Inform the examination office, Block-E, 1st floor, room E-114, within 3 working days of the missed paper. Carry a medical certificate from a registered doctor or other proof, your admit card, your ID card and a written application to the Controller of Examinations. If the reason is accepted you may be allowed a special exam, which is arranged with the next backlog examination. If you do not report within 3 working days the paper is treated as absent and becomes a backlog. Two exams on the same date and time. Do not choose one yourself. Take a printout of the datesheet showing the clash to the examination office, room E-114, as soon as the datesheet is published and no later than 5 days before the first paper. The office arranges the second paper at a different time on the same day or the next working day, and issues a corrected admit card. Wrong exam date on your admit card. Compare it with the datesheet notice and report the difference at room E-114 before the exam, never after it. Dr. Anil Mathur, Deputy Controller of Examinations, ext. 461 (demo). Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_portal_login_and_password_reset.txt-c0",
+    "source": "procedure_portal_login_and_password_reset.txt",
+    "page": null,
+    "title": "procedure portal login and password reset",
+    "text": "DEMO NOTICE: Procedure when you cannot log in to the student portal This is sample data for the CampSage prototype. If the portal says wrong password, use the Forgot password option on the login page and a reset link is sent to the email registered at admission. If the registered email or phone number is old, you cannot reset it yourself. Go to the student helpdesk, Block-D, ground floor, next to the admission and accounts offices, with your ID card and a photocopy of your fee receipt, and ask for a portal reset. A temporary password is issued the same day and must be changed at first login. If the portal shows no fee, no timetable or someone else's data after login, log out, clear the browser cache, and try again after 30 minutes; if the problem continues, report it at the helpdesk with a screenshot. Never share your portal password or the OTP with anyone, including seniors who offer to fill forms. Helpdesk hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_revaluation_and_answer_sheet_copy.txt-c0",
+    "source": "procedure_revaluation_and_answer_sheet_copy.txt",
+    "page": null,
+    "title": "procedure revaluation and answer sheet copy",
+    "text": "DEMO NOTICE: Procedure when you are unhappy with your marks or want to see your answer sheet This is sample data for the CampSage prototype. If you think your marks are too low or a question was not checked, apply within 10 days of the result declaration; after that the window closes and no exception is made. Step 1: apply for a photocopy of the answer sheet on the examination portal, fee Rs 400 per subject, if you first want to see the paper. Step 2: collect the photocopy from the examination office, Block-E, 1st floor, room E-114, with your ID card and the fee receipt, usually in 3 to 5 working days. Step 3: apply for revaluation on the portal, fee Rs 800 per subject, and submit the printed form with the receipt at the same office. Step 4: wait about 3 weeks; the better of the two marks is kept, so your marks can never go down. Revaluation is done by a different examiner. The result appears on the examination portal; if it does not appear by the expected date, ask at room E-114 with your revaluation receipt number. Revaluation is not allowed for practical or lab marks; speak to the lab in-charge of your department instead. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_scholarship_not_credited.txt-c0",
+    "source": "procedure_scholarship_not_credited.txt",
+    "page": null,
+    "title": "procedure scholarship not credited",
+    "text": "DEMO NOTICE: Procedure when your scholarship is not shown in your fee or not credited This is sample data for the CampSage prototype. If you were told you got a scholarship but your fee statement still shows the full amount, the waiver has probably not been adjusted yet. The scholarship list is published on 25 November 2026 and the waiver is adjusted in the next fee instalment, so a fee shown before that date does not include it. If your scholarship is already active and the fee is wrong, step 1: take a screenshot of the fee statement and the scholarship sanction letter. Step 2: go to the scholarship cell, Block-D, 1st floor, room D-204 (Mrs. Neelam Chauhan, Scholarship Coordinator, ext. 471, demo contact) with your ID card and mark sheet. Step 3: she confirms the sanction and sends a written adjustment note. Step 4: take the note to the accounts office, Block-D, ground floor, room D-105, so the fee record is corrected. Do not pay the full amount to avoid the late fee; ask the accounts office for an adjustment slip. Renewal needs a CGPA of at least 8.5 and 85% attendance. A merit scholarship is withdrawn if an active backlog appears. Both offices are open 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
     "chunk_id": "procedure_scholarship_query.txt-c0",
     "source": "procedure_scholarship_query.txt",
     "page": null,
     "title": "procedure scholarship query",
     "text": "DEMO NOTICE: Procedure for a scholarship query This is sample data for the CampSage prototype. For questions about a scholarship, such as a missing amount, a rejected form or a pending verification, go to the scholarship cell, Block-D, 1st floor, room D-204. Meet Mrs. Neelam Chauhan, Scholarship Coordinator (demo contact). Carry your ID card, the scholarship application number, your fee receipt, your income certificate and a bank passbook photocopy. If the form was rejected, bring the rejection message. Write a short application with your name, class, scholarship name and the problem. Ask for the status in writing. Verification usually takes 5 to 7 working days. Office hours are 10:00 to 16:00, Monday to Friday. The real scholarship portal may take longer to update.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_transfer_migration_degree_certificate.txt-c0",
+    "source": "procedure_transfer_migration_degree_certificate.txt",
+    "page": null,
+    "title": "procedure transfer migration degree certificate",
+    "text": "DEMO NOTICE: Procedure for transfer certificate, migration certificate, transcript and degree This is sample data for the CampSage prototype. These documents need no-dues clearance first, which is where most students lose days because each department asks them to go somewhere else. Do the steps in this order. Step 1: library no-dues at the library, Block-A, with your library card and ID card. Step 2: hostel no-dues from the hostel warden, room H-01, if you stayed in the hostel. Step 3: accounts no-dues at the accounts office, Block-D, ground floor, room D-105, after all fees and fines are cleared. Step 4: department no-dues from your department office (CSE room B-201, ECE room C-201, BCA room C-101). Step 5: submit the application with all four clearances, your ID card, passport photos and fee receipt to the admission office, Block-D, ground floor, room D-101 (Mr. Harish Pandey, Admission Officer, ext. 441, demo contact). The transfer certificate takes about 7 working days. Official transcripts cost Rs 1,000 and take 7 working days; duplicate mark sheets cost Rs 500 and are issued by the examination office, Block-E, room E-114. A degree certificate is issued only after the final results and all no-dues. Carry photocopies as well as originals; offices keep the photocopy.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_transport_pass_and_route.txt-c0",
+    "source": "procedure_transport_pass_and_route.txt",
+    "page": null,
+    "title": "procedure transport pass and route",
+    "text": "DEMO NOTICE: Procedure for college bus pass, route and timing problems This is sample data for the CampSage prototype. The transport office is in Block-A, ground floor, room A-012 (Mr. Dinesh Yadav, transport in-charge, ext. 491, demo contact). New bus pass. Pay the transport fee at the accounts office, Block-D, room D-105, then take the receipt, your ID card and one passport photo to room A-012 and choose a route and stop. The pass is ready in 2 working days. Pass expired or lost. Renew it at room A-012 with your ID card and the old pass; a lost pass is replaced for Rs 100 and needs a written declaration. Change of stop or route. Apply at room A-012 before the 10th of the month; changes apply from the next month. Bus late or missed. Tell the transport office, which keeps a complaint register. Routes and timings are printed on the transport notice board outside room A-012. The college bus reaches the main gate at Block-A at about 08:45 on working days. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_wrong_attendance_record.txt-c0",
+    "source": "procedure_wrong_attendance_record.txt",
+    "page": null,
+    "title": "procedure wrong attendance record",
+    "text": "DEMO NOTICE: Procedure when your attendance on the portal is wrong This is sample data for the CampSage prototype. If the portal shows you absent on a day you attended class, report it within 7 days of the Friday update, because older entries need extra approval. Step 1: note the subject, date, period and the teacher. Step 2: talk to the subject teacher and ask them to correct the entry in the attendance register. Step 3: if the teacher agrees, submit a short written application with the details to the attendance coordinator of your department. For CSE this is Mr. Vikas Saxena, Block-B, 2nd floor, room B-214 (demo contact); for ECE and BCA, ask at the department office, Block-C, room C-201 for ECE and room C-101 for BCA. Step 4: the coordinator verifies the register and updates the portal, normally within 3 working days. Step 5: check the portal after the next Friday update. If the problem is not solved in 7 days, take the application to the Head of Department. Do this well before the exam form date, because the examination office decides eligibility using the attendance on the portal. Attendance lost because of a college event is not a mistake; for that, get an official letter from the event organiser and apply for condonation.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_wrong_section_or_timetable_clash.txt-c0",
+    "source": "procedure_wrong_section_or_timetable_clash.txt",
+    "page": null,
+    "title": "procedure wrong section or timetable clash",
+    "text": "DEMO NOTICE: Procedure when you are in the wrong section, have a timetable clash or cannot see a subject This is sample data for the CampSage prototype. If a class on your timetable is not on the portal, you are placed in the wrong section, or two classes are at the same time, do this in the first two weeks of the semester. Step 1: write the subject code, section and the problem on a sheet. Step 2: go to your department office (CSE room B-201, ECE room C-201, BCA room C-101) and ask for the timetable coordinator. Step 3: submit the sheet with your ID card and the latest fee receipt; section changes are only made for students without dues. Step 4: the coordinator updates the portal in about 3 working days. Meanwhile attend the section where your friends are placed and tell the teacher, so your attendance is marked by hand and can be added later. For an elective that does not appear after registration, show the elective registration confirmation to Dr. Shalini Awasthi, electives coordinator, Block-B, 2nd floor, room B-210 (CSE, demo contact). Do not wait until the exam form; missing classes cannot be recovered after the Friday attendance update. Office hours are 10:00 to 16:00, Monday to Friday.",
     "kind": "notice"
   },
   {
@@ -204,7 +324,7 @@
     "source": "revaluation_and_backlog_notice.txt",
     "page": null,
     "title": "revaluation and backlog notice",
-    "text": "DEMO NOTICE: Revaluation and backlog examination Revaluation. Students may apply for revaluation within 10 days of the result declaration on the examination portal. The fee is Rs 800 per subject. The revaluation result is declared in about 3 weeks, and the better of the two marks is kept. Photocopy of answer sheet. Students may request a photocopy of an answer sheet before applying for revaluation. The fee is Rs 400 per subject. Backlog papers. A student who failed a subject may appear in the backlog examination. The backlog exam fee is Rs 1,200 per paper and must be paid before the form deadline of 5 October 2026. Backlog papers: Operating Systems on 4 November 2026 and Digital Signal Processing on 5 November 2026. Backlogs and placement. Most companies allow at most one active backlog. Students are advised to clear backlogs in the next attempt. This is sample data for the CampSage prototype.",
+    "text": "DEMO NOTICE: Revaluation and backlog examination Revaluation. Students may apply for revaluation within 10 days of the result declaration on the examination portal. The fee is Rs 800 per subject. The revaluation result is declared in about 3 weeks, and the better of the two marks is kept. Photocopy of answer sheet. Students may request a photocopy of an answer sheet before applying for revaluation. The fee is Rs 400 per subject. Backlog papers. A student who failed a subject may appear in the backlog examination. The backlog exam fee is Rs 1,200 per paper and must be paid before the form deadline of 5 October 2026. A late backlog form is accepted until 20 October 2026 with an extra late fee of Rs 500. After 20 October the student must wait for the next backlog examination. Backlog papers: Operating Systems on 4 November 2026 and Digital Signal Processing on 5 November 2026. Backlogs and placement. Most companies allow at most one active backlog. Students are advised to clear backlogs in the next attempt. This is sample data for the CampSage prototype.",
     "kind": "notice"
   },
   {
@@ -237,6 +357,14 @@
     "page": null,
     "title": "staff ece faculty offices",
     "text": "DEMO NOTICE: Electronics and Communication Engineering (ECE) department faculty and offices This is sample data with fictional names for the CampSage prototype. The ECE department is in Block-C. Dr. Pankaj Srivastava, Head of Department, office in Block-C, 2nd floor, room C-202, ext. 421 (demo). Ms. Tabassum Rizvi, Assistant Professor and project lab in-charge, Block-C, 2nd floor, room C-208, ext. 422 (demo). The embedded systems and project labs are on the ground floor of Block-C. Faculty office hours are 10:00 to 16:00, Monday to Friday. The department office is on the 2nd floor, room C-201.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "where_to_go_quick_guide.txt-c0",
+    "source": "where_to_go_quick_guide.txt",
+    "page": null,
+    "title": "where to go quick guide",
+    "text": "DEMO NOTICE: Where to go for what, quick guide for students This is sample data for the CampSage prototype. Use this guide so you go to the right office on the first visit instead of being sent from one place to another. Offices are open 10:00 to 16:00, Monday to Saturday, and closed on Sundays and public holidays. Always carry your ID card and the relevant fee receipt. Fee payment, receipt, pending amount, refund, instalment: accounts office, Block-D, ground floor, room D-105. Bonafide certificate, duplicate ID card, name or date of birth correction, transfer certificate: admission office, Block-D, ground floor, room D-101. Exam form, admit card, datesheet, marksheet, backlog form, revaluation, result problem, missed exam: examination office, Block-E, 1st floor, room E-114. Scholarship application or adjustment: scholarship cell, Block-D, 1st floor, room D-204. Hostel room, leave, complaint: hostel office, room H-01, behind Block-E. Bus pass and routes: transport office, Block-A, ground floor, room A-012. Attendance error, condonation, timetable, section, project, internship letter: your department office (CSE Block-B room B-201, ECE Block-C room C-201, BCA Block-C room C-101). Portal login problem: student helpdesk, Block-D, ground floor. Library books and no-dues: library, Block-A. Medical room: behind Block-E. Typical order for a no-dues clearance: library, hostel, accounts, department, then admission office. Before you visit, ask CampSage which documents to carry so that you do not need a second trip.",
     "kind": "notice"
   }
 ]
