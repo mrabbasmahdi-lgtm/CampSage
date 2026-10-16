@@ -194,6 +194,23 @@ def _classify(text: str, question: str, contexts: list[ContextChunk], model_id: 
     return AnswerResult("general", raw, [], model_id, audio)
 
 
+def build_live_prompt(
+    question: str,
+    profile: dict,
+    contexts: list[ContextChunk],
+    history: list[dict] | None,
+    drift: int,
+    now: datetime | None = None,
+) -> tuple[str, str]:
+    """Return ``(prompt, SYSTEM_RULES)`` for a Live call, exactly as answer_question builds them.
+
+    Streaming callers (the voice WebSocket) send the prompt themselves but must classify the
+    reply with the same rules, so this is the one public way to build the prompt.
+    """
+
+    return _prompt(question, profile, contexts, history, drift, now or _now_ist()), SYSTEM_RULES
+
+
 def answer_question(
     api_key: str,
     question: str,
