@@ -8,6 +8,14 @@
     "kind": "notice"
   },
   {
+    "chunk_id": "campus_overview.txt-c0",
+    "source": "campus_overview.txt",
+    "page": null,
+    "title": "campus overview",
+    "text": "DEMO NOTICE: Campus overview and block names This is sample data for the CampSage prototype. The block names and contents below are fictional. Block-A: main gate side, transport office, seminar hall and library. Block-B: Computer Science and Engineering (CSE) department, computer labs and lecture halls. Block-C: Electronics and Communication (ECE) department, Computer Applications (BCA) department and the embedded systems lab. Block-D: admission office, accounts office and fee counter on the ground floor, scholarship cell on the 1st floor. Block-E: examination office on the 1st floor. The hostel, canteen and medical room are behind Block-E. Offices are open 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
     "chunk_id": "examination_datesheet.txt-c0",
     "source": "examination_datesheet.txt",
     "page": null,
@@ -24,11 +32,139 @@
     "kind": "notice"
   },
   {
+    "chunk_id": "office_accounts.txt-c0",
+    "source": "office_accounts.txt",
+    "page": null,
+    "title": "office accounts",
+    "text": "DEMO NOTICE: Accounts office This is sample data with fictional names for the CampSage prototype. The accounts office is in Block-D, ground floor, room D-105, next to the admission office. Mr. Rakesh Tiwari is the Accounts Officer, ext. 451 (demo). The accounts office handles fee payments, receipts, pending fee corrections, fee refunds and duplicate ID card fees. Keep every payment receipt. Office hours are 10:00 to 16:00, Monday to Saturday, closed on Sundays and public holidays.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "office_admission.txt-c0",
+    "source": "office_admission.txt",
+    "page": null,
+    "title": "office admission",
+    "text": "DEMO NOTICE: Admission office This is sample data with fictional names for the CampSage prototype. The admission office is in Block-D, ground floor, room D-101, next to the accounts office. Mr. Harish Pandey is the Admission Officer, ext. 441 (demo). The admission office handles bonafide certificates, duplicate ID cards, corrections to name or personal details, and admission documents. Office hours are 10:00 to 16:00, Monday to Saturday, closed on Sundays and public holidays. Students should carry their ID card for every request.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "office_examination.txt-c0",
+    "source": "office_examination.txt",
+    "page": null,
+    "title": "office examination",
+    "text": "DEMO NOTICE: Examination office This is sample data with fictional names for the CampSage prototype. The examination office is in Block-E, 1st floor, room E-114. Dr. Anil Mathur is the Deputy Controller of Examinations, ext. 461 (demo). The examination office handles exam forms, admit cards, datesheets, marksheets, revaluation requests and approved attendance condonation cases. Office hours are 10:00 to 16:00, Monday to Saturday, closed on Sundays and public holidays.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "office_scholarship_hostel_transport.txt-c0",
+    "source": "office_scholarship_hostel_transport.txt",
+    "page": null,
+    "title": "office scholarship hostel transport",
+    "text": "DEMO NOTICE: Scholarship cell, hostel office and transport office This is sample data with fictional names for the CampSage prototype. The scholarship cell is in Block-D, 1st floor, room D-204. Mrs. Neelam Chauhan is the Scholarship Coordinator, ext. 471 (demo). The hostel office is at the hostel, room H-01. Mr. Arif Mirza is the hostel warden, ext. 481 (demo). The transport office is in Block-A, ground floor, room A-012. Mr. Dinesh Yadav is the transport in-charge, ext. 491 (demo). All three are open 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_attendance_shortage_condonation.txt-c0",
+    "source": "procedure_attendance_shortage_condonation.txt",
+    "page": null,
+    "title": "procedure attendance shortage condonation",
+    "text": "DEMO NOTICE: Procedure for attendance shortage and condonation This is sample data for the CampSage prototype. If your attendance is below the required minimum, you can apply for condonation (a waiver of the shortage) with a valid reason such as illness. Collect proof, such as a medical certificate from a doctor, or an official letter for a college event. Write an application to your Head of Department that names the subjects and dates missed. Submit it with your ID card to Mr. Vikas Saxena, attendance coordinator, CSE department, Block-B, 2nd floor, room B-214 (demo contact). He forwards it to the HoD for approval. Approved cases go to the examination office, Block-E, before the exam form is filled. Apply well before the exam form date. Decisions usually take 3 to 5 working days. Condonation is not guaranteed.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_bonafide_certificate.txt-c0",
+    "source": "procedure_bonafide_certificate.txt",
+    "page": null,
+    "title": "procedure bonafide certificate",
+    "text": "DEMO NOTICE: Procedure to get a bonafide certificate This is sample data for the CampSage prototype. A bonafide certificate proves you are a current student. It is used for bank, scholarship, passport and travel concession forms. Go to the admission office, Block-D, ground floor, room D-101, and meet Mr. Harish Pandey, Admission Officer (demo contact). Carry your ID card and a photocopy of it. Write a short application that says what the certificate is for and who will receive it. Your fee dues should be clear. The certificate is normally issued in 1 to 2 working days, and it needs the signature of the Admission Officer. Ask for extra copies at the same time if you need more than one. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_correct_name_or_details.txt-c0",
+    "source": "procedure_correct_name_or_details.txt",
+    "page": null,
+    "title": "procedure correct name or details",
+    "text": "DEMO NOTICE: Procedure to correct your name or personal details This is sample data for the CampSage prototype. If your name, date of birth, father's name or other details are wrong in the college record, go to the admission office, Block-D, ground floor, room D-101. Meet Mr. Harish Pandey, Admission Officer (demo contact). Carry your ID card, your class 10 certificate, one government photo ID and photocopies of both. Submit an application that states the wrong detail and the correct detail. Name changes also need an affidavit. If your exam records are affected, the examination office, Block-E, room E-114, must be told too. The correction usually takes 5 to 7 working days. Do it before the exam form date so the marksheet is correct. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_elective_registration_problem.txt-c0",
+    "source": "procedure_elective_registration_problem.txt",
+    "page": null,
+    "title": "procedure elective registration problem",
+    "text": "DEMO NOTICE: Procedure for an elective registration problem This is sample data for the CampSage prototype. If you cannot register for an elective, first check that your semester fee has no pending amount, because unpaid fees can block registration. Then check that the registration window is still open. If the portal still shows an error, meet Dr. Shalini Awasthi, electives coordinator, CSE department, Block-B, 2nd floor, room B-210 (demo contact). Carry your ID card and a screenshot of the error. Write a short application stating your name, class, the elective you want and the error you see. If the window has closed, ask for late registration in the same application and have the HoD sign it. Dr. Awasthi forwards approved requests to the examination office. The expected resolution time is 1 to 2 working days. Offices are open 10:00 to 16:00, Monday to Friday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_exam_form_admit_card_issue.txt-c0",
+    "source": "procedure_exam_form_admit_card_issue.txt",
+    "page": null,
+    "title": "procedure exam form admit card issue",
+    "text": "DEMO NOTICE: Procedure for an exam form or admit card problem This is sample data for the CampSage prototype. If you cannot fill the exam form or download your admit card, check three things first: your fees have no pending amount, your attendance meets the minimum, and your registration is complete. If all three are fine and the portal still blocks you, go to the examination office, Block-E, 1st floor, room E-114. Meet Dr. Anil Mathur, Deputy Controller of Examinations (demo contact). Carry your ID card, the fee receipt and a photocopy of your last marksheet. Submit a short application with your name, class, student ID and the exact problem. A corrected admit card is usually issued in 1 to 2 working days. Do this before the exam date. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_fee_paid_but_pending.txt-c0",
+    "source": "procedure_fee_paid_but_pending.txt",
+    "page": null,
+    "title": "procedure fee paid but pending",
+    "text": "DEMO NOTICE: Procedure when you paid your fees but the portal still shows a pending amount This is sample data for the CampSage prototype. If you paid all your fees but the portal still shows a pending amount, follow these steps. First check your payment receipt. The portal can take up to 48 hours to update after a payment, so wait that long. Keep your receipt number safe. If the amount is still pending after 48 hours, go to the Block-D admission and accounts office, ground floor. Meet Mr. Rakesh Tiwari, Accounts Officer, room D-105 (demo contact). Carry the payment receipt, your ID card and one photocopy of the receipt. Submit a short written application. Sample application: \"To the Accounts Officer. I paid my semester fee on (date), receipt number (number), amount (amount). The portal still shows a pending amount. Please verify and update my record. Name, class, student ID.\" The expected resolution time is 2 to 3 working days. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_hostel_transport_fee_query.txt-c0",
+    "source": "procedure_hostel_transport_fee_query.txt",
+    "page": null,
+    "title": "procedure hostel transport fee query",
+    "text": "DEMO NOTICE: Procedure for a hostel or transport fee query This is sample data for the CampSage prototype. Hostel and transport fees are separate from the semester fee. For a hostel fee query, meet Mr. Arif Mirza, hostel warden, at the hostel office, room H-01 (demo contact). For a bus or transport fee query, meet Mr. Dinesh Yadav, transport in-charge, Block-A, ground floor, room A-012 (demo contact). Carry your ID card, the payment receipt and the hostel or bus pass number. If you paid but the amount still shows as due, follow the same steps as the semester fee: wait 48 hours, then submit a short application with the receipt number. Resolution usually takes 2 to 3 working days. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_lost_id_card.txt-c0",
+    "source": "procedure_lost_id_card.txt",
+    "page": null,
+    "title": "procedure lost id card",
+    "text": "DEMO NOTICE: Procedure when you lose your ID card This is sample data for the CampSage prototype. If you lose your student ID card, first inform your class coordinator. Then go to the admission office, Block-D, ground floor, room D-101, and meet Mr. Harish Pandey, Admission Officer (demo contact). Write a short application saying the card was lost. Carry one passport photo, a photocopy of your fee receipt and a government photo ID. Pay the duplicate ID card fee at the accounts office, Block-D, room D-105, and bring the receipt back. If someone could misuse the card, also tell the college security office at the main gate. A duplicate ID card is usually ready in 3 to 5 working days. Office hours are 10:00 to 16:00, Monday to Saturday.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "procedure_scholarship_query.txt-c0",
+    "source": "procedure_scholarship_query.txt",
+    "page": null,
+    "title": "procedure scholarship query",
+    "text": "DEMO NOTICE: Procedure for a scholarship query This is sample data for the CampSage prototype. For questions about a scholarship, such as a missing amount, a rejected form or a pending verification, go to the scholarship cell, Block-D, 1st floor, room D-204. Meet Mrs. Neelam Chauhan, Scholarship Coordinator (demo contact). Carry your ID card, the scholarship application number, your fee receipt, your income certificate and a bank passbook photocopy. If the form was rejected, bring the rejection message. Write a short application with your name, class, scholarship name and the problem. Ask for the status in writing. Verification usually takes 5 to 7 working days. Office hours are 10:00 to 16:00, Monday to Friday. The real scholarship portal may take longer to update.",
+    "kind": "notice"
+  },
+  {
     "chunk_id": "registration_and_programmes_notice.txt-c0",
     "source": "registration_and_programmes_notice.txt",
     "page": null,
     "title": "registration and programmes notice",
     "text": "DEMO NOTICE: Registration and college programmes The sample registration notice says elective registration is open from 15 October through 25 October 2026. Students with unpaid fees may be blocked from completing registration. The college programme orientation is listed for 2 November 2026. This is sample data for the CampSage prototype.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "staff_computer_applications_faculty_offices.txt-c0",
+    "source": "staff_computer_applications_faculty_offices.txt",
+    "page": null,
+    "title": "staff computer applications faculty offices",
+    "text": "DEMO NOTICE: Computer Applications (BCA) department faculty and offices This is sample data with fictional names for the CampSage prototype. The Computer Applications department, which runs the BCA programme, is in Block-C, 1st floor. Dr. Ritu Agarwal, Head of Department, office in Block-C, 1st floor, room C-105, ext. 431 (demo). Mr. Salman Haider, Assistant Professor for Web Technology and Python Lab, Block-C, 1st floor, room C-112, ext. 432 (demo). Faculty office hours are 10:00 to 16:00, Monday to Friday. The department office is on the 1st floor, room C-101.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "staff_cse_faculty_offices.txt-c0",
+    "source": "staff_cse_faculty_offices.txt",
+    "page": null,
+    "title": "staff cse faculty offices",
+    "text": "DEMO NOTICE: Computer Science and Engineering (CSE) department faculty and offices This is sample data with fictional names for the CampSage prototype. The CSE department is in Block-B. Dr. Kavita Rastogi, Head of Department, office in Block-B, 3rd floor, room B-301, ext. 411 (demo). Prof. Nadeem Alvi, Professor, Block-B, 3rd floor, room B-305, ext. 412 (demo). Dr. Shalini Awasthi, Associate Professor and electives coordinator, Block-B, 2nd floor, room B-210, ext. 413 (demo). Mr. Vikas Saxena, Assistant Professor and attendance coordinator, Block-B, 2nd floor, room B-214, ext. 414 (demo). Faculty office hours are 10:00 to 16:00, Monday to Friday. The department office is on the 2nd floor, room B-201.",
+    "kind": "notice"
+  },
+  {
+    "chunk_id": "staff_ece_faculty_offices.txt-c0",
+    "source": "staff_ece_faculty_offices.txt",
+    "page": null,
+    "title": "staff ece faculty offices",
+    "text": "DEMO NOTICE: Electronics and Communication Engineering (ECE) department faculty and offices This is sample data with fictional names for the CampSage prototype. The ECE department is in Block-C. Dr. Pankaj Srivastava, Head of Department, office in Block-C, 2nd floor, room C-202, ext. 421 (demo). Ms. Tabassum Rizvi, Assistant Professor and project lab in-charge, Block-C, 2nd floor, room C-208, ext. 422 (demo). The embedded systems and project labs are on the ground floor of Block-C. Faculty office hours are 10:00 to 16:00, Monday to Friday. The department office is on the 2nd floor, room C-201.",
     "kind": "notice"
   }
 ]
