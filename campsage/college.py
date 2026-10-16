@@ -74,7 +74,11 @@ def make_demo_students(path: Path) -> None:
             "attendance": {"overall": "91%", "web technology": "94%"},
             "timetable": {"Tuesday": ["10:00 Web Technology", "14:00 Python Lab"]},
             "upcoming_exams": [{"subject": "Web Technology", "date": "2026-10-24"}],
-            "fees": {"status": "paid", "outstanding": "₹0"},
+            "fees": {
+                "status": "payment made, not yet reflected",
+                "outstanding": "₹12,000",
+                "last_payment": "On 15 October 2026 you paid ₹12,000 online with receipt number DEMO-RCPT-48213. The portal does not show this payment yet and still shows ₹12,000 outstanding.",
+            },
             "registration": {"status": "complete", "note": "No pending registration"},
         },
         {
