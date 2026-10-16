@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from fastapi import FastAPI, Request
+from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -14,6 +15,19 @@ from .keystore import KeyStore
 from .retrieve import retrieve
 from .session import SessionStore
 from .settings import ROOT, Settings
+
+
+# 16 kHz mono PCM16 is 32,000 bytes a second: allow 0.1 s to about 30 s of speech.
+MIN_AUDIO_BYTES = 3_200
+MAX_AUDIO_BYTES = 1_000_000
+# Fields that are identity or credentials, never evidence for the model.
+_PRIVATE_FIELDS = {"student_id", "password_hash", "name", "semester", "class", "branch"}
+
+_KEY_MESSAGES = {
+    "quota": "This Google AI Studio key has reached its free quota. Try again later or use another key.",
+    "unavailable": "Google's service is busy right now. Please try again in a moment.",
+}
+_KEY_FALLBACK = "The key could not be validated. Check it and try again."
 
 
 def create_app(settings: Settings | None = None, model_client: GemmaClient | None = None) -> FastAPI:
@@ -31,7 +45,7 @@ def create_app(settings: Settings | None = None, model_client: GemmaClient | Non
     if not chunks and any(notices_path.iterdir()):
         chunks = build_index(notices_path, settings.index_path)
 
-    app = FastAPI(title="CampSage", version="0.1.0")
+    app = FastAPI(title="CampSage", version="0.2.0")
     app.state.provider = provider
     app.state.keystore = keystore
     app.state.sessions = sessions
@@ -41,19 +55,25 @@ def create_app(settings: Settings | None = None, model_client: GemmaClient | Non
     def current_session(request: Request):
         return sessions.get(request.cookies.get("campsage_session"))
 
+    def _login(student_id: str, password: str):
+        if not provider.verify_login(student_id, password):
+            return None
+        encryption_key = keystore.prepare_encryption_key(student_id, password)
+        api_key = keystore.decrypt_key(student_id, encryption_key) if keystore.has_key(student_id) else None
+        # A password change or an interrupted demo setup can leave ciphertext
+        # that the verified password cannot unlock. Let the student re-key;
+        # connect_key replaces the old ciphertext only after validation.
+        return sessions.create(student_id, encryption_key, api_key), api_key
+
     @app.post("/api/login")
     async def login(payload: dict):
         student_id = str(payload.get("student_id", "")).strip()
         password = str(payload.get("password", ""))
-        if not provider.verify_login(student_id, password):
+        # Scrypt is deliberately slow; keep it off the event loop.
+        outcome = await run_in_threadpool(_login, student_id, password)
+        if outcome is None:
             return JSONResponse({"ok": False, "error": "Invalid student ID or password"}, status_code=401)
-        encryption_key = keystore.prepare_encryption_key(student_id, password)
-        has_key = keystore.has_key(student_id)
-        api_key = keystore.decrypt_key(student_id, encryption_key) if has_key else None
-        # A password change or an interrupted demo setup can leave ciphertext
-        # that the verified password cannot unlock. Let the student re-key;
-        # connect_key replaces the old ciphertext only after validation.
-        session_id = sessions.create(student_id, encryption_key, api_key)
+        session_id, api_key = outcome
         response = JSONResponse({"ok": True, "needs_key": api_key is None, "profile": provider.get_profile(student_id)})
         response.set_cookie("campsage_session", session_id, httponly=True, secure=settings.cookie_secure, samesite="lax", max_age=settings.session_ttl_seconds)
         return response
@@ -72,15 +92,54 @@ def create_app(settings: Settings | None = None, model_client: GemmaClient | Non
             return JSONResponse({"ok": False, "error": "Login required"}, status_code=401)
         api_key = str(payload.get("api_key", "")).strip()
         if not api_key or len(api_key) > 512:
-            return JSONResponse({"ok": False, "error": "The key could not be validated. Check it and try again."}, status_code=400)
+            return JSONResponse({"ok": False, "error": _KEY_FALLBACK}, status_code=400)
         try:
-            client.validate_key(api_key)
-            keystore.connect_key(session.student_id, session.encryption_key, api_key)
+            await run_in_threadpool(client.validate_key, api_key)
+            await run_in_threadpool(keystore.connect_key, session.student_id, session.encryption_key, api_key)
             session.api_key = api_key
             return {"ok": True, "message": "Key connected"}
         except Exception as exc:
-            classify_error(exc)
-            return JSONResponse({"ok": False, "error": "The key could not be validated. Check it and try again."}, status_code=400)
+            return JSONResponse({"ok": False, "error": _KEY_MESSAGES.get(classify_error(exc), _KEY_FALLBACK)}, status_code=400)
+
+    @app.post("/api/transcribe")
+    async def transcribe(request: Request):
+        """Turn one spoken utterance (raw PCM16, mono, 16 kHz) into text for the chat."""
+        session = current_session(request)
+        if not session:
+            return JSONResponse({"ok": False, "error": "Please log in again."}, status_code=401)
+        if not session.api_key:
+            return JSONResponse({"ok": False, "error": "Connect your Google AI Studio key first."}, status_code=400)
+        declared = request.headers.get("content-length")
+        if declared and declared.isdigit() and int(declared) > MAX_AUDIO_BYTES:
+            return JSONResponse({"ok": False, "error": "That recording was too long."}, status_code=413)
+        pcm = await request.body()
+        if len(pcm) > MAX_AUDIO_BYTES:
+            return JSONResponse({"ok": False, "error": "That recording was too long."}, status_code=413)
+        if len(pcm) < MIN_AUDIO_BYTES or len(pcm) % 2:
+            return JSONResponse({"ok": False, "error": "That recording was too short."}, status_code=400)
+        try:
+            text = await run_in_threadpool(client.transcribe, session.api_key, pcm)
+        except Exception as exc:
+            category = classify_error(exc)
+            return JSONResponse({"ok": False, "error": f"I couldn't process the audio ({category}). Please try again."}, status_code=502)
+        return {"ok": True, "text": text}
+
+    def _ask(session, question: str):
+        student = provider.get_student(session.student_id)
+        records = {key: value for key, value in student.items() if key not in _PRIVATE_FIELDS}
+        # The model sees the student's academic profile, never their name or ID.
+        profile = {key: student[key] for key in ("semester", "class", "branch")}
+        # A short follow-up such as "and DBMS?" borrows the previous question for retrieval.
+        search_text = question
+        if len(question.split()) <= 4:
+            previous = [turn["text"] for turn in session.history if turn["role"] == "student"]
+            if previous:
+                search_text = f"{previous[-1]} {question}"
+        contexts = retrieve(search_text, profile, records, app.state.chunks)
+        return answer_question(
+            session.api_key, question, profile, contexts, client,
+            history=list(session.history), drift=session.drift,
+        )
 
     @app.post("/api/ask")
     async def ask(request: Request, payload: dict):
@@ -92,22 +151,20 @@ def create_app(settings: Settings | None = None, model_client: GemmaClient | Non
         question = str(payload.get("question", "")).strip()
         if not question or len(question) > 2_000:
             return JSONResponse({"status": "error", "answer": "Please enter a short question.", "sources": []}, status_code=400)
-        student = provider.get_student(session.student_id)
-        records = {key: value for key, value in student.items() if key not in {"student_id", "password_hash", "semester", "class", "branch"}}
-        profile = provider.get_profile(session.student_id)
-        contexts = retrieve(question, profile, records, app.state.chunks)
+        want_audio = payload.get("audio", True) is not False
         try:
-            result: AnswerResult = answer_question(session.api_key, question, profile, contexts, client)
-            return {
-                "status": result.status,
-                "answer": result.answer,
-                "sources": result.sources,
-                "model": result.model_id,
-                "audio_base64": result.audio_base64,
-            }
+            result: AnswerResult = await run_in_threadpool(_ask, session, question)
         except Exception as exc:
             category = classify_error(exc)
             return {"status": "error", "answer": f"The assistant is temporarily unavailable ({category}). Please try again.", "sources": []}
+        session.remember(question, result.answer, result.status)
+        return {
+            "status": result.status,
+            "answer": result.answer,
+            "sources": result.sources,
+            "model": result.model_id,
+            "audio_base64": result.audio_base64 if want_audio else "",
+        }
 
     @app.post("/api/logout")
     async def logout(request: Request):
