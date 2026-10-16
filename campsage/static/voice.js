@@ -1,6 +1,7 @@
 /* CampSage push-to-talk voice helper.
  *
- * window.CampVoice = { startRecording, stopRecording, cancel, playPcm24k, stopPlayback, onLevel, unlock }
+ * window.CampVoice = { startRecording, stopRecording, cancel, playPcm24k, stopPlayback, onLevel, onLimit, unlock,
+ *                       canStream, startStream, endStream, cancelStream }
  *
  * Capture : mic -> mono Float32 -> box-filter resample to 16 kHz -> PCM16 little-endian
  *           -> POST /api/transcribe (application/octet-stream).
@@ -409,6 +410,332 @@
   function stopPlayback() {
     playToken += 1;
     if (play) endPlayback(play, false);
+    if (stream) flushPlayer(stream, true);   // flush queued streaming audio too
+  }
+
+  // ------------------------------------------------------------ streaming (WebSocket /ws/voice)
+  // Live capture frames go out as they are produced; the reply audio is scheduled gaplessly as it arrives.
+  var FRAME_SAMPLES = 1600;                 // 100 ms of 16 kHz audio per frame (3,200 bytes)
+  var WS_OPEN_TIMEOUT_MS = 4000;
+  var JITTER_S = 0.07;                      // jitter buffer before the first chunk starts playing
+  var UNSUPPORTED_CLOSE = { 1002: true, 1003: true, 1006: true, 1015: true };
+  var stream = null;                        // the current (or still-playing) streaming turn
+
+  function coded(code, message) { var e = fail(message); e.code = code; return e; }
+  function wsUnavailable() { return coded('ws_unavailable', 'Live voice is unavailable right now.'); }
+
+  function wsUrl() {
+    var loc = window.location;
+    return (loc.protocol === 'https:' ? 'wss:' : 'ws:') + '//' + loc.host + '/ws/voice';
+  }
+
+  function canStream() { return typeof window.WebSocket === 'function'; }
+
+  function call(session, name, arg1, arg2) {
+    if (session.cancelled) return;
+    var fn = session.handlers[name];
+    if (typeof fn !== 'function') return;
+    try { fn(arg1, arg2); } catch (_) { /* UI handler errors must not break audio */ }
+  }
+
+  function wsSend(session, item) {
+    var ws = session.ws;
+    if (!ws || ws.readyState !== 1) { session.outbox.push(item); return; }
+    while (session.outbox.length) ws.send(session.outbox.shift());
+    ws.send(item);
+  }
+
+  function sendFrame(session, floats) {
+    var pcm = floatToInt16(floats);
+    session.sentSamples += pcm.length;
+    wsSend(session, int16ToLeBytes([pcm], pcm.length));
+  }
+
+  // ---- gapless player for incoming 24 kHz PCM16 chunks
+  function playerPush(session, arrayBuffer) {
+    var p = session.player;
+    if (p.stopped || p.ended) return;
+    var bytes = new Uint8Array(arrayBuffer);
+    if (p.carry !== null) {                       // a previous chunk ended mid-sample
+      var merged = new Uint8Array(bytes.length + 1);
+      merged[0] = p.carry; merged.set(bytes, 1);
+      bytes = merged; p.carry = null;
+    }
+    if (bytes.length % 2) { p.carry = bytes[bytes.length - 1]; bytes = bytes.subarray(0, bytes.length - 1); }
+    if (!bytes.length) return;
+
+    var samples = new Float32Array(bytes.length / 2);
+    for (var i = 0; i < samples.length; i += 1) {
+      var v = bytes[i * 2] | (bytes[i * 2 + 1] << 8);
+      if (v & 0x8000) v -= 0x10000;
+      samples[i] = v / 32768;
+    }
+
+    var context = getContext();
+    if (context.state !== 'running') { try { context.resume(); } catch (_) {} }
+    var buffer = context.createBuffer(1, samples.length, PLAYBACK_RATE);
+    if (buffer.copyToChannel) buffer.copyToChannel(samples, 0);
+    else buffer.getChannelData(0).set(samples);
+
+    if (!p.analyser) {
+      p.analyser = context.createAnalyser();
+      p.analyser.fftSize = 512;
+      p.analyser.connect(context.destination);
+    }
+    var source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(p.analyser);
+
+    var now = context.currentTime;
+    if (!p.started) {
+      p.started = true;
+      p.nextTime = now + JITTER_S;
+      var data = new Float32Array(p.analyser.fftSize);
+      p.timer = setInterval(function () {
+        p.analyser.getFloatTimeDomainData(data);
+        var sum = 0;
+        for (var k = 0; k < data.length; k += 1) sum += data[k] * data[k];
+        emitLevel(rmsToLevel(Math.sqrt(sum / data.length)), 'speaker');
+      }, 50);
+      call(session, 'onAudioStart');
+    } else if (p.nextTime < now + 0.005) {
+      p.nextTime = now + 0.03;                    // underrun: re-buffer briefly instead of overlapping
+    }
+    var startAt = p.nextTime;
+    p.nextTime += samples.length / PLAYBACK_RATE;
+    p.sources.push(source);
+    source.onended = function () {
+      var at = p.sources.indexOf(source);
+      if (at >= 0) p.sources.splice(at, 1);
+      try { source.disconnect(); } catch (_) {}
+      maybeFinishPlayback(session);
+    };
+    try { source.start(startAt); } catch (_) { p.sources.splice(p.sources.indexOf(source), 1); }
+  }
+
+  function maybeFinishPlayback(session) {
+    var p = session.player;
+    if (p.ended || !session.serverDone || p.sources.length) return;
+    p.ended = true;
+    if (p.timer) { clearInterval(p.timer); p.timer = null; }
+    try { if (p.analyser) p.analyser.disconnect(); } catch (_) {}
+    emitLevel(0, 'speaker');
+    if (stream === session) stream = null;
+    call(session, 'onPlaybackEnd');
+  }
+
+  function flushPlayer(session, notify) {
+    var p = session.player;
+    p.stopped = true;
+    p.carry = null;
+    var sources = p.sources; p.sources = [];
+    for (var i = 0; i < sources.length; i += 1) {
+      sources[i].onended = null;
+      try { sources[i].stop(); } catch (_) {}
+      try { sources[i].disconnect(); } catch (_) {}
+    }
+    if (p.timer) { clearInterval(p.timer); p.timer = null; }
+    try { if (p.analyser) p.analyser.disconnect(); } catch (_) {}
+    p.analyser = null;
+    if (p.started || sources.length) emitLevel(0, 'speaker');
+    if (notify) maybeFinishPlayback(session);
+  }
+
+  // ---- stream lifecycle
+  function teardownStream(session, sendCancel) {
+    if (session.openTimer) { clearTimeout(session.openTimer); session.openTimer = null; }
+    var ws = session.ws;
+    if (sendCancel && ws && ws.readyState === 1 && !session.serverDone) {
+      try { ws.send(JSON.stringify({ type: 'cancel' })); } catch (_) {}
+    }
+    releaseRecording(session);                    // closes the microphone
+    emitLevel(0, 'mic');
+    flushPlayer(session, false);
+    if (ws) {
+      ws.onopen = ws.onmessage = ws.onclose = ws.onerror = null;
+      try { ws.close(1000); } catch (_) {}
+    }
+    session.outbox = [];
+  }
+
+  function failStream(session, error, sendCancel) {
+    if (session.failed || session.cancelled) return;
+    session.failed = true;
+    teardownStream(session, !!sendCancel);
+    if (stream === session) stream = null;
+    if (!session.ready) session.startReject(error);
+    else if (typeof session.handlers.onError === 'function') {
+      try { session.handlers.onError(error); } catch (_) {}
+    }
+  }
+
+  function finalizeCapture(session) {
+    if (session.finalized || session.failed || session.cancelled) return;
+    session.finalized = true;
+    releaseRecording(session);                    // microphone is open only while recording
+    emitLevel(0, 'mic');
+    if (session.pending.length) { sendFrame(session, session.pending.splice(0, session.pending.length)); }
+    if (session.sentSamples * 2 < MIN_BYTES) {
+      failStream(session, coded('too_short', session.trackEnded
+        ? 'The microphone stopped unexpectedly. Please try again.'
+        : 'That was too short. Hold the button and speak for a moment.'), true);
+      return;
+    }
+    wsSend(session, JSON.stringify({ type: 'end' }));
+  }
+
+  function handleStreamSamples(session, samples) {
+    if (!session.active || session.finalized || session.capped) return;
+    var sum = 0;
+    for (var i = 0; i < samples.length; i += 1) sum += samples[i] * samples[i];
+    emitLevel(rmsToLevel(Math.sqrt(sum / (samples.length || 1))), 'mic');
+
+    session.resampler.process(samples, session.pending);
+    var maxSamples = MAX_RECORD_BYTES / 2;
+    if (session.sentSamples + session.pending.length >= maxSamples) {
+      session.pending.length = Math.max(0, maxSamples - session.sentSamples);
+      session.capped = true;
+    }
+    while (session.pending.length >= FRAME_SAMPLES) sendFrame(session, session.pending.splice(0, FRAME_SAMPLES));
+    if (session.capped) {
+      for (var k = 0; k < limitListeners.length; k += 1) { try { limitListeners[k](); } catch (_) {} }
+      call(session, 'onLimit');
+      finalizeCapture(session);                   // nothing more can be sent: end the turn now
+    }
+  }
+
+  function onStreamMessage(session, event) {
+    if (session.failed || session.cancelled) return;
+    session.gotMessage = true;
+    var data = event.data;
+    if (typeof data !== 'string') {
+      if (!session.serverDone) playerPush(session, data);
+      return;
+    }
+    var msg;
+    try { msg = JSON.parse(data); } catch (_) { return; }
+    if (!msg || typeof msg !== 'object') return;
+    if (msg.type === 'transcript') call(session, 'onTranscript', String(msg.text || ''), !!msg.final);
+    else if (msg.type === 'thinking') call(session, 'onThinking');
+    else if (msg.type === 'done') {
+      session.serverDone = true;
+      call(session, 'onDone', msg);
+      var ws = session.ws;
+      if (ws) { ws.onmessage = ws.onclose = ws.onerror = null; try { ws.close(1000); } catch (_) {} }
+      maybeFinishPlayback(session);
+    } else if (msg.type === 'error') {
+      failStream(session, coded('server_error', String(msg.message || 'Something went wrong. Please try again.')), false);
+    }
+  }
+
+  function onStreamClose(session, event) {
+    if (session.openTimer) { clearTimeout(session.openTimer); session.openTimer = null; }
+    if (session.failed || session.cancelled || session.serverDone) return;
+    var code = event && event.code;
+    if (code === 4401) failStream(session, coded('unauthorized', 'Your session expired. Please sign in again.'), false);
+    else if (!session.opened || (!session.gotMessage && UNSUPPORTED_CLOSE[code])) failStream(session, wsUnavailable(), false);
+    else failStream(session, coded('connection_lost', 'The connection dropped. Please try again.'), false);
+  }
+
+  function startStream(handlers) {
+    if (!canStream()) return Promise.reject(wsUnavailable());
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      return Promise.reject(fail(window.isSecureContext === false
+        ? 'The microphone needs a secure (https) connection.'
+        : 'This browser does not support microphone recording.'));
+    }
+    // A new tap supersedes everything: previous stream, legacy recording, audio still playing.
+    if (stream) { var old = stream; old.cancelled = true; teardownStream(old, true); stream = null; }
+    if (rec) { releaseRecording(rec); rec = null; }
+    recToken += 1;
+    stopPlayback();
+
+    var context, resumePromise;
+    try {
+      context = getContext();           // create + resume synchronously: keeps the iOS user gesture
+      resumePromise = resumeContext();
+    } catch (error) { return Promise.reject(error); }
+
+    var session = {
+      handlers: handlers || {}, ws: null, outbox: [], opened: false, gotMessage: false, serverDone: false,
+      ready: false, failed: false, cancelled: false, finalized: false, endRequested: false, captureReady: false,
+      active: false, stream: null, source: null, capture: null, resampler: null, pending: [], sentSamples: 0,
+      capped: false, trackEnded: false, openTimer: null, readyParts: 0,
+      player: { sources: [], nextTime: 0, started: false, stopped: false, ended: false, timer: null, analyser: null, carry: null },
+      startResolve: null, startReject: null
+    };
+    stream = session;
+
+    return new Promise(function (resolve, reject) {
+      session.startResolve = resolve;
+      session.startReject = reject;
+
+      var part = function () {
+        session.readyParts += 1;
+        if (session.readyParts < 2 || session.failed || session.cancelled) return;
+        session.ready = true;
+        resolve();
+      };
+
+      var ws;
+      try { ws = new window.WebSocket(wsUrl()); } catch (_) { failStream(session, wsUnavailable(), false); return; }
+      session.ws = ws;
+      try { ws.binaryType = 'arraybuffer'; } catch (_) {}
+      ws.onopen = function () {
+        if (session.failed || session.cancelled) return;
+        if (session.openTimer) { clearTimeout(session.openTimer); session.openTimer = null; }
+        session.opened = true;
+        while (session.outbox.length && ws.readyState === 1) ws.send(session.outbox.shift());
+        part();
+      };
+      ws.onmessage = function (event) { onStreamMessage(session, event); };
+      ws.onclose = function (event) { onStreamClose(session, event); };
+      ws.onerror = function () { /* a close event follows; handled there */ };
+      session.openTimer = setTimeout(function () {
+        if (!session.opened) failStream(session, wsUnavailable(), false);
+      }, WS_OPEN_TIMEOUT_MS);
+
+      var userMedia = navigator.mediaDevices.getUserMedia({
+        audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+      });
+      Promise.all([resumePromise, userMedia]).then(function (results) {
+        session.stream = results[1];
+        if (session.failed || session.cancelled) { releaseRecording(session); return null; }
+        session.resampler = new Resampler(context.sampleRate);
+        session.stream.getTracks().forEach(function (track) { track.onended = function () { session.trackEnded = true; }; });
+        session.source = context.createMediaStreamSource(session.stream);
+        return attachCapture(context, session.source, function (samples) { handleStreamSamples(session, samples); });
+      }).then(function (capture) {
+        if (!capture) return;
+        if (session.failed || session.cancelled) { capture.disconnect(); releaseRecording(session); return; }
+        session.capture = capture;
+        session.active = true;
+        session.captureReady = true;
+        part();
+        if (session.endRequested) finalizeCapture(session);   // released before the mic finished opening
+      }).catch(function (error) {
+        userMedia.then(function (s) { try { s.getTracks().forEach(function (t) { t.stop(); }); } catch (_) {} }, function () {});
+        failStream(session, (error && error.friendly) ? error : micError(error), false);
+      });
+    });
+  }
+
+  function endStream() {
+    var session = stream;
+    if (!session || session.failed || session.cancelled || session.endRequested) return;
+    session.endRequested = true;
+    if (session.captureReady) finalizeCapture(session);
+  }
+
+  function cancelStream() {
+    var session = stream;
+    if (session) {
+      session.cancelled = true;
+      teardownStream(session, true);
+      stream = null;
+      if (!session.ready && session.startReject) session.startReject(fail('Recording was cancelled.'));
+    }
+    stopPlayback();
   }
 
   // ------------------------------------------------------------------ misc API
@@ -432,8 +759,12 @@
   }
 
   // Optional: call from any tap/click handler (e.g. Send or mode toggle) so iOS allows later audio.
+  // Also pre-loads the capture worklet so the first recording starts instantly (mic stays closed).
   function unlock() {
-    try { return resumeContext().then(function () {}, function () {}); } catch (_) { return Promise.resolve(); }
+    try {
+      ensureWorklet(getContext());
+      return resumeContext().then(function () {}, function () {});
+    } catch (_) { return Promise.resolve(); }
   }
 
   window.CampVoice = {
@@ -445,6 +776,10 @@
     onLevel: onLevel,
     onLimit: onLimit,
     unlock: unlock,
+    canStream: canStream,
+    startStream: startStream,
+    endStream: endStream,
+    cancelStream: cancelStream,
     MAX_RECORD_SECONDS: MAX_RECORD_BYTES / (TARGET_RATE * 2)
   };
 })();
