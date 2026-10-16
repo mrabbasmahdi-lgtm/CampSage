@@ -21,6 +21,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import re
 import time
 
 from fastapi import APIRouter, WebSocket
@@ -44,6 +45,7 @@ VOICE_STYLE = (
     "\n\nThis reply is spoken in a live voice conversation. Answer directly and stop. "
     "Do not end with a question or an offer of further help."
     "\n\nLANGUAGE RULE FOR VOICE (this replaces any earlier language rule): "
+    "Each message ends with a REPLY LANGUAGE line; always follow it. "
     "If the student speaks Hindi (in Devanagari or in Roman letters) or Hinglish, reply in Hinglish: "
     "natural Hindi written in Roman letters, mixed with common English words such as fee, exam, "
     "attendance, form, office and deadline. Never use Devanagari script in the reply. "
@@ -96,25 +98,53 @@ def _speaker_rules() -> str:
     return build_live_prompt("", {}, [], [], 0)[1] + VOICE_STYLE
 
 
-def _language_directive(question: str) -> str:
-    """Pin the reply language from the transcript's script, so the model does not guess.
+# Common Hindi function words. Real Hindi or Hinglish almost always contains several of them;
+# Persian, Urdu or English that the speech-to-text step wrongly wrote in Devanagari does not.
+_HINDI_WORDS_ROMAN = {
+    "hai", "hain", "hoon", "ho", "tha", "thi", "kya", "kab", "kahan", "kaise", "kitna", "kitni",
+    "kitne", "kyun", "kaun", "mera", "meri", "mere", "mujhe", "main", "mai", "hum", "humein",
+    "aap", "apna", "apni", "nahi", "nahin", "ka", "ki", "ke", "ko", "se", "mein", "par", "aur",
+    "bhi", "toh", "karna", "karo", "karun", "kare", "batao", "bataiye", "chahiye", "hoga", "hogi",
+    "abhi", "kal", "aaj", "wala", "wali", "lekin", "agar", "jama", "bharna", "milega", "milegi",
+}
+_HINDI_WORDS_DEVANAGARI = {
+    "है", "हैं", "हूँ", "हूं", "था", "थी", "क्या", "कब", "कहाँ", "कहां", "कैसे", "कितना", "कितनी", "कितने",
+    "क्यों", "कौन", "मेरा", "मेरी", "मेरे", "मुझे", "मैं", "हम", "आप", "नहीं", "का", "की", "के", "को",
+    "से", "में", "पर", "और", "भी", "तो", "करना", "करें", "बताइए", "चाहिए", "होगा", "होगी",
+    "अभी", "कल", "आज", "लेकिन", "अगर", "मिलेगा", "मिलेगी",
+}
+_WORD_SPLIT = re.compile(r"[\s.,;:!?\"'()\[\]{}\-।؟،]+")
 
-    The answering model only sees the transcript, never the audio. Persian, Urdu and Hindi
-    speech sound alike and are easy to confuse, but their written scripts are not.
+
+def _is_hindi_or_hinglish(question: str) -> bool:
+    words = [w for w in _WORD_SPLIT.split(question.lower()) if w]
+    if not words:
+        return False
+    roman = sum(1 for w in words if w in _HINDI_WORDS_ROMAN)
+    devanagari = sum(1 for w in words if w in _HINDI_WORDS_DEVANAGARI)
+    hits = roman + devanagari
+    return hits >= 2 or (hits >= 1 and hits / len(words) >= 0.25)
+
+
+def _language_directive(question: str) -> str:
+    """Pin the reply language from the transcript so the model does not guess.
+
+    The answering model only sees the transcript, never the audio, and the speech-to-text step
+    often writes Persian, Urdu or accented English in Devanagari. So English is the default and
+    Hinglish is used only when the transcript really contains Hindi words.
     """
 
-    if any("\u0900" <= ch <= "\u097f" for ch in question):
+    if _is_hindi_or_hinglish(question):
         return (
-            "\n\nREPLY LANGUAGE FOR THIS TURN: the student spoke Hindi. Reply in Hinglish, "
+            "\n\nREPLY LANGUAGE FOR THIS TURN: the student spoke Hindi or Hinglish. Reply in Hinglish, "
             "which is Hindi written in Roman letters, never in Devanagari."
         )
-    if any(ch.isalpha() and not ch.isascii() and not ("\u0900" <= ch <= "\u097f") for ch in question):
-        return (
-            "\n\nREPLY LANGUAGE FOR THIS TURN: the student spoke a language that is not Hindi "
-            "or Hinglish (for example Persian, Urdu or Arabic). Do NOT reply in Hindi or Hinglish. "
-            "Reply in clear simple English only."
-        )
-    return ""
+    return (
+        "\n\nREPLY LANGUAGE FOR THIS TURN: reply in clear simple English only. The student did not "
+        "speak Hindi or Hinglish, even if the transcript looks like Hindi script or Urdu, Persian "
+        "or another language, and even if earlier replies in this conversation were in Hinglish. "
+        "Do not use Hindi words."
+    )
 
 
 def _prepare(app, session, question: str) -> tuple[list, str]:
