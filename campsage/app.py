@@ -173,6 +173,9 @@ def create_app(settings: Settings | None = None, model_client: GemmaClient | Non
         response.delete_cookie("campsage_session")
         return response
 
+    from .voice_api import router as voice_router  # local import: voice_api reads constants from this module
+    app.include_router(voice_router)
+
     static_dir = ROOT / "campsage" / "static"
     if static_dir.exists():
         app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
