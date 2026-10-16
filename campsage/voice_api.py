@@ -43,6 +43,15 @@ TRANSCRIPT_TIMEOUT_S = 6.0
 VOICE_STYLE = (
     "\n\nThis reply is spoken in a live voice conversation. Answer directly and stop. "
     "Do not end with a question or an offer of further help."
+    "\n\nLANGUAGE RULE FOR VOICE (this replaces any earlier language rule): "
+    "If the student speaks Hindi (in Devanagari or in Roman letters) or Hinglish, reply in Hinglish: "
+    "natural Hindi written in Roman letters, mixed with common English words such as fee, exam, "
+    "attendance, form, office and deadline. Never use Devanagari script in the reply. "
+    "If the student speaks any other language, including English, reply in clear simple English, "
+    "even when the student's language is Urdu, Bengali, Tamil, Punjabi or anything else. "
+    "Keep names, room numbers, dates and amounts exactly as in the evidence. "
+    "The one exception is when the evidence does not support an answer: then say the exact English "
+    "sentence required for that case, whatever the language."
 )
 
 
