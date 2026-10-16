@@ -63,7 +63,7 @@ A real deployment would implement these against the college's own login or API (
 | Student ID | Password | Useful state to test |
 |---|---|---|
 | `demo-a` | `camp-a-2026` | B.Tech CSE, 82% attendance, ₹18,500 outstanding, elective registration pending |
-| `demo-b` | `camp-b-2026` | BCA, 91% attendance, fees paid, registration complete |
+| `demo-b` | `camp-b-2026` | BCA, 91% attendance, ₹12,000 paid online but still showing as outstanding (try the "paid but still pending" question), registration complete |
 | `demo-c` | `camp-c-2026` | B.Tech ECE, 74% attendance, ₹7,200 overdue, registration blocked, admit card on hold |
 | `demo-d` | `camp-d-2026` | B.Tech ME, 96% attendance, CGPA 9.0, active merit scholarship |
 | `demo-e` | `camp-e-2026` | MBA, 88% attendance, second fee instalment due, hostel allotted |
@@ -156,7 +156,7 @@ student-specific answers:
 | Question | Expected fixture-backed result |
 |---|---|
 | `What is my attendance?` | Each student receives their own overall and subject attendance. |
-| `How much fee do I owe?` | `demo-a`: ₹18,500; `demo-b`: ₹0; `demo-c`: ₹7,200. |
+| `How much fee do I owe?` | `demo-a`: ₹18,500; `demo-b`: ₹12,000 shown as outstanding although a ₹12,000 payment was made on 15 October (receipt DEMO-RCPT-48213, not yet reflected); `demo-c`: ₹7,200. |
 | `When is my next exam?` | DBMS: 22 October; Web Technology: 24 October; Embedded Systems: 28 October 2026. |
 | `Can I complete registration?` | `demo-a`: elective pending; `demo-b`: complete; `demo-c`: blocked until fees are cleared. |
 | `What is the fee payment deadline?` | 30 October 2026, from the sample fee notice. |
@@ -170,7 +170,16 @@ student-specific answers:
 | `Which placement drives can I join?` | `demo-f`: TechNova Solutions and DataBridge Analytics. |
 | `Do I have any library fine?` | `demo-c`: ₹60, one overdue book. |
 | `What is the late fee?` | ₹100 per day after the due date, from the fee notice. |
-| `What is the capital of France?` | CampSage politely marks it off-topic. |
+
+| `I paid all my fees but the portal still shows a pending amount. What do I do?` | Step-by-step guidance (office, contact, documents, sample application) from the demo procedure notice. |
+| `Where is Prof Nadeem Alvi's office?` | Block, floor and room from the demo staff directory. |
+| `What is the capital of France?` | A short general-knowledge answer, clearly not presented as a college rule. Repeated off-topic chat gets a polite redirect. |
+
+> All offices, rooms and staff in `data/notices/` are **fictional demo data**. Replace them with your campus's real details.
+
+### 7. Chat mode and talk mode
+
+CampSage starts in silent chat mode. Switch to **Talk directly** to use the push-to-talk mic (tap to start, tap again to send) and hear spoken answers. Browsers only allow microphone access on `http://localhost` / `http://127.0.0.1` or on HTTPS, so to test from a phone use an HTTPS tunnel.
 
 All answers are based on the fictional fixtures in `data/`; they are not official university data.
 

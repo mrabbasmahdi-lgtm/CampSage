@@ -1,0 +1,39 @@
+/* CampSage HUD: styles for the canvas orb mounted by hud.js.
+   Colours can be themed per container with these custom properties:
+   --hud-idle, --hud-idle-accent, --hud-listen, --hud-listen-accent,
+   --hud-speak, --hud-speak-accent, --hud-text. They are read once at mount(). */
+
+.camphud {
+  --hud-idle: #69d3b0;
+  --hud-idle-accent: #2f8f78;
+  --hud-listen: #5cc8ff;
+  --hud-listen-accent: #b4ecff;
+  --hud-speak: #69d3b0;
+  --hud-speak-accent: #ffb454;
+  --hud-text: #e6fff6;
+
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--hud-max, 420px);
+  min-width: 96px;
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  contain: layout paint style;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.camphud > canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Handy sizing modifiers; the canvas always follows the container. */
+.camphud--small { --hud-max: 180px; }
+.camphud--fill  { --hud-max: none; }

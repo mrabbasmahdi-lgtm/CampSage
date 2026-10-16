@@ -1,6 +1,7 @@
 [
   {
     "student_id": "demo-a",
+    "name": "Arham Siddiqui",
     "password_hash": "scrypt$UDgKaHfYDg2dxk5bZmbQFg==$V8rtq51-_E1RZQneN1VlQpCbr4KNvhmci_qmKuICp3Y=",
     "semester": "B.Tech 5th semester",
     "class": "CSE-A",
@@ -128,6 +129,7 @@
   },
   {
     "student_id": "demo-b",
+    "name": "Zainab Fatima",
     "password_hash": "scrypt$cIBoVcGnVQ19FOh5OtjoAw==$zUAFLzw_P0Nk6QoETsHb5WOxoexDIamtu7kfUW76dKw=",
     "semester": "BCA 3rd semester",
     "class": "BCA-B",
@@ -190,17 +192,17 @@
       "note": "Download from the examination portal; carry a printed copy and college ID"
     },
     "fees": {
-      "status": "paid",
-      "outstanding": "\u20b90",
+      "status": "payment made, not yet reflected",
+      "outstanding": "\u20b912,000",
       "total_semester_fee": "\u20b928,000",
-      "paid_so_far": "\u20b928,000",
+      "paid_so_far": "\u20b916,000 reflected on the portal",
       "due_date": "2026-10-30",
       "breakdown": {
         "tuition": "\u20b923,000",
         "examination": "\u20b92,500",
         "library and lab": "\u20b92,500"
       },
-      "last_payment": "\u20b928,000 paid on 2026-08-05 (receipt FR-87740)"
+      "last_payment": "On 15 October 2026 you paid \u20b912,000 online with receipt number DEMO-RCPT-48213. The portal does not show this payment yet and still shows \u20b912,000 outstanding."
     },
     "registration": {
       "status": "complete",
@@ -248,6 +250,7 @@
   },
   {
     "student_id": "demo-c",
+    "name": "Rayyan Ansari",
     "password_hash": "scrypt$-MicLHUWdbe8WcrSXYW6Ig==$t8g8OXG1plSu6oj8BhPVWzQ1dK_gucevtMT6ST853sg=",
     "semester": "B.Tech 7th semester",
     "class": "ECE-A",
@@ -377,6 +380,7 @@
   },
   {
     "student_id": "demo-d",
+    "name": "Hamza Qureshi",
     "password_hash": "scrypt$9hE8gXevCE6O7DCWE9PrpQ==$qPZr9DVL9kzzSyc_DhDEr1jMRhatPZ2cCNSM8Qab9Ew=",
     "semester": "B.Tech 3rd semester",
     "class": "ME-B",
@@ -501,6 +505,7 @@
   },
   {
     "student_id": "demo-e",
+    "name": "Ayesha Naqvi",
     "password_hash": "scrypt$X9huXTSujS14It4tgmnxgg==$zbw6nyKVXFMA0BmEe1tiaVCo662Q2qa6rrIFx5ZtJdQ=",
     "semester": "MBA 1st semester",
     "class": "MBA-A",
@@ -629,6 +634,7 @@
   },
   {
     "student_id": "demo-f",
+    "name": "Danish Akhtar",
     "password_hash": "scrypt$0dFija77CRkpVgBBtTW3Cg==$D8fuoikQAJHOSdYWFQKEK1btbUS1PejapgPnDzW4tTA=",
     "semester": "B.Tech 7th semester",
     "class": "CSE-B",

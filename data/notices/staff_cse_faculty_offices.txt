@@ -1,0 +1,3 @@
+DEMO NOTICE: Computer Science and Engineering (CSE) department faculty and offices
+
+This is sample data with fictional names for the CampSage prototype. The CSE department is in Block-B. Dr. Kavita Rastogi, Head of Department, office in Block-B, 3rd floor, room B-301, ext. 411 (demo). Prof. Nadeem Alvi, Professor, Block-B, 3rd floor, room B-305, ext. 412 (demo). Dr. Shalini Awasthi, Associate Professor and electives coordinator, Block-B, 2nd floor, room B-210, ext. 413 (demo). Mr. Vikas Saxena, Assistant Professor and attendance coordinator, Block-B, 2nd floor, room B-214, ext. 414 (demo). Faculty office hours are 10:00 to 16:00, Monday to Friday. The department office is on the 2nd floor, room B-201.

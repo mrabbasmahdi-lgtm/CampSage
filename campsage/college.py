@@ -30,6 +30,7 @@ class DemoCollegeProvider:
     def get_profile(self, student_id: str) -> dict:
         row = self.students[student_id]
         return {
+            "name": row.get("name", ""),
             "semester": row["semester"],
             "class": row["class"],
             "branch": row["branch"],
@@ -52,6 +53,7 @@ def make_demo_students(path: Path) -> None:
     rows = [
         {
             "student_id": "demo-a",
+            "name": "Arham Siddiqui",
             "password_hash": hash_password("camp-a-2026"),
             "semester": "B.Tech 5th semester",
             "class": "CSE-A",
@@ -64,6 +66,7 @@ def make_demo_students(path: Path) -> None:
         },
         {
             "student_id": "demo-b",
+            "name": "Zainab Fatima",
             "password_hash": hash_password("camp-b-2026"),
             "semester": "BCA 3rd semester",
             "class": "BCA-B",
@@ -71,11 +74,16 @@ def make_demo_students(path: Path) -> None:
             "attendance": {"overall": "91%", "web technology": "94%"},
             "timetable": {"Tuesday": ["10:00 Web Technology", "14:00 Python Lab"]},
             "upcoming_exams": [{"subject": "Web Technology", "date": "2026-10-24"}],
-            "fees": {"status": "paid", "outstanding": "₹0"},
+            "fees": {
+                "status": "payment made, not yet reflected",
+                "outstanding": "₹12,000",
+                "last_payment": "On 15 October 2026 you paid ₹12,000 online with receipt number DEMO-RCPT-48213. The portal does not show this payment yet and still shows ₹12,000 outstanding.",
+            },
             "registration": {"status": "complete", "note": "No pending registration"},
         },
         {
             "student_id": "demo-c",
+            "name": "Rayyan Ansari",
             "password_hash": hash_password("camp-c-2026"),
             "semester": "B.Tech 7th semester",
             "class": "ECE-A",

@@ -1,0 +1,3 @@
+DEMO NOTICE: Electronics and Communication Engineering (ECE) department faculty and offices
+
+This is sample data with fictional names for the CampSage prototype. The ECE department is in Block-C. Dr. Pankaj Srivastava, Head of Department, office in Block-C, 2nd floor, room C-202, ext. 421 (demo). Ms. Tabassum Rizvi, Assistant Professor and project lab in-charge, Block-C, 2nd floor, room C-208, ext. 422 (demo). The embedded systems and project labs are on the ground floor of Block-C. Faculty office hours are 10:00 to 16:00, Monday to Friday. The department office is on the 2nd floor, room C-201.

@@ -10,7 +10,7 @@ connected to Integral University's real systems.
   breakdown and due dates, registration, courses and faculty, assignments, results and backlogs,
   library, scholarship and mentor. Some records also have hostel, placement, revaluation and
   attendance-condonation details.
-- `notices/` — 13 sample public notices:
+- `notices/` — public notices (all marked DEMO):
   - `attendance_and_course_material.txt` — 75% rule, condonation, course material
   - `examination_datesheet.txt` — datesheets for all demo programmes
   - `exam_rules_and_admit_card.txt` — admit card, reporting time, allowed items
@@ -23,6 +23,16 @@ connected to Integral University's real systems.
   - `holiday_and_academic_calendar.txt`
   - `certificates_and_id_card_notice.txt`
   - `helpdesk_and_grievance_notice.txt`
+  - `procedure_*.txt` — nine step-by-step procedures: fee paid but still pending, elective
+    registration problem, attendance shortage and condonation, exam form or admit card issue, lost
+    ID card, bonafide certificate, scholarship query, hostel or transport fee query, and
+    correcting name or details.
+  - `staff_cse_faculty_offices.txt`, `staff_ece_faculty_offices.txt`,
+    `staff_computer_applications_faculty_offices.txt` — fictional faculty per department (name,
+    block, floor, room, extension, office hours).
+  - `office_admission.txt`, `office_accounts.txt`, `office_examination.txt`,
+    `office_scholarship_hostel_transport.txt` — fictional office contacts and what each handles.
+  - `campus_overview.txt` — fictional block names and what is in each block.
 - `notice_index.json` — generated lexical index of the notice files. Rebuild it with:
 
   ```bash
@@ -34,14 +44,17 @@ ignored by Git; it must not be committed.
 
 ## Demo credentials
 
-| Student ID | Password | Programme | Main state |
-|---|---|---|---|
-| `demo-a` | `camp-a-2026` | B.Tech CSE, 5th sem | 82% attendance, ₹18,500 due, elective registration pending, assignment not submitted |
-| `demo-b` | `camp-b-2026` | BCA, 3rd sem | 91% attendance, fees paid, registration complete, eligible for merit scholarship |
-| `demo-c` | `camp-c-2026` | B.Tech ECE, 7th sem | 74% attendance, ₹7,200 overdue, registration blocked, admit card on hold, 1 backlog, overdue library book |
-| `demo-d` | `camp-d-2026` | B.Tech ME, 3rd sem | 96% attendance, CGPA 9.0, active merit scholarship (50% tuition waiver) |
-| `demo-e` | `camp-e-2026` | MBA, 1st sem | 88% attendance, second fee instalment of ₹37,500 due, hostel allotted |
-| `demo-f` | `camp-f-2026` | B.Tech CSE, 7th sem | 79% attendance, 1 backlog (Operating Systems), revaluation under review, placement drives registered |
+| Student ID | Password | Name | Programme | Main state |
+|---|---|---|---|---|
+| `demo-a` | `camp-a-2026` | Arham Siddiqui | B.Tech CSE, 5th sem | 82% attendance, ₹18,500 due, elective registration pending, assignment not submitted |
+| `demo-b` | `camp-b-2026` | Zainab Fatima | BCA, 3rd sem | 91% attendance, ₹12,000 payment made 15 Oct 2026 (receipt DEMO-RCPT-48213) not yet reflected, registration complete, eligible for merit scholarship |
+| `demo-c` | `camp-c-2026` | Rayyan Ansari | B.Tech ECE, 7th sem | 74% attendance, ₹7,200 overdue, registration blocked, admit card on hold, 1 backlog, overdue library book |
+| `demo-d` | `camp-d-2026` | Hamza Qureshi | B.Tech ME, 3rd sem | 96% attendance, CGPA 9.0, active merit scholarship (50% tuition waiver) |
+| `demo-e` | `camp-e-2026` | Ayesha Naqvi | MBA, 1st sem | 88% attendance, second fee instalment of ₹37,500 due, hostel allotted |
+| `demo-f` | `camp-f-2026` | Danish Akhtar | B.Tech CSE, 7th sem | 79% attendance, 1 backlog (Operating Systems), revaluation under review, placement drives registered |
 
 Use the questions in the root `README.md` to exercise both public notices and student-specific
 records.
+
+All names, staff, rooms, extensions and receipt numbers in this folder are fictional sample data
+(marked "DEMO") and must be replaced with real details before a real deployment.

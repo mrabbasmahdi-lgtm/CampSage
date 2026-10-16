@@ -1,0 +1,3 @@
+DEMO NOTICE: Procedure for a hostel or transport fee query
+
+This is sample data for the CampSage prototype. Hostel and transport fees are separate from the semester fee. For a hostel fee query, meet Mr. Arif Mirza, hostel warden, at the hostel office, room H-01 (demo contact). For a bus or transport fee query, meet Mr. Dinesh Yadav, transport in-charge, Block-A, ground floor, room A-012 (demo contact). Carry your ID card, the payment receipt and the hostel or bus pass number. If you paid but the amount still shows as due, follow the same steps as the semester fee: wait 48 hours, then submit a short application with the receipt number. Resolution usually takes 2 to 3 working days. Office hours are 10:00 to 16:00, Monday to Saturday.

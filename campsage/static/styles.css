@@ -1,2 +1,97 @@
-:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#edf2f7;background:#09111c;line-height:1.5;font-synthesis:none}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 10% 0%,#17304a 0,#09111c 42%,#060b12 100%)}button,input,textarea{font:inherit}button{cursor:pointer}.shell{width:min(1120px,100%);margin:0 auto;padding:28px 18px}.card{background:rgba(13,25,39,.88);border:1px solid rgba(164,190,214,.15);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.2)}.auth-card{max-width:440px;margin:8vh auto;padding:34px}.hidden{display:none!important}.eyebrow{color:#7da9cc;font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.auth-card h1{font-size:3rem;letter-spacing:-.06em;margin:.25rem 0}.auth-card h1 span,.brand span{color:#69d3b0}.muted{color:#a8b7c6}.hint,.tiny{color:#8395a7;font-size:.78rem}.hint code{color:#c6f3df;background:#122b2d;border-radius:5px;padding:2px 5px}.auth-card form{display:grid;gap:14px;margin-top:24px}.auth-card label{display:grid;gap:6px;color:#c9d5df;font-size:.85rem}.auth-card input,.composer textarea{width:100%;border:1px solid #294157;border-radius:11px;background:#0a1725;color:#edf2f7;padding:12px;outline:none}.auth-card input:focus,.composer textarea:focus{border-color:#69d3b0;box-shadow:0 0 0 3px rgba(105,211,176,.12)}.primary{border:0;border-radius:10px;background:#69d3b0;color:#06151a;font-weight:800;padding:11px 16px}.primary:disabled{opacity:.55;cursor:wait}.error{min-height:1.1em;color:#ff9d9d;font-size:.83rem;margin:0}.auth-card a{color:#8edfc3}.app-view{min-height:calc(100vh - 56px)}.topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 2px 22px}.brand{font-size:1.45rem;font-weight:800;letter-spacing:-.04em}.top-actions{display:flex;align-items:center;gap:12px}.status{color:#9ee8ce;font-size:.78rem}.quiet{border:1px solid #294157;border-radius:9px;background:transparent;color:#b9c7d3;padding:8px 11px}.layout{display:grid;grid-template-columns:270px 1fr;gap:18px}.profile,.chat{padding:20px}.profile h2{margin:.35rem 0 1rem;font-size:1.25rem}.profile dl{margin:0;display:grid;grid-template-columns:1fr;gap:10px}.profile dt{color:#7f95a8;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}.profile dd{margin:0;color:#e5edf4;font-size:.9rem}.voice-setting{border-top:1px solid rgba(164,190,214,.15);margin-top:22px;padding-top:18px}.mode-option{display:block;margin-top:10px;color:#d4e0e9;font-size:.86rem}.mode-option input{accent-color:#69d3b0;margin-right:7px}.chat{min-height:680px;display:flex;flex-direction:column}.messages{flex:1;overflow:auto;display:flex;flex-direction:column;gap:12px;padding:4px 2px 18px}.message{max-width:82%;padding:12px 14px;border-radius:14px;white-space:pre-wrap}.message.user{align-self:flex-end;background:#18334a;border-bottom-right-radius:4px}.message.assistant{align-self:flex-start;background:#123129;border:1px solid rgba(105,211,176,.2);border-bottom-left-radius:4px}.message.system{align-self:center;color:#8da0b0;font-size:.8rem}.message .label{color:#80d9bb;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}.sources{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.source{font-size:.7rem;color:#b9d8cd;background:#1b4238;border-radius:99px;padding:4px 8px}.composer{border-top:1px solid rgba(164,190,214,.15);padding-top:14px}.composer textarea{resize:vertical;min-height:58px}.composer-row{display:flex;align-items:center;justify-content:space-between;margin-top:9px}.mode-talk .composer textarea{border-color:rgba(105,211,176,.5)}
-@media(max-width:760px){.shell{padding:14px 10px}.layout{grid-template-columns:1fr}.profile{order:2}.chat{min-height:68vh}.topbar{padding-bottom:14px}.message{max-width:92%}.auth-card{margin-top:5vh;padding:26px}}
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#edf2f7;background:#09111c;line-height:1.5;font-synthesis:none}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden}
+body{background:radial-gradient(circle at 10% 0%,#17304a 0,#09111c 42%,#060b12 100%)}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+
+/* App shell: the page never scrolls; only #messages does. */
+.shell{width:min(1120px,100%);height:100vh;height:100dvh;margin:0 auto;padding:20px 18px;padding-bottom:max(14px,env(safe-area-inset-bottom));display:flex;flex-direction:column;min-height:0}
+.card{background:rgba(13,25,39,.88);border:1px solid rgba(164,190,214,.15);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.eyebrow{color:#7da9cc;font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.muted{color:#a8b7c6}
+.hint,.tiny{color:#8395a7;font-size:.78rem}
+.hint code{color:#c6f3df;background:#122b2d;border-radius:5px;padding:2px 5px}
+
+/* Sign-in and key views */
+.auth-card{width:100%;max-width:440px;margin:auto;padding:34px;max-height:100%;overflow-y:auto;flex:none}
+.auth-card h1{font-size:3rem;letter-spacing:-.06em;margin:.25rem 0}
+.auth-card h1 span,.brand span{color:#69d3b0}
+.auth-card form{display:grid;gap:14px;margin-top:24px}
+.auth-card label{display:grid;gap:6px;color:#c9d5df;font-size:.85rem}
+.auth-card input,.composer textarea{width:100%;border:1px solid #294157;border-radius:11px;background:#0a1725;color:#edf2f7;padding:12px;font-size:16px;outline:none}
+.auth-card input:focus,.composer textarea:focus{border-color:#69d3b0;box-shadow:0 0 0 3px rgba(105,211,176,.12)}
+.auth-card a{color:#8edfc3}
+.primary{border:0;border-radius:10px;background:#69d3b0;color:#06151a;font-weight:800;padding:11px 16px}
+.primary:disabled{opacity:.55;cursor:wait}
+.error{min-height:1.1em;color:#ff9d9d;font-size:.83rem;margin:0}
+
+/* Signed-in layout */
+.app-view{flex:1;min-height:0;display:flex;flex-direction:column}
+.topbar{flex:none;display:flex;align-items:center;justify-content:space-between;padding:4px 2px 16px}
+.brand{font-size:1.45rem;font-weight:800;letter-spacing:-.04em}
+.top-actions{display:flex;align-items:center;gap:12px}
+.status{color:#9ee8ce;font-size:.78rem}
+.quiet{border:1px solid #294157;border-radius:9px;background:transparent;color:#b9c7d3;padding:8px 11px}
+.layout{flex:1;min-height:0;display:grid;grid-template-columns:270px minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:18px}
+.profile{padding:20px;min-height:0;overflow-y:auto}
+.profile h2{margin:.35rem 0 1rem;font-size:1.25rem}
+.profile dl{margin:0;display:grid;grid-template-columns:1fr;gap:10px}
+.profile dt{color:#7f95a8;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em}
+.profile dd{margin:0;color:#e5edf4;font-size:.9rem;overflow-wrap:anywhere}
+
+/* Chat card: header and composer stay put, only .messages scrolls */
+.chat{display:flex;flex-direction:column;min-height:0;min-width:0;padding:14px 18px 16px}
+.chat-head{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;margin-bottom:10px;border-bottom:1px solid rgba(164,190,214,.15)}
+.mode-switch{display:flex;gap:4px;padding:3px;border:1px solid #294157;border-radius:12px;background:#0a1725}
+.mode-switch label{position:relative;display:block}
+.mode-switch input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.mode-switch span{display:block;padding:7px 12px;border-radius:9px;color:#b9c7d3;font-size:.82rem;white-space:nowrap}
+.mode-switch input:checked+span{background:#69d3b0;color:#06151a;font-weight:800}
+.mode-switch input:focus-visible+span{outline:2px solid #b4ecff;outline-offset:2px}
+.messages{flex:1 1 0;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;gap:12px;padding:4px 2px 14px}
+.message{max-width:82%;padding:12px 14px;border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.message.user{align-self:flex-end;background:#18334a;border-bottom-right-radius:4px}
+.message.assistant{align-self:flex-start;background:#123129;border:1px solid rgba(105,211,176,.2);border-bottom-left-radius:4px}
+.message.system{align-self:center;color:#8da0b0;font-size:.8rem;text-align:center}
+.message .label{color:#80d9bb;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.sources{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.source{font-size:.7rem;color:#b9d8cd;background:#1b4238;border-radius:99px;padding:4px 8px;overflow-wrap:anywhere}
+
+/* SAGE orb panel: talk mode only */
+.hud-panel{display:none;flex:none;justify-content:center;padding:2px 0 10px}
+.mode-talk .hud-panel{display:flex}
+.hud-panel #hud{--hud-max:clamp(96px,22vh,170px);width:100%}
+@supports (height:100dvh){.hud-panel #hud{--hud-max:clamp(96px,22dvh,170px)}}
+
+/* Composer */
+.composer{flex:none;border-top:1px solid rgba(164,190,214,.15);padding-top:12px}
+.composer textarea{resize:none;min-height:56px;max-height:120px}
+.mode-talk .composer textarea{border-color:rgba(105,211,176,.5)}
+.composer-row{display:flex;align-items:center;gap:10px;margin-top:9px}
+.composer-row .tiny{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mic{display:none;flex:none;width:46px;height:46px;border-radius:50%;border:1px solid #2f8f78;background:#0f2a2a;color:#9ee8ce;align-items:center;justify-content:center;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.mode-talk .mic{display:inline-flex}
+.mic:disabled{opacity:.5;cursor:wait}
+.mic[data-state="recording"]{background:#e25555;border-color:#ff9d9d;color:#fff;animation:mic-pulse 1.3s ease-out infinite}
+.mic[data-state="speaking"]{border-color:#ffb454;color:#ffb454}
+.mic:focus-visible{outline:2px solid #b4ecff;outline-offset:2px}
+@keyframes mic-pulse{0%{box-shadow:0 0 0 0 rgba(255,120,120,.55)}100%{box-shadow:0 0 0 14px rgba(255,120,120,0)}}
+@media(prefers-reduced-motion:reduce){.mic[data-state="recording"]{animation:none}}
+
+@media(max-width:760px){
+  .shell{padding:10px 10px max(10px,env(safe-area-inset-bottom))}
+  .layout{grid-template-columns:minmax(0,1fr);gap:0}
+  .profile{display:none}
+  .chat{padding:12px}
+  .topbar{padding-bottom:10px}
+  .message{max-width:92%}
+  .auth-card{padding:26px}
+  .auth-card h1{font-size:2.4rem}
+}
+@media(max-width:420px){
+  .chat-head .eyebrow{display:none}
+  .mode-switch{width:100%}
+  .mode-switch label{flex:1;text-align:center}
+}
